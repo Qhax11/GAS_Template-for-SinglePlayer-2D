@@ -1,7 +1,7 @@
 // Qhax's GAS Template for SinglePlayer
 
 
-#include "Gameplay/Actors/Characters/Heroes/Components/AC_AbilityInputBinding.h"
+#include "Gameplay/Actors/PaperCharacters/Heroes/Components/AC_AbilityInputBinding.h"
 #include "AbilitySystemGlobals.h"
 
 namespace EnhancedInputAbilitySystem_Impl

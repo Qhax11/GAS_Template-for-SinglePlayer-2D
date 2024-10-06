@@ -3,7 +3,7 @@
 
 #include "Gameplay/Actors/PaperCharacters/GAS_PaperHeroBase.h"
 #include "Gameplay/Actors/PaperCharacters/Heroes/Components/AC_HeroMoving2D.h"
-#include "Gameplay/Actors/Characters/Heroes/Components/AC_AbilityInputBinding.h"
+#include "Gameplay/Actors/PaperCharacters/Heroes/Components/AC_AbilityInputBinding.h"
 #include "EnhancedInputSubsystems.h"
 
 
