@@ -22,6 +22,9 @@ protected:
 	virtual void BeginPlay() override;
 
 public:	
+	// Called every frame
+	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+
 	AGAS_PaperHeroBase* PaperHero;
 
 	UPROPERTY(EditAnywhere)
@@ -30,8 +33,13 @@ public:
 	UPROPERTY(EditAnywhere)
 	const UInputAction* RightInputAction;
 
+	UPROPERTY(EditAnywhere)
+	const UInputAction* JumpInputAction;
+
 	void MoveLeft(const FInputActionValue& Value);
 		
 	void MoveRight(const FInputActionValue& Value);
+
+	void Jump(const FInputActionValue& Value);
 
 };
