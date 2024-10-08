@@ -30,8 +30,18 @@ public:
 	UPROPERTY(EditAnywhere)
 	const UInputAction* RightInputAction;
 
+	UPROPERTY(EditAnywhere)
+	const UInputAction* ForwardInputAction;
+
+	UPROPERTY(EditAnywhere)
+	const UInputAction* BackwardInputAction;
+
 	void MoveLeft(const FInputActionValue& Value);
 		
 	void MoveRight(const FInputActionValue& Value);
+
+	void MoveForward(const FInputActionValue& Value);
+
+	void MoveBackward(const FInputActionValue& Value);
 
 };

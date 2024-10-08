@@ -30,10 +30,12 @@ void UAC_HeroMoving2D::BeginPlay()
 		return;
 	}
 
-	if (LeftInputAction && RightInputAction)
+	if (LeftInputAction && RightInputAction && ForwardInputAction && BackwardInputAction)
 	{
 		EnhancedInputComponent->BindAction(LeftInputAction, ETriggerEvent::Triggered, this, &UAC_HeroMoving2D::MoveLeft);
 		EnhancedInputComponent->BindAction(RightInputAction, ETriggerEvent::Triggered, this, &UAC_HeroMoving2D::MoveRight);
+		EnhancedInputComponent->BindAction(ForwardInputAction, ETriggerEvent::Triggered, this, &UAC_HeroMoving2D::MoveForward);
+		EnhancedInputComponent->BindAction(BackwardInputAction, ETriggerEvent::Triggered, this, &UAC_HeroMoving2D::MoveBackward);
 	}
 	else
 	{
@@ -49,5 +51,15 @@ void UAC_HeroMoving2D::MoveLeft(const FInputActionValue& Value)
 void UAC_HeroMoving2D::MoveRight(const FInputActionValue& Value)
 {
 	PaperHero->AddMovementInput(FVector(0, 100, 0));
+}
+
+void UAC_HeroMoving2D::MoveForward(const FInputActionValue& Value)
+{
+	PaperHero->AddMovementInput(FVector(100, 100, 0));
+}
+
+void UAC_HeroMoving2D::MoveBackward(const FInputActionValue& Value)
+{
+	PaperHero->AddMovementInput(FVector(-100, 0, 0));
 }
 
