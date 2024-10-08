@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "PaperCharacter.h"
+#include "PaperZDCharacter.h"
 #include "AbilitySystemInterface.h"
 #include "Gameplay/Components/GAS_AbilitySystemComponent.h"
 #include "Gameplay/Components/AC_AbilitySet.h"
@@ -11,7 +11,7 @@
 
 
 UCLASS()
-class GAS_TEMPLATESP2D_API AGAS_PaperCharacterBase : public APaperCharacter, public IAbilitySystemInterface 
+class GAS_TEMPLATESP2D_API AGAS_PaperCharacterBase : public APaperZDCharacter, public IAbilitySystemInterface
 {
 	GENERATED_BODY()
 	

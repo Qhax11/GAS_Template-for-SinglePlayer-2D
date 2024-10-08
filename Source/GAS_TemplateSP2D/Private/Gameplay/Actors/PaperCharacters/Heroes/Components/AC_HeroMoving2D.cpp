@@ -55,7 +55,7 @@ void UAC_HeroMoving2D::MoveRight(const FInputActionValue& Value)
 
 void UAC_HeroMoving2D::MoveForward(const FInputActionValue& Value)
 {
-	PaperHero->AddMovementInput(FVector(100, 100, 0));
+	PaperHero->AddMovementInput(FVector(100, 0, 0));
 }
 
 void UAC_HeroMoving2D::MoveBackward(const FInputActionValue& Value)
