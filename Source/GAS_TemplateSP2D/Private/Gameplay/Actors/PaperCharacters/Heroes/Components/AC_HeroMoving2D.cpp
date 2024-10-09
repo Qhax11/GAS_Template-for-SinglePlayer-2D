@@ -45,21 +45,21 @@ void UAC_HeroMoving2D::BeginPlay()
 
 void UAC_HeroMoving2D::MoveLeft(const FInputActionValue& Value)
 {
-	PaperHero->AddMovementInput(FVector(0, -100, 0));
+	PaperHero->AddMovementInput(FVector(0, -1, 0));
 }
 
 void UAC_HeroMoving2D::MoveRight(const FInputActionValue& Value)
 {
-	PaperHero->AddMovementInput(FVector(0, 100, 0));
+	PaperHero->AddMovementInput(FVector(0, 1, 0));
 }
 
 void UAC_HeroMoving2D::MoveForward(const FInputActionValue& Value)
 {
-	PaperHero->AddMovementInput(FVector(100, 0, 0));
+	PaperHero->AddMovementInput(FVector(1, 0, 0));
 }
 
 void UAC_HeroMoving2D::MoveBackward(const FInputActionValue& Value)
 {
-	PaperHero->AddMovementInput(FVector(-100, 0, 0));
+	PaperHero->AddMovementInput(FVector(-1, 0, 0));
 }
 
