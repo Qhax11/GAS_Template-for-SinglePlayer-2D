@@ -4,8 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "AttributeSet.h"
+#include "AbilitySystemComponent.h"
 #include "GAS_AttributeSetBase.generated.h"
-
 
 // Uses macros from AttributeSet.h
 #define ATTRIBUTE_ACCESSORS(ClassName, PropertyName) \
@@ -14,9 +14,59 @@
 	GAMEPLAYATTRIBUTE_VALUE_SETTER(PropertyName) \
 	GAMEPLAYATTRIBUTE_VALUE_INITTER(PropertyName)
 
-/**
- * 
- */
+
+#define INVALID_ATTRIBUTE_VALUE -1.0f
+
+USTRUCT(BlueprintType)
+struct FAttributeChangeCallbackData
+{
+	GENERATED_BODY()
+
+public:
+
+	UPROPERTY(BlueprintReadWrite, Category = "Attribute Change Data")
+	UAbilitySystemComponent* AbilitySystemComponent = nullptr;
+
+	UPROPERTY()
+	FGameplayAttributeData AttributeData;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Attribute Change Data")
+	float CurrentValue = INVALID_ATTRIBUTE_VALUE;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Attribute Change Data")
+	float BaseValue = INVALID_ATTRIBUTE_VALUE;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Attribute Change Data")
+	float MaxValue = INVALID_ATTRIBUTE_VALUE;
+
+
+public:
+
+	FAttributeChangeCallbackData() = default;
+
+	FAttributeChangeCallbackData(UAbilitySystemComponent* NewAbilitySystemComponent, FGameplayAttributeData NewAttributeData) :
+		FAttributeChangeCallbackData(NewAbilitySystemComponent, NewAttributeData, NewAttributeData.GetCurrentValue(), INVALID_ATTRIBUTE_VALUE)
+	{
+	}
+
+	FAttributeChangeCallbackData(UAbilitySystemComponent* NewAbilitySystemComponent, FGameplayAttributeData NewAttributeData, float NewCurrentValue, float NewMaxValue) :
+		AbilitySystemComponent(NewAbilitySystemComponent),
+		AttributeData(NewAttributeData),
+		CurrentValue(NewCurrentValue),
+		MaxValue(NewMaxValue)
+	{
+		BaseValue = AttributeData.GetBaseValue();
+	}
+
+};
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPropertyValueChanged, const FAttributeChangeCallbackData&, Data);
+
+
+#define AttributeDelegateSetup(AttributeName)\
+	FOnPropertyValueChanged On##AttributeName##Changed;\
+
+
 UCLASS()
 class GAS_TEMPLATESP2D_API UGAS_AttributeSetBase : public UAttributeSet
 {
@@ -38,6 +88,7 @@ public:
 	UPROPERTY(BlueprintReadOnly, Category = "Endurance")
 	FGameplayAttributeData Health;
 	ATTRIBUTE_ACCESSORS(UGAS_AttributeSetBase, Health)
+	AttributeDelegateSetup(Health)
 
 		// MaxHealth is its own attribute since GameplayEffects may modify it
 		UPROPERTY(BlueprintReadOnly, Category = "Endurance")
@@ -57,4 +108,8 @@ public:
 	ATTRIBUTE_ACCESSORS(UGAS_AttributeSetBase, MovementSpeed)
 
 	
+protected:
+
+	virtual bool BroadcastPropertyChange(const FGameplayEffectModCallbackData& Data);
+
 };

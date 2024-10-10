@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "PaperZDCharacter.h"
 #include "AbilitySystemInterface.h"
+#include "Gameplay/Attributes/GAS_AttributeSetBase.h"
 #include "Gameplay/Components/GAS_AbilitySystemComponent.h"
 #include "Gameplay/Components/AC_AbilitySet.h"
 #include "GAS_PaperCharacterBase.generated.h"
@@ -32,5 +33,8 @@ public:
 	/* Components */
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "CharacterBase|Components")
 	UAC_AbilitySet* AbilitySetComponent;
+
+	UFUNCTION()
+	void HealthChanged(const FAttributeChangeCallbackData& Data);
 
 };
