@@ -62,7 +62,6 @@ public:
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPropertyValueChanged, const FAttributeChangeCallbackData&, Data);
 
-
 #define AttributeDelegateSetup(AttributeName)\
 	FOnPropertyValueChanged On##AttributeName##Changed;\
 
@@ -85,10 +84,10 @@ public:
 	// Positive changes can directly use this.
 	// Negative changes to Health should go through Damage meta attribute.
 
-	UPROPERTY(BlueprintReadOnly, Category = "Endurance")
+	    UPROPERTY(BlueprintReadOnly, Category = "Endurance")
 	FGameplayAttributeData Health;
 	ATTRIBUTE_ACCESSORS(UGAS_AttributeSetBase, Health)
-	AttributeDelegateSetup(Health)
+		FOnPropertyValueChanged OnHealthChanged;
 
 		// MaxHealth is its own attribute since GameplayEffects may modify it
 		UPROPERTY(BlueprintReadOnly, Category = "Endurance")

@@ -7,6 +7,8 @@
 #include "GAS_AbilitySystemComponent.h"
 #include "AC_AbilitySet.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnAbilitySetGiven, const AActor*, OwnerActor);
+
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class GAS_TEMPLATESP2D_API UAC_AbilitySet : public UActorComponent
@@ -21,4 +23,7 @@ public:
 
 	UPROPERTY(EditDefaultsOnly)
 	UGAS_GameplayAbilitySet* AbilitySet;
+
+	UPROPERTY(BlueprintAssignable)
+	FOnAbilitySetGiven OnAbilitySetGiven;
 };

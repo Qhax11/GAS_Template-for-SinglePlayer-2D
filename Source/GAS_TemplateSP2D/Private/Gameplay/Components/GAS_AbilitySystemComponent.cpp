@@ -10,17 +10,19 @@ UGAS_AbilitySystemComponent::UGAS_AbilitySystemComponent()
 {
 }
 
-void UGAS_AbilitySystemComponent::GiveAbilitySet(const UGAS_GameplayAbilitySet* AbilitySet)
+bool UGAS_AbilitySystemComponent::GiveAbilitySet(const UGAS_GameplayAbilitySet* AbilitySet)
 {
 	if (AbilitySet) 
 	{
 		GiveAbilities(AbilitySet);
 		GiveAttributes(AbilitySet);
 		GivePermenantTags(AbilitySet->PermenantTags);
+		return true;
 	}
 	else
 	{
 		UE_LOG(LogTemp, Warning, TEXT("AbilitySet doesen't exist in %s"), *GetOwnerActor()->GetName());
+		return false;
 	}
 }
 

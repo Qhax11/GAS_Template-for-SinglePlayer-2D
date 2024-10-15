@@ -12,7 +12,9 @@
 				"Paper2D",
 				"Engine",
 				"GameplayAbilities",
-				"PaperZD"
+				"PaperZD",
+				"UMG",
+				"DeveloperSettings"
 			]
 		}
 	],

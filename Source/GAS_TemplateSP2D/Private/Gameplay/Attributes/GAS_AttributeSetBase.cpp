@@ -26,8 +26,12 @@ bool UGAS_AttributeSetBase::BroadcastPropertyChange(const FGameplayEffectModCall
 	{
 		bIsBroadcasted = true;
 
-		OnHealthChanged.Broadcast(FAttributeChangeCallbackData(GetOwningAbilitySystemComponent(),
-			*Data.EvaluatedData.Attribute.GetGameplayAttributeData(this), Health.GetCurrentValue(), Health.GetBaseValue()));
+		OnHealthChanged.Broadcast(FAttributeChangeCallbackData(
+			GetOwningAbilitySystemComponent(),
+			*Data.EvaluatedData.Attribute.GetGameplayAttributeData(this),
+			Health.GetCurrentValue(),
+			MaxHealth.GetCurrentValue())
+		);
 	}
 
 	return bIsBroadcasted;

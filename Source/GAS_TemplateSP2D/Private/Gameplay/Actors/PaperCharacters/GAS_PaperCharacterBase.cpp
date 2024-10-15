@@ -1,7 +1,6 @@
 // Qhax's GAS Template for SinglePlayer
 
 
-
 #include "Gameplay/Actors/PaperCharacters/GAS_PaperCharacterBase.h"
 #include "PaperFlipbookComponent.h"
 

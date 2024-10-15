@@ -17,7 +17,10 @@ void UAC_AbilitySet::Initialize(UGAS_AbilitySystemComponent* ASC)
 {
 	if (ASC)
 	{
-		ASC->GiveAbilitySet(AbilitySet);
+		if (ASC->GiveAbilitySet(AbilitySet)) 
+		{
+			OnAbilitySetGiven.Broadcast(GetOwner());
+		}
 	}
 }
 

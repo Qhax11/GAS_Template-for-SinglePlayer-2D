@@ -13,5 +13,11 @@ UCLASS()
 class GAS_TEMPLATESP2D_API AGAS_PaperEnemyBase : public AGAS_PaperCharacterBase
 {
 	GENERATED_BODY()
+
+public:
+
+	AGAS_PaperEnemyBase();
 	
+	virtual void BeginPlay() override;
+
 };

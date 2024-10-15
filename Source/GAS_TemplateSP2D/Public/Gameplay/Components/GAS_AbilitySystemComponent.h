@@ -67,7 +67,7 @@ public:
 
 	UGAS_AbilitySystemComponent();
 
-	void GiveAbilitySet(const UGAS_GameplayAbilitySet* AbilitySet);
+	bool GiveAbilitySet(const UGAS_GameplayAbilitySet* AbilitySet);
 	
 	void GiveAbilities(const UGAS_GameplayAbilitySet* AbilitySet);
 
