@@ -19,7 +19,7 @@ public:
 	virtual void Initialize(AActor* Owner);
 protected:
 
-	virtual void BindAttributes(UAbilitySystemComponent* OwnerASC);
+	virtual void BindAttributesAndSetDefaultValues(UAbilitySystemComponent* OwnerASC);
 
 	UFUNCTION()
 	void HealthChanged(const FAttributeChangeCallbackData& Data);

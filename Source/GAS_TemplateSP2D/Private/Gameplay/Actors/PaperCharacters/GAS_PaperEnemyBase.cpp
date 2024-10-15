@@ -2,7 +2,6 @@
 
 
 #include "Gameplay/Actors/PaperCharacters/GAS_PaperEnemyBase.h"
-#include "Gameplay/UI/DS_BlueprintWidgets.h"
 
 
 AGAS_PaperEnemyBase::AGAS_PaperEnemyBase()

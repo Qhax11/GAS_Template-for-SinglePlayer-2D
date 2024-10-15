@@ -39,7 +39,6 @@ public:
 	UPROPERTY(BlueprintReadWrite, Category = "Attribute Change Data")
 	float MaxValue = INVALID_ATTRIBUTE_VALUE;
 
-
 public:
 
 	FAttributeChangeCallbackData() = default;
@@ -62,9 +61,11 @@ public:
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPropertyValueChanged, const FAttributeChangeCallbackData&, Data);
 
+// Doesent used because brodcast doesent work with this way
+/*
 #define AttributeDelegateSetup(AttributeName)\
 	FOnPropertyValueChanged On##AttributeName##Changed;\
-
+	*/
 
 UCLASS()
 class GAS_TEMPLATESP2D_API UGAS_AttributeSetBase : public UAttributeSet
@@ -74,7 +75,6 @@ class GAS_TEMPLATESP2D_API UGAS_AttributeSetBase : public UAttributeSet
 public:
 
 	UGAS_AttributeSetBase();
-
 
 	// AttributeSet Overrides
 	virtual void PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue) override;
@@ -93,18 +93,22 @@ public:
 		UPROPERTY(BlueprintReadOnly, Category = "Endurance")
 	FGameplayAttributeData MaxHealth;
 	ATTRIBUTE_ACCESSORS(UGAS_AttributeSetBase, MaxHealth)
+		FOnPropertyValueChanged OnMaxHealthChanged;
 
 		UPROPERTY(BlueprintReadOnly, Category = "Endurance")
 	FGameplayAttributeData Armor;
 	ATTRIBUTE_ACCESSORS(UGAS_AttributeSetBase, Armor)
+		FOnPropertyValueChanged OnArmorChanged;
 
 		UPROPERTY(BlueprintReadOnly, Category = "Attack")
 	FGameplayAttributeData PhysicalDamage;
 	ATTRIBUTE_ACCESSORS(UGAS_AttributeSetBase, PhysicalDamage)
+		FOnPropertyValueChanged OnPhysicalDamageChanged;
 
 		UPROPERTY(BlueprintReadOnly, Category = "Util")
 	FGameplayAttributeData MovementSpeed;
 	ATTRIBUTE_ACCESSORS(UGAS_AttributeSetBase, MovementSpeed)
+		FOnPropertyValueChanged OnMovementSpeedChanged;
 
 	
 protected:

@@ -13,13 +13,14 @@ void UW_HealthBar::Initialize(AActor* Owner)
 	{
 		return;
 	}
-	BindAttributes(OwnerASC);
+	BindAttributesAndSetDefaultValues(OwnerASC);
 }
 
-void UW_HealthBar::BindAttributes(UAbilitySystemComponent* OwnerASC)
+void UW_HealthBar::BindAttributesAndSetDefaultValues(UAbilitySystemComponent* OwnerASC)
 {
 	if (UGAS_AttributeSetBase* GSCAttributeSet = const_cast<UGAS_AttributeSetBase*>(OwnerASC->GetSet<UGAS_AttributeSetBase>()))
 	{
+		SetPercantage(GSCAttributeSet->GetHealth(), GSCAttributeSet->GetMaxHealth());
 		GSCAttributeSet->OnHealthChanged.AddDynamic(this, &UW_HealthBar::HealthChanged);
 	}
 }

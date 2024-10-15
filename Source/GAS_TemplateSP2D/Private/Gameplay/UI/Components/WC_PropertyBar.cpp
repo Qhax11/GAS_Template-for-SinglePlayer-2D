@@ -9,7 +9,7 @@ void UWC_PropertyBar::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// this BeginPlay is running before AbilitySet Initialize, so we need wait
+	// BeginPlay is running before AbilitySet Initialize, so we need wait
 	if (UAC_AbilitySet* AbiltySetComp = GetOwner()->GetComponentByClass<UAC_AbilitySet>()) 
 	{
 		AbiltySetComp->OnAbilitySetGiven.AddDynamic(this, &UWC_PropertyBar::OnAbilitySetGiven);
