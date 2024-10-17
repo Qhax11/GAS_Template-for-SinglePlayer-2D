@@ -5,6 +5,7 @@
 #include "Gameplay/Actors/PaperCharacters/GAS_PaperCharacterBase.h"
 #include "PaperZDAnimationComponent.h"
 #include "PaperZDAnimInstance.h"
+#include "Animations/Notifys/AN_EventReceived.h"
 
 
 void UGA_MontageAbility::ActivateAbility(const FGameplayAbilitySpecHandle Handle, 
@@ -20,34 +21,68 @@ void UGA_MontageAbility::ActivateAbility(const FGameplayAbilitySpecHandle Handle
 		return;
 	}
 
-	AActor* AvatarActor = GetAvatarActorFromActorInfo();
-	if (!AvatarActor)
+	AGAS_PaperCharacterBase* PaperCharacter = CastChecked<AGAS_PaperCharacterBase>(GetAvatarActorFromActorInfo());
+	if (!PaperCharacter) 
 	{
 		EndAbility(Handle, ActorInfo, ActivationInfo, true, true);
 		return;
 	}
 
-	AGAS_PaperCharacterBase* PaperCharacter = CastChecked<AGAS_PaperCharacterBase>(AvatarActor);
-	if (UPaperZDAnimationComponent* PaperZDAnimComp = PaperCharacter->GetComponentByClass<UPaperZDAnimationComponent>())
+	UPaperZDAnimationComponent* PaperZDAnimComp = PaperCharacter->GetComponentByClass<UPaperZDAnimationComponent>();
+	if (!PaperZDAnimComp)
 	{
-		if (UPaperZDAnimInstance* AnimInstance = PaperZDAnimComp->GetAnimInstance()) 
-		{
-			FZDOnAnimationOverrideEndSignature AnimEnd;
-			AnimEnd.BindUObject(this, &UGA_MontageAbility::OnAnimEnd);
-			AnimInstance->PlayAnimationOverride(AnimSequence, SlotName, PlayRate, 0.0f, AnimEnd);
-		}
+		EndAbility(Handle, ActorInfo, ActivationInfo, true, true);
+		return;
+	}
+
+	BindEventRecieved();
+
+	if (UPaperZDAnimInstance* AnimInstance = PaperZDAnimComp->GetAnimInstance())
+	{
+		FZDOnAnimationOverrideEndSignature OnOverrideEnd;
+		OnOverrideEnd.BindUObject(this, &UGA_MontageAbility::OnOverrideEnd);
+		AnimInstance->PlayAnimationOverride(AnimSequence, SlotName, PlayRate, 0.0f, OnOverrideEnd);
 	}
 }
 
-void UGA_MontageAbility::OnAnimEnd(bool Finished)
+void UGA_MontageAbility::OnCompleted()
 {
-	if(Finished)
+	EndAbility(CurrentSpecHandle, GetCurrentActorInfo(), GetCurrentActivationInfo(), false, false);
+}
+
+void UGA_MontageAbility::OnCancelled()
+{
+	EndAbility(CurrentSpecHandle, GetCurrentActorInfo(), GetCurrentActivationInfo(), false, true);
+}
+
+void UGA_MontageAbility::OnOverrideEnd(bool OverrideEnd)
+{
+	if (OverrideEnd)
 	{
-		EndAbility(CurrentSpecHandle, GetCurrentActorInfo(), GetCurrentActivationInfo(), false, false);
+		OnCompleted();
 	}
 	else
 	{
-		// Cancelled
-		EndAbility(CurrentSpecHandle, GetCurrentActorInfo(), GetCurrentActivationInfo(), false, true);
+		OnCancelled();
+	}
+}
+
+void UGA_MontageAbility::OnEventRecieved()
+{
+	/* Will be implemented in child classes */
+}
+
+void UGA_MontageAbility::BindEventRecieved()
+{
+	if (AnimSequence) 
+	{
+		TArray<UPaperZDAnimNotify_Base*> AnimNotifies = AnimSequence->GetAnimNotifies();
+		for (UPaperZDAnimNotify_Base* PaperZDAnimNotify_Base : AnimNotifies)
+		{
+			if (UAN_EventReceived* EventReceived = Cast<UAN_EventReceived>(PaperZDAnimNotify_Base))
+			{
+				EventReceived->OnEventReceived.AddDynamic(this, &UGA_MontageAbility::OnEventRecieved);
+			}
+		}
 	}
 }
