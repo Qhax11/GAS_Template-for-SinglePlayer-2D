@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Notifies/PaperZDAnimNotify.h"
+#include "GameplayTagContainer.h"
 #include "AN_EventReceived.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FEventReceived);
@@ -17,5 +18,8 @@ public:
 	void OnReceiveNotify_Implementation(UPaperZDAnimInstance* OwningInstance = nullptr) const override;
 
 	FEventReceived OnEventReceived;
+
+	UPROPERTY(EditAnywhere, Category = "AnimNotify")
+	FGameplayTag EventTag;
 
 };

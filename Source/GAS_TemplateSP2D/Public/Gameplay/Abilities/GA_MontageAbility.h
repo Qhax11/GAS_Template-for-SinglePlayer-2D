@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Gameplay/Abilities/GAS_GameplayAbilityBase.h"
 #include "AnimSequences/PaperZDAnimSequence.h"
+#include "AbilitySystemGlobals.h"
 #include "GA_MontageAbility.generated.h"
 
 /**
@@ -18,6 +19,9 @@ class GAS_TEMPLATESP2D_API UGA_MontageAbility : public UGAS_GameplayAbilityBase
 public:
 	UPROPERTY(EditDefaultsOnly, Category = "MontageAbility|Montage")
 	UPaperZDAnimSequence* AnimSequence;
+
+	UPROPERTY(EditDefaultsOnly, Category = "MontageAbility|Montage")
+	FGameplayTag EventTag;
 
 	UPROPERTY(EditDefaultsOnly, Category = "MontageAbility|Montage")
 	FName SlotName = "DefaultSlot";
@@ -38,6 +42,6 @@ protected:
 private:
 	void OnOverrideEnd(bool OverrideEnd);
 
-	void BindEventRecieved();
+	void BindEventRecievedInAnimSequence();
 
 };

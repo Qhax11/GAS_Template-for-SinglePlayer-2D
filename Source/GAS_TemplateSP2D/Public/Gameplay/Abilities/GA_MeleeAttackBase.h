@@ -17,5 +17,7 @@ class GAS_TEMPLATESP2D_API UGA_MeleeAttackBase : public UGA_MontageAbility
 public:
 	virtual void OnEventRecieved();
 
-	
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Parameters")
+	TSubclassOf<UGameplayEffect> GEPhysicalDamage;
 };

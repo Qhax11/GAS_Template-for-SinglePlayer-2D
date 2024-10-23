@@ -14,7 +14,8 @@
 				"GameplayAbilities",
 				"PaperZD",
 				"UMG",
-				"DeveloperSettings"
+				"DeveloperSettings",
+				"CoreUObject"
 			]
 		}
 	],

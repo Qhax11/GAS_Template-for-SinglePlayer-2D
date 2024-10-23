@@ -35,7 +35,7 @@ void UGA_MontageAbility::ActivateAbility(const FGameplayAbilitySpecHandle Handle
 		return;
 	}
 
-	BindEventRecieved();
+	BindEventRecievedInAnimSequence();
 
 	if (UPaperZDAnimInstance* AnimInstance = PaperZDAnimComp->GetAnimInstance())
 	{
@@ -72,7 +72,7 @@ void UGA_MontageAbility::OnEventRecieved()
 	/* Will be implemented in child classes */
 }
 
-void UGA_MontageAbility::BindEventRecieved()
+void UGA_MontageAbility::BindEventRecievedInAnimSequence()
 {
 	if (AnimSequence) 
 	{
@@ -81,7 +81,10 @@ void UGA_MontageAbility::BindEventRecieved()
 		{
 			if (UAN_EventReceived* EventReceived = Cast<UAN_EventReceived>(PaperZDAnimNotify_Base))
 			{
-				EventReceived->OnEventReceived.AddDynamic(this, &UGA_MontageAbility::OnEventRecieved);
+				if (EventReceived->EventTag == EventTag)
+				{
+					EventReceived->OnEventReceived.AddDynamic(this, &UGA_MontageAbility::OnEventRecieved);
+				}
 			}
 		}
 	}
