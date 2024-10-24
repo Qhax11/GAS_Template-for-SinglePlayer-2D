@@ -6,13 +6,13 @@
 #include "Gameplay/Abilities/GAS_GameplayAbilityBase.h"
 #include "AnimSequences/PaperZDAnimSequence.h"
 #include "AbilitySystemGlobals.h"
-#include "GA_MontageAbility.generated.h"
+#include "GA_SequenceAbility.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class GAS_TEMPLATESP2D_API UGA_MontageAbility : public UGAS_GameplayAbilityBase
+class GAS_TEMPLATESP2D_API UGA_SequenceAbility : public UGAS_GameplayAbilityBase
 {
 	GENERATED_BODY()
 

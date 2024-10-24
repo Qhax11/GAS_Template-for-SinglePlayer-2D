@@ -1,14 +1,14 @@
 // Qhax's GAS Template for SinglePlayer
 
 
-#include "Gameplay/Abilities/GA_MontageAbility.h"
+#include "Gameplay/Abilities/GA_SequenceAbility.h"
 #include "Gameplay/Actors/PaperCharacters/GAS_PaperCharacterBase.h"
 #include "PaperZDAnimationComponent.h"
 #include "PaperZDAnimInstance.h"
 #include "Animations/Notifys/AN_EventReceived.h"
 
 
-void UGA_MontageAbility::ActivateAbility(const FGameplayAbilitySpecHandle Handle, 
+void UGA_SequenceAbility::ActivateAbility(const FGameplayAbilitySpecHandle Handle,
 	const FGameplayAbilityActorInfo* ActorInfo, 
 	const FGameplayAbilityActivationInfo ActivationInfo, 
 	const FGameplayEventData* TriggerEventData)
@@ -40,22 +40,22 @@ void UGA_MontageAbility::ActivateAbility(const FGameplayAbilitySpecHandle Handle
 	if (UPaperZDAnimInstance* AnimInstance = PaperZDAnimComp->GetAnimInstance())
 	{
 		FZDOnAnimationOverrideEndSignature OnOverrideEnd;
-		OnOverrideEnd.BindUObject(this, &UGA_MontageAbility::OnOverrideEnd);
+		OnOverrideEnd.BindUObject(this, &UGA_SequenceAbility::OnOverrideEnd);
 		AnimInstance->PlayAnimationOverride(AnimSequence, SlotName, PlayRate, 0.0f, OnOverrideEnd);
 	}
 }
 
-void UGA_MontageAbility::OnCompleted()
+void UGA_SequenceAbility::OnCompleted()
 {
 	EndAbility(CurrentSpecHandle, GetCurrentActorInfo(), GetCurrentActivationInfo(), false, false);
 }
 
-void UGA_MontageAbility::OnCancelled()
+void UGA_SequenceAbility::OnCancelled()
 {
 	EndAbility(CurrentSpecHandle, GetCurrentActorInfo(), GetCurrentActivationInfo(), false, true);
 }
 
-void UGA_MontageAbility::OnOverrideEnd(bool OverrideEnd)
+void UGA_SequenceAbility::OnOverrideEnd(bool OverrideEnd)
 {
 	if (OverrideEnd)
 	{
@@ -67,12 +67,12 @@ void UGA_MontageAbility::OnOverrideEnd(bool OverrideEnd)
 	}
 }
 
-void UGA_MontageAbility::OnEventRecieved()
+void UGA_SequenceAbility::OnEventRecieved()
 {
 	/* Will be implemented in child classes */
 }
 
-void UGA_MontageAbility::BindEventRecievedInAnimSequence()
+void UGA_SequenceAbility::BindEventRecievedInAnimSequence()
 {
 	if (AnimSequence) 
 	{
@@ -83,7 +83,7 @@ void UGA_MontageAbility::BindEventRecievedInAnimSequence()
 			{
 				if (EventReceived->EventTag == EventTag)
 				{
-					EventReceived->OnEventReceived.AddDynamic(this, &UGA_MontageAbility::OnEventRecieved);
+					EventReceived->OnEventReceived.AddDynamic(this, &UGA_SequenceAbility::OnEventRecieved);
 				}
 			}
 		}
