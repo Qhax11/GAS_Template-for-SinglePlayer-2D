@@ -8,12 +8,8 @@
 void UGAS_GameplayAbilityBase::CreateTraceFromTargetingData(TArray<AActor*>& OutActors)
 {
 	FVector StartLocation = GetAvatarActorFromActorInfo()->GetActorLocation();
-	FVector end = GetAvatarActorFromActorInfo()->GetActorLocation() + GetAvatarActorFromActorInfo()->GetActorForwardVector() * 100;
-
 	FRotator TraceDirection = GetAvatarActorFromActorInfo()->GetActorForwardVector().Rotation();
+
 	TargetingData->Trace->MakeTrace(GetAvatarActorFromActorInfo(), GetWorld(), StartLocation, TraceDirection, OutActors);
-
-
-
 }
 

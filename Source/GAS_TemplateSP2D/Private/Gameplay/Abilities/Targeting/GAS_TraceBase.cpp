@@ -46,7 +46,11 @@ void UGAS_TraceBase::MakeTrace(const UObject* Owner, const UWorld* World, const 
 void UGAS_TraceBase::Initialize(const UObject* Owner, FRotator Direction)
 {
 	OwnerActor = Cast<AActor>(Owner);
-	TraceDirection = Direction;
+
+	if (!bOverrideTraceDirection) 
+	{
+		TraceDirection = Direction;
+	}
 }
 
 void UGAS_TraceBase::TraceLogic(const UWorld* World, const FVector& Location, const FRotator& Direction, const FCollisionQueryParams& QueryParams, const FCollisionResponseParams& ResponseParams, TArray<FHitResult>& OutHitResults)
