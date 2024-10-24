@@ -2,7 +2,7 @@
 
 
 #include "Gameplay/UI/W_HealthBar.h"
-#include "Gameplay/Attributes/GAS_AttributeSetBase.h"
+#include "Gameplay/Attributes/AS_Base.h"
 #include "AbilitySystemGlobals.h"
 
 
@@ -18,7 +18,7 @@ void UW_HealthBar::Initialize(AActor* Owner)
 
 void UW_HealthBar::BindAttributesAndSetDefaultValues(UAbilitySystemComponent* OwnerASC)
 {
-	if (UGAS_AttributeSetBase* GSCAttributeSet = const_cast<UGAS_AttributeSetBase*>(OwnerASC->GetSet<UGAS_AttributeSetBase>()))
+	if (UAS_Base* GSCAttributeSet = const_cast<UAS_Base*>(OwnerASC->GetSet<UAS_Base>()))
 	{
 		SetPercantage(GSCAttributeSet->GetHealth(), GSCAttributeSet->GetMaxHealth());
 		GSCAttributeSet->OnHealthChanged.AddDynamic(this, &UW_HealthBar::HealthChanged);

@@ -27,7 +27,7 @@ void AGAS_PaperCharacterBase::BeginPlay()
 	PaperCharacterASC->InitAbilityActorInfo(this, this);
 	AbilitySetComponent->Initialize(PaperCharacterASC);
 
-	if (UGAS_AttributeSetBase* GSCAttributeSet = const_cast<UGAS_AttributeSetBase*>(PaperCharacterASC->GetSet<UGAS_AttributeSetBase>()))
+	if (UAS_Base* GSCAttributeSet = const_cast<UAS_Base*>(PaperCharacterASC->GetSet<UAS_Base>()))
 	{
 		GSCAttributeSet->OnHealthChanged.AddDynamic(this, &AGAS_PaperCharacterBase::HealthChanged);
 	}

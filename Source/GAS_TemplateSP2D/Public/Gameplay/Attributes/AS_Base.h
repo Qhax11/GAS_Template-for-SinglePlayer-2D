@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "AttributeSet.h"
 #include "AbilitySystemComponent.h"
-#include "GAS_AttributeSetBase.generated.h"
+#include "AS_Base.generated.h"
 
 // Uses macros from AttributeSet.h
 #define ATTRIBUTE_ACCESSORS(ClassName, PropertyName) \
@@ -68,13 +68,13 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPropertyValueChanged, const FAttr
 	*/
 
 UCLASS()
-class GAS_TEMPLATESP2D_API UGAS_AttributeSetBase : public UAttributeSet
+class GAS_TEMPLATESP2D_API UAS_Base : public UAttributeSet
 {
 	GENERATED_BODY()
 
 public:
 
-	UGAS_AttributeSetBase();
+	UAS_Base();
 
 	// AttributeSet Overrides
 	virtual void PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue) override;
@@ -86,28 +86,28 @@ public:
 
 	    UPROPERTY(BlueprintReadOnly, Category = "Endurance")
 	FGameplayAttributeData Health;
-	ATTRIBUTE_ACCESSORS(UGAS_AttributeSetBase, Health)
+	ATTRIBUTE_ACCESSORS(UAS_Base, Health)
 		FOnPropertyValueChanged OnHealthChanged;
 
 		// MaxHealth is its own attribute since GameplayEffects may modify it
 		UPROPERTY(BlueprintReadOnly, Category = "Endurance")
 	FGameplayAttributeData MaxHealth;
-	ATTRIBUTE_ACCESSORS(UGAS_AttributeSetBase, MaxHealth)
+	ATTRIBUTE_ACCESSORS(UAS_Base, MaxHealth)
 		FOnPropertyValueChanged OnMaxHealthChanged;
 
 		UPROPERTY(BlueprintReadOnly, Category = "Endurance")
 	FGameplayAttributeData Armor;
-	ATTRIBUTE_ACCESSORS(UGAS_AttributeSetBase, Armor)
+	ATTRIBUTE_ACCESSORS(UAS_Base, Armor)
 		FOnPropertyValueChanged OnArmorChanged;
 
 		UPROPERTY(BlueprintReadOnly, Category = "Attack")
 	FGameplayAttributeData PhysicalDamage;
-	ATTRIBUTE_ACCESSORS(UGAS_AttributeSetBase, PhysicalDamage)
+	ATTRIBUTE_ACCESSORS(UAS_Base, PhysicalDamage)
 		FOnPropertyValueChanged OnPhysicalDamageChanged;
 
 		UPROPERTY(BlueprintReadOnly, Category = "Util")
 	FGameplayAttributeData MovementSpeed;
-	ATTRIBUTE_ACCESSORS(UGAS_AttributeSetBase, MovementSpeed)
+	ATTRIBUTE_ACCESSORS(UAS_Base, MovementSpeed)
 		FOnPropertyValueChanged OnMovementSpeedChanged;
 
 	
