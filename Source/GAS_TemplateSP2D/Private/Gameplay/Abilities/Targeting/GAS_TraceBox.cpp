@@ -7,3 +7,18 @@ FCollisionShape UGAS_TraceBox::GetCollisionShape() const
 {
     return FCollisionShape::MakeBox(FVector(HalfLength, HalfWidth, HalfHeight));
 }
+
+void UGAS_TraceBox::DrawDebugShape(const UWorld* World, const FVector& Location) const
+{
+	DrawDebugBox(
+		World,
+		Location + TraceDirection.Vector() * HalfLength,
+		FVector(HalfLength, HalfWidth, HalfHeight),
+		TraceDirection.Quaternion(),
+		DrawColor,
+		false,
+		DebugShapeDrawDuration,
+		0,
+		2.0f
+	);
+}

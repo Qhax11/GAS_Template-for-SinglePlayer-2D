@@ -27,4 +27,7 @@ protected:
 
 	FCollisionShape GetCollisionShape() const override;
 
+#if WITH_EDITOR
+	virtual void DrawDebugShape(const UWorld* World, const FVector& Location) const override;
+#endif // WITH_EDITOR
 };

@@ -18,8 +18,6 @@ class GAS_TEMPLATESP2D_API UGAS_TraceBase : public UObject
 protected:
 
 	const AActor* OwnerActor = nullptr;
-	float TraceDistanceInternal;
-	FRotator TraceDirectionInternal;
 
 public:
 
@@ -33,6 +31,9 @@ public:
 	float TraceDistance = .0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Trace", meta = (ExposeOnSpawn = true))
+	FRotator TraceDirection;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Trace", meta = (ExposeOnSpawn = true))
 	TEnumAsByte<ECollisionResponse> CollisionResponse = ECollisionResponse::ECR_Overlap;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Trace")
@@ -44,9 +45,11 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Trace")
 	bool bSingleTarget = false;
 
-	void Trace(const UWorld* World, const FVector& Location, const FRotator& Direction, TArray<AActor*>& OutActors);
+	void MakeTrace(const UObject* Owner, const UWorld* World, const FVector& Location, const FRotator& Direction, TArray<AActor*>& OutActors);
 
 protected:
+
+	virtual void Initialize(const UObject* Owner, FRotator Direction);
 
 	virtual void TraceLogic(const UWorld* World, const FVector& Location, const FRotator& Direction, const FCollisionQueryParams& QueryParams, const FCollisionResponseParams& ResponseParams, TArray<FHitResult>& OutHitResults);
 

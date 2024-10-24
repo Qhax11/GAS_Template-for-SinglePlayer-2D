@@ -20,7 +20,7 @@ void UGAS_TraceLine::DrawDebugShape(const UWorld* World, const FVector& Location
 	DrawDebugLine(
 		World,
 		Location,
-		Location + TraceDirectionInternal.Vector() * TraceDistance,
+		Location + TraceDirection.Vector() * TraceDistance,
 		DrawColor,
 		false,
 		DebugShapeDrawDuration,

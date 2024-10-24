@@ -3,8 +3,16 @@
 
 #include "Gameplay/Abilities/Targeting/GAS_TraceBase.h"
 
-void UGAS_TraceBase::Trace(const UWorld* World, const FVector& Location, const FRotator& Direction, TArray<AActor*>& OutActors)
+void UGAS_TraceBase::MakeTrace(const UObject* Owner, const UWorld* World, const FVector& Location, const FRotator& Direction, TArray<AActor*>& OutActors)
 {
+	if (!Owner)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Owner can't be null! (This message comes from UGAS_TraceBase)"));
+		return;
+	}
+
+	Initialize(Owner, Direction);
+
 	FCollisionQueryParams QueryParams;
 	if (bIgnoreSelf)
 	{
@@ -35,12 +43,18 @@ void UGAS_TraceBase::Trace(const UWorld* World, const FVector& Location, const F
 	}
 }
 
+void UGAS_TraceBase::Initialize(const UObject* Owner, FRotator Direction)
+{
+	OwnerActor = Cast<AActor>(Owner);
+	TraceDirection = Direction;
+}
+
 void UGAS_TraceBase::TraceLogic(const UWorld* World, const FVector& Location, const FRotator& Direction, const FCollisionQueryParams& QueryParams, const FCollisionResponseParams& ResponseParams, TArray<FHitResult>& OutHitResults)
 {
 	World->SweepMultiByChannel(
 		OutHitResults,
 		Location,
-		Location + Direction.Vector() * TraceDistanceInternal,
+		Location + TraceDirection.Vector() * TraceDistance,
 		FQuat::Identity,
 		TraceChannel,
 		GetCollisionShape(),

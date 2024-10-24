@@ -12,10 +12,10 @@ void UGAS_TraceSphere::DrawDebugShape(const UWorld* World, const FVector& Locati
 {
 	DrawDebugCapsule(
 		World,
-		Location + TraceDirectionInternal.Vector() * (TraceDistance / 2.0f),
+		Location + TraceDirection.Vector() * (TraceDistance / 2.0f),
 		TraceDistance / 2.0f + Radius,
 		Radius,
-		FQuat::MakeFromEuler(FVector(.0f, 90.0f + TraceDirectionInternal.Euler().Y, TraceDirectionInternal.Euler().Z)),
+		FQuat::MakeFromEuler(FVector(.0f, 90.0f + TraceDirection.Euler().Y, TraceDirection.Euler().Z)),
 		DrawColor,
 		false,
 		DebugShapeDrawDuration,

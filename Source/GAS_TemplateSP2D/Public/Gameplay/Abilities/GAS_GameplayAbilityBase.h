@@ -21,7 +21,7 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category = "GameplayAbilityBase|TargetingData")
 	UGAS_AbilityTargetingData* TargetingData;
 
-	void CreateTraceFromTargetingData(TArray<AActor*> OutActors);
+	void CreateTraceFromTargetingData(TArray<AActor*>& OutActors);
 	
 
 };
