@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Abilities/GameplayAbility.h"
 #include "Gameplay/Abilities/Targeting/GAS_AbilityTargetingData.h"
+#include "Gameplay/Tags/GAS_Tags.h"
 #include "AbilitySystemComponent.h"
 #include "GAS_GameplayAbilityBase.generated.h"
 

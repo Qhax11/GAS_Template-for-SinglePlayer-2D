@@ -5,7 +5,7 @@
 #include "NativeGameplayTags.h"
 
 
-namespace HDA_Tags
+namespace GAS_Tags
 {
 	/************************************************
 	*----------------<Gameplay Tags>----------------*
