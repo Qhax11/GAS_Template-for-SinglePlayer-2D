@@ -15,4 +15,16 @@ class GAS_TEMPLATESP2D_API UEC_DamageBase : public UEC_Base
 {
 	GENERATED_BODY()
 	
+public:
+
+	virtual void ExecuteWithParams(FExecCalculationParameters Params, FGameplayEffectCustomExecutionOutput& OutExecutionOutput) const override;
+
+	virtual float GetBaseDamage(const FExecCalculationParameters& Params) const;
+
+	virtual float GetBonusDamagePercentage(const FExecCalculationParameters& Params) const;
+
+	virtual float GetTotalDamage(const FExecCalculationParameters& Params) const;
+
+	virtual void CalculateHealth(FExecCalculationParameters& Params, float& MitigatedDamage, FGameplayEffectCustomExecutionOutput& OutExecutionOutput) const;
+
 };

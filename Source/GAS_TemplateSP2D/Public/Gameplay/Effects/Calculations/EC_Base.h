@@ -6,6 +6,7 @@
 #include "GameplayEffectExecutionCalculation.h"
 #include "AbilitySystemComponent.h"
 #include "Gameplay/Attributes/AS_Base.h"
+#include "Gameplay/Tags/GAS_Tags.h"
 #include "EC_Base.generated.h"
 
 
@@ -133,4 +134,18 @@ class GAS_TEMPLATESP2D_API UEC_Base : public UGameplayEffectExecutionCalculation
 {
 	GENERATED_BODY()
 	
+public:
+
+	virtual void Execute_Implementation(const FGameplayEffectCustomExecutionParameters& ExecutionParams, FGameplayEffectCustomExecutionOutput& OutExecutionOutput) const override final;
+
+	virtual void ExecuteWithParams(FExecCalculationParameters Params, FGameplayEffectCustomExecutionOutput& OutExecutionOutput) const;
+
+protected:
+
+	void MakeAggregatorEvaluatedParamsByEffectSpec(const FGameplayEffectSpec& EffectSpec, FAggregatorEvaluateParameters& OutEvaluatedParams) const;
+
+	void MakeAggregatorEvaluatedParamsBySourceTagsAndTargetTags(const FGameplayTagContainer* SourceTags, const FGameplayTagContainer* TargetTags, FAggregatorEvaluateParameters& OutEvaluatedParams) const;
+
+	// We take  magnitude value from SetByCaller, it is in EffectSpec.
+	float GetSetByCallerMagnitude(const FGameplayEffectSpec& EffectSpec, const FGameplayTag& DataTag, float DefaultIfNotFound = .0f, bool bWarnIfNotFound = false) const;
 };

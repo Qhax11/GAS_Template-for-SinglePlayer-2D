@@ -39,7 +39,7 @@ namespace GAS_Tags
 	UE_DEFINE_GAMEPLAY_TAG(TAG_UI_Cooldown_Skill_Ability0, "Cooldown.Skill.Ability0");
 	UE_DEFINE_GAMEPLAY_TAG(TAG_UI_Cooldown_Skill_Ability1, "Cooldown.Skill.Ability1");
 
-	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_SetByCallerHealingAmount, "EffectData.SetByCaller.HealingAmount");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_SetByCaller_DamageAmount, "EffectData.SetByCaller.DamageAmount");
 
 	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_EnableLifeSteal, "EffectData.EnableLifeSteal");
 	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_EnableSelfHeal, "EffectData.EnableSelfHeal");
@@ -57,16 +57,9 @@ namespace GAS_Tags
 	UE_DEFINE_GAMEPLAY_TAG(TAG_Filter_Team_Hostile, "Filter.Team.Hostile");
 	UE_DEFINE_GAMEPLAY_TAG(TAG_Filter_Team_Neutral, "Filter.Team.Neutral");
 
-	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_GameplayEvent_TakeHeal, "GameplayEvent.TakeHeal");
-	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_GameplayEvent_DealHeal, "GameplayEvent.DealHeal");
 
-	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_GameplayEvent_TakeDamage_Health, "GameplayEvent.TakeDamage.Health");
-	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_GameplayEvent_TakeDamage_Shield, "GameplayEvent.TakeDamage.Shield");
-	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_GameplayEvent_DealDamage_Health, "GameplayEvent.DealDamage.Health");
-	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_GameplayEvent_DealDamage_Shield, "GameplayEvent.DealDamage.Shield");
-
-
-	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_GameplayEventDeath, "GameplayEvent.Death");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_GameplayEvent_TakeDamage, "GameplayEvent.TakeDamage");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_GameplayEvent_Death, "GameplayEvent.Death");
 
 	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_State_Dead, "State.Dead");
 
