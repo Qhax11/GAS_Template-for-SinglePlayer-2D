@@ -17,16 +17,16 @@ class GAS_TEMPLATESP2D_API UGA_SequenceAbility : public UGAS_GameplayAbilityBase
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(EditDefaultsOnly, Category = "MontageAbility|Montage")
+	UPROPERTY(EditDefaultsOnly, Category = "SequenceAbility|Montage")
 	UPaperZDAnimSequence* AnimSequence;
 
-	UPROPERTY(EditDefaultsOnly, Category = "MontageAbility|Montage")
+	UPROPERTY(EditDefaultsOnly, Category = "SequenceAbility|Montage")
 	FGameplayTag EventTag;
 
-	UPROPERTY(EditDefaultsOnly, Category = "MontageAbility|Montage")
+	UPROPERTY(EditDefaultsOnly, Category = "SequenceAbility|Montage")
 	FName SlotName = "DefaultSlot";
 
-	UPROPERTY(EditDefaultsOnly, Category = "MontageAbility|Montage")
+	UPROPERTY(EditDefaultsOnly, Category = "SequenceAbility|Montage")
 	float PlayRate = 1.0f;
 
 	virtual void ActivateAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo, const FGameplayEventData* TriggerEventData);

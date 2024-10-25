@@ -38,14 +38,19 @@ float UEC_DamageBase::GetBaseDamage(const FExecCalculationParameters& Params) co
 
 float UEC_DamageBase::GetBonusDamagePercentage(const FExecCalculationParameters& Params) const
 {
-	return 1.0f;
+	return 0.f;
 }
 
 float UEC_DamageBase::GetTotalDamage(const FExecCalculationParameters& Params) const
 {
 	const float BaseDamage = GetBaseDamage(Params);
 	const float BonusDamagePercentage = GetBonusDamagePercentage(Params);
-	return  BaseDamage * (1 + BonusDamagePercentage);
+
+	if (BonusDamagePercentage > 1) 
+	{
+		return  BaseDamage * BonusDamagePercentage;
+	}
+	return  BaseDamage;
 }
 
 

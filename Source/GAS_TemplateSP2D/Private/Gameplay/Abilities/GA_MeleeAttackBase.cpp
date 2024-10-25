@@ -13,7 +13,12 @@ void UGA_MeleeAttackBase::OnEventRecieved()
 		if (UAbilitySystemComponent* TargetASC = UAbilitySystemGlobals::GetAbilitySystemComponentFromActor(CollectedActor))
 		{
 			FGameplayEffectSpecHandle NewHandle = GetAbilitySystemComponentFromActorInfo()->MakeOutgoingSpec(GEPhysicalDamage, 1, FGameplayEffectContextHandle());
-			TargetASC->ApplyGameplayEffectSpecToSelf(*(NewHandle.Data.Get()));
+			FGameplayEffectSpec* EffectSpec = NewHandle.Data.Get();
+            if (EffectSpec)
+            {
+            	EffectSpec->SetSetByCallerMagnitude(GAS_Tags::TAG_Gameplay_SetByCaller_DamageAmount, Damage.GetValueAtLevel(GetAbilityLevel()));
+            }
+			TargetASC->ApplyGameplayEffectSpecToSelf(*EffectSpec);
 		}
 	}
 }

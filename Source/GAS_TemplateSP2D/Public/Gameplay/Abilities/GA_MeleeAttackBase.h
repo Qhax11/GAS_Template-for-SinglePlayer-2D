@@ -19,4 +19,7 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Parameters")
 	TSubclassOf<UGameplayEffect> GEPhysicalDamage;
+	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Parameters")
+    FScalableFloat Damage;
 };
