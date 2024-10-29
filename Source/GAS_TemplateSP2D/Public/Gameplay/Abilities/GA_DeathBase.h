@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "Gameplay/Abilities/GA_SequenceAbility.h"
+#include "Gameplay/Actors/PaperCharacters/GAS_PaperCharacterBase.h"
+#include "Components/CapsuleComponent.h"
 #include "GA_DeathBase.generated.h"
 
 /**

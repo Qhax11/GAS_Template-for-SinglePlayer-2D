@@ -43,6 +43,9 @@ public:
 	float DebugShapeDrawDuration = 1.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "TraceParams")
+	bool bDrawEnable = false;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "TraceParams")
 	bool bSingleTarget = false;
 
 	void MakeTrace(const UObject* Owner, const UWorld* World, const FVector& Location, const FRotator& Direction, TArray<AActor*>& OutActors);

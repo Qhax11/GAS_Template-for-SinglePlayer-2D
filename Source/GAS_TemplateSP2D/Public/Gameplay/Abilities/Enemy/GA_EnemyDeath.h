@@ -14,4 +14,8 @@ class GAS_TEMPLATESP2D_API UGA_EnemyDeath : public UGA_DeathBase
 {
 	GENERATED_BODY()
 	
+public:
+
+	virtual void DisableCollisions();
+
 };

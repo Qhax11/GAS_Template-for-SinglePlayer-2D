@@ -30,7 +30,11 @@ void UGA_DeathBase::ActivateAbility(const FGameplayAbilitySpecHandle Handle,
 
 void UGA_DeathBase::DisableCollisions()
 {
-	// Logic will be implmeneted in subclasses.
+	if (AGAS_PaperCharacterBase* CharBase = Cast<AGAS_PaperCharacterBase>(GetAvatarActorFromActorInfo()))
+	{
+		// Dead object collision
+		CharBase->GetCapsuleComponent()->SetCollisionObjectType(ECollisionChannel::ECC_GameTraceChannel1);
+	}
 }
 
 void UGA_DeathBase::OnCompleted()

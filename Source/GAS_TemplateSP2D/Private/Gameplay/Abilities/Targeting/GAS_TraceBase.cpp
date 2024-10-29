@@ -29,7 +29,8 @@ void UGAS_TraceBase::MakeTrace(const UObject* Owner, const UWorld* World, const 
 	TraceLogic(World, Location, Direction, QueryParams, ResponseParams, HitResults);
 
 #if WITH_EDITOR
-	DrawDebugShape(World, Location);
+	if(bDrawEnable)
+		DrawDebugShape(World, Location);
 #endif // WITH_EDITOR
 
 	if (HitResults.IsEmpty())
