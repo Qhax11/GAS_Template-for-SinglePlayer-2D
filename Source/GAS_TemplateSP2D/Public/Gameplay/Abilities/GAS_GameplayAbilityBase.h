@@ -7,6 +7,7 @@
 #include "Gameplay/Abilities/Targeting/GAS_AbilityTargetingData.h"
 #include "Gameplay/Tags/GAS_Tags.h"
 #include "AbilitySystemComponent.h"
+#include "Gameplay/Attributes/AS_Base.h"
 #include "GAS_GameplayAbilityBase.generated.h"
 
 /**

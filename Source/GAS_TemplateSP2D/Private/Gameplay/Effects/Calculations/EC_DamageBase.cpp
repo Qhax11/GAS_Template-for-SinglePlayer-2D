@@ -68,12 +68,9 @@ void UEC_DamageBase::CalculateHealth(FExecCalculationParameters& Params, float& 
 	}
 	//Params.MutableSpec->SetSetByCallerMagnitude(GAS_Tags::TAG_Gameplay_ExecCalculation_HealthDamageAmount, HealthDamageDone);
 
+	// Trigger TakeDamage Ability
 	if (HealthDamageDone > 0)
 	{
-		/* TODO: The lines are temporarily moved to here and might be redundent in project,
- * But we will implement it in parent class for all of the actors which could die!
- * Then we have this logic only in one place.
- */
 		FGameplayEventData TakeDamagePaload;
 		TakeDamagePaload.EventTag = GAS_Tags::TAG_Gameplay_GameplayEvent_TakeDamage;
 		TakeDamagePaload.Instigator = Params.SourceActor;
@@ -82,28 +79,23 @@ void UEC_DamageBase::CalculateHealth(FExecCalculationParameters& Params, float& 
 		TakeDamagePaload.ContextHandle = Params.GetSpec().GetContext();
 		TakeDamagePaload.InstigatorTags = Params.GetSpec().CapturedSourceTags.GetActorTags();
 
-		FScopedPredictionWindow NewScopedWindow(Params.TargetASC, true);
+		//FScopedPredictionWindow NewScopedWindow(Params.TargetASC, true);
 		Params.TargetASC->HandleGameplayEvent(TakeDamagePaload.EventTag, &TakeDamagePaload);
 	}
 
+	// Trigger Death Ability
 	if (MitigatedDamage >= CurrentTargetHealth)
 	{
-		/* TODO: The lines are temporarily moved to here and might be redundent in project,
-	 * But we will implement it in parent class for all of the actors which could die!
-	 * Then we have this logic only in one place.
-	 */
-		FGameplayEventData Payload;
-		Payload.EventTag = GAS_Tags::TAG_Gameplay_GameplayEvent_Death;
-		Payload.Instigator = Params.SourceActor;
-		Payload.Target = Params.TargetActor;
-		Payload.ContextHandle = Params.GetSpec().GetContext();
-		Payload.InstigatorTags = Params.GetSpec().CapturedSourceTags.GetActorTags();
+		FGameplayEventData DeathPayload;
+		DeathPayload.EventTag = GAS_Tags::TAG_Gameplay_GameplayEvent_Death;
+		DeathPayload.Instigator = Params.SourceActor;
+		DeathPayload.Target = Params.TargetActor;
+		DeathPayload.ContextHandle = Params.GetSpec().GetContext();
+		DeathPayload.InstigatorTags = Params.GetSpec().CapturedSourceTags.GetActorTags();
 
-		FScopedPredictionWindow NewScopedWindow(Params.TargetASC, true);
-		Params.TargetASC->HandleGameplayEvent(Payload.EventTag, &Payload);
+		//FScopedPredictionWindow NewScopedWindow(Params.TargetASC, true);
+		Params.TargetASC->HandleGameplayEvent(DeathPayload.EventTag, &DeathPayload);
 	}
-
-
 
 	// subtract health damage done from mitigated damage
 	MitigatedDamage -= HealthDamageDone;
