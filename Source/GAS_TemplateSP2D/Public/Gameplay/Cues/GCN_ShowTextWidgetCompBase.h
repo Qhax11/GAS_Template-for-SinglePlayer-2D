@@ -40,34 +40,28 @@ protected:
 
 	void DefaultSettings(float Value);
 
-	// Checking default stuff like is blind or is it critical? 
-	void DefaultTextTypeChecks(const FGameplayTagContainer TextTags);
-
 	FString AddingToString(FString String, FString AddedString, bool EndOfString);
-
-	UPROPERTY(EditDefaultsOnly, Category = "Config|Blind")
-	FString BlindString = "Blind!";
-
-	UPROPERTY(EditDefaultsOnly, Category = "Config")
-	FString WillBeAddedFrontOfText;
-
-	UPROPERTY(EditDefaultsOnly, Category = "Config")
-	FString WillBeAddedEndOfText;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Config")
 	FSlateColor WidgetTextColor;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Config")
-	TEnumAsByte<EShowTextAnim> WidgetShowTextType;
+	TEnumAsByte<EShowTextAnim> WidgetTextAnim;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Config|Critical")
-	FSlateColor CriticalColor;
+	UPROPERTY(EditDefaultsOnly, Category = "Config", meta = (EditCondition = "!bOverrideText"))
+	FString WillBeAddedFrontOfText;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Config|Critical")
-	FString  WillBeAddedEndOfCriticalText;
+	UPROPERTY(EditDefaultsOnly, Category = "Config", meta = (EditCondition = "!bOverrideText"))
+	FString WillBeAddedEndOfText;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Config|OverrideText")
+	bool bOverrideText;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Config|OverrideText", meta = (EditCondition = "bOverrideText"))
+	FString OverridedText;
 
 private:
-
+	// These are sent to the ShowText widget
 	FSlateColor FinalTextColor;
 	FString FinalTextString;
 	TEnumAsByte<EShowTextAnim> FinalShowTextType;
