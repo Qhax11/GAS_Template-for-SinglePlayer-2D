@@ -30,23 +30,26 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "TraceParams", meta = (ExposeOnSpawn = true))
 	float TraceDistance = .0f;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "TraceParams", meta = (ExposeOnSpawn = true), meta = (EditCondition = "bOverrideTraceDirection"))
-	FRotator TraceDirection;
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "TraceParams")
 	bool bOverrideTraceDirection = false;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "TraceParams", meta = (ExposeOnSpawn = true), meta = (EditCondition = "bOverrideTraceDirection"))
+	FRotator TraceDirection;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "TraceParams", meta = (ExposeOnSpawn = true))
 	TEnumAsByte<ECollisionResponse> CollisionResponse = ECollisionResponse::ECR_Overlap;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "TraceParams")
-	float DebugShapeDrawDuration = 1.0f;
+	bool bSingleTarget = false;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "TraceParams")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "DrawParams")
 	bool bDrawEnable = false;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "TraceParams")
-	bool bSingleTarget = false;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "DrawParams", meta = (EditCondition = "bDrawEnable"))
+	float DebugShapeDrawDuration = 1.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "DrawParams", meta = (EditCondition = "bDrawEnable"))
+	FColor DrawColor = FColor::White;
 
 	void MakeTrace(const UObject* Owner, const UWorld* World, const FVector& Location, const FRotator& Direction, TArray<AActor*>& OutActors);
 
@@ -61,9 +64,6 @@ protected:
 
 #if WITH_EDITOR
 protected:
-
-	FColor DrawColor = FColor::White;
-
 	virtual void DrawDebugShape(const UWorld* World, const FVector& Location) const;
 #endif // WITH_EDITOR
 

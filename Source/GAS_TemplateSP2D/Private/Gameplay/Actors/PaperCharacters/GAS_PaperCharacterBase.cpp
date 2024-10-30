@@ -26,11 +26,6 @@ void AGAS_PaperCharacterBase::BeginPlay()
 
 	PaperCharacterASC->InitAbilityActorInfo(this, this);
 	AbilitySetComponent->Initialize(PaperCharacterASC);
-
-	if (UAS_Base* GSCAttributeSet = const_cast<UAS_Base*>(PaperCharacterASC->GetSet<UAS_Base>()))
-	{
-		GSCAttributeSet->OnHealthChanged.AddDynamic(this, &AGAS_PaperCharacterBase::HealthChanged);
-	}
 }
 
 UAbilitySystemComponent* AGAS_PaperCharacterBase::GetAbilitySystemComponent() const
@@ -38,12 +33,6 @@ UAbilitySystemComponent* AGAS_PaperCharacterBase::GetAbilitySystemComponent() co
 	return PaperCharacterASC;
 }
 
-void AGAS_PaperCharacterBase::HealthChanged(const FAttributeChangeCallbackData& Data)
-{
-	if (Data.CurrentValue <= 0) 
-	{
-		UE_LOG(LogTemp, Warning, TEXT("UR DEAD"));
-	}
-}
+
 
 

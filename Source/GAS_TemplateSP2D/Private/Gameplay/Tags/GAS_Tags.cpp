@@ -41,10 +41,11 @@ namespace GAS_Tags
 
 	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_SetByCaller_DamageAmount, "EffectData.SetByCaller.DamageAmount");
 
-	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_EnableLifeSteal, "EffectData.EnableLifeSteal");
-	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_EnableSelfHeal, "EffectData.EnableSelfHeal");
-	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_EnableCriticalDamage, "EffectData.EnableCriticalDamage");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_EffectData_EnableLifeSteal, "EffectData.EnableLifeSteal");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_EffectData_EnableSelfHeal, "EffectData.EnableSelfHeal");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_EffectData_EnableCriticalDamage, "EffectData.EnableCriticalDamage");
 
+	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_EffectData_OverrideShowText, "EffectData.OverrideShowText");
 
 	/**********************************************
 	*----------------<Filter Tags>----------------*
@@ -70,14 +71,14 @@ namespace GAS_Tags
 	* Add all of the GameplayCue related tags to here. *
 	****************************************************/
 
-	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_LockCamera, "GameplayCue.LockCamera");
-	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_UnlockCamera, "GameplayCue.UnlockCamera");
 	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_ShowText_Damage, "GameplayCue.ShowText.Damage");
-	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_Effect_Blood, "GameplayCue.Effect.Blood");
 	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_ShowText_Blood, "GameplayCue.ShowText.Blood");
-	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_Effect_Healing, "GameplayCue.Effect.Healing");
 	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_ShowText_Healing, "GameplayCue.ShowText.Healing");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_ShowText_Critical, "GameplayCue.ShowText.Critical");
 
+	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_Effect_Blood, "GameplayCue.Effect.Blood");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_Effect_Healing, "GameplayCue.Effect.Healing");
+	
 	/* These tags are for reaching data  */
 	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_Sound, "Gameplay.Sound");
 	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_Sound_Jump, "Gameplay.Sound.Jump");

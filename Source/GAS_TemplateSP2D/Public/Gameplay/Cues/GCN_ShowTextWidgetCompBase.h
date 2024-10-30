@@ -38,7 +38,9 @@ protected:
 	UFUNCTION(BlueprintImplementableEvent)
 	void TriggerWidget(const FSlateColor FinalColor, const FString& FinalString, EShowTextAnim TextType);
 
-	void DefaultSettings(float Value);
+	bool TagChecks(AActor* Target, FGameplayCueParameters Parameters);
+
+	void PrepareText(float Value);
 
 	FString AddingToString(FString String, FString AddedString, bool EndOfString);
 

@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "AttributeSet.h"
 #include "AbilitySystemComponent.h"
+#include "GameplayEffectExtension.h"
 #include "AS_Base.generated.h"
 
 // Uses macros from AttributeSet.h
@@ -80,32 +81,34 @@ public:
 	virtual void PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue) override;
 	virtual void PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data) override;
 
+	virtual void ClampingAttributeValues(const FGameplayEffectModCallbackData& Data);
+
 	// Current Health, when 0 we expect owner to die unless prevented by an ability. Capped by MaxHealth.
 	// Positive changes can directly use this.
 	// Negative changes to Health should go through Damage meta attribute.
 
-	    UPROPERTY(BlueprintReadOnly, Category = "Endurance")
+	    UPROPERTY(BlueprintReadOnly, Category = "Base")
 	FGameplayAttributeData Health;
 	ATTRIBUTE_ACCESSORS(UAS_Base, Health)
 		FOnPropertyValueChanged OnHealthChanged;
 
 		// MaxHealth is its own attribute since GameplayEffects may modify it
-		UPROPERTY(BlueprintReadOnly, Category = "Endurance")
+		UPROPERTY(BlueprintReadOnly, Category = "Base")
 	FGameplayAttributeData MaxHealth;
 	ATTRIBUTE_ACCESSORS(UAS_Base, MaxHealth)
 		FOnPropertyValueChanged OnMaxHealthChanged;
 
-		UPROPERTY(BlueprintReadOnly, Category = "Endurance")
+		UPROPERTY(BlueprintReadOnly, Category = "Base")
 	FGameplayAttributeData Armor;
 	ATTRIBUTE_ACCESSORS(UAS_Base, Armor)
 		FOnPropertyValueChanged OnArmorChanged;
 
-		UPROPERTY(BlueprintReadOnly, Category = "Attack")
+		UPROPERTY(BlueprintReadOnly, Category = "Base")
 	FGameplayAttributeData PhysicalDamage;
 	ATTRIBUTE_ACCESSORS(UAS_Base, PhysicalDamage)
 		FOnPropertyValueChanged OnPhysicalDamageChanged;
 
-		UPROPERTY(BlueprintReadOnly, Category = "Util")
+		UPROPERTY(BlueprintReadOnly, Category = "Base")
 	FGameplayAttributeData MovementSpeed;
 	ATTRIBUTE_ACCESSORS(UAS_Base, MovementSpeed)
 		FOnPropertyValueChanged OnMovementSpeedChanged;

@@ -3,6 +3,9 @@
 
 #include "Gameplay/Cues/GCN_ShowTextWidgetCompBase.h"
 #include "Kismet/KismetStringLibrary.h"
+#include "Gameplay/Tags/GAS_Tags.h"
+#include "AbilitySystemGlobals.h"
+#include "AbilitySystemComponent.h"
 
 AGCN_ShowTextWidgetCompBase::AGCN_ShowTextWidgetCompBase()
 {
@@ -16,6 +19,12 @@ void AGCN_ShowTextWidgetCompBase::OnExecuted(AActor* Source, AActor* Target, con
 		return;
 	}
 
+	if (TagChecks(Target, Parameters))
+	{
+		// If we execute different cue
+		return;
+	}
+
 	FinalTextColor = WidgetTextColor;
 	FinalShowTextType = WidgetTextAnim;
 
@@ -26,12 +35,28 @@ void AGCN_ShowTextWidgetCompBase::OnExecuted(AActor* Source, AActor* Target, con
 	}
 	else
 	{
-		DefaultSettings(Parameters.RawMagnitude);
+		PrepareText(Parameters.RawMagnitude);
 		TriggerWidget(FinalTextColor, FinalTextString, FinalShowTextType);
 	}
 }
 
-void AGCN_ShowTextWidgetCompBase::DefaultSettings(float Value)
+bool AGCN_ShowTextWidgetCompBase::TagChecks(AActor* Target, FGameplayCueParameters Parameters)
+{
+	// If we have a critical text tag in spec we just execute Critical cue
+	if (Parameters.AggregatedSourceTags.HasTagExact(GAS_Tags::TAG_UI_HitTypeText_Critical))
+	{
+		if (UAbilitySystemComponent* TargetASC = UAbilitySystemGlobals::GetAbilitySystemComponentFromActor(Target))
+		{
+			// Removing critical tag for don't be loop
+			Parameters.AggregatedSourceTags.RemoveTag(GAS_Tags::TAG_UI_HitTypeText_Critical);
+			TargetASC->ExecuteGameplayCue(GAS_Tags::TAG_GameplayCue_ShowText_Critical, Parameters);
+			return true;
+		}
+	}
+	return false;
+}
+
+void AGCN_ShowTextWidgetCompBase::PrepareText(float Value)
 {
 	FString ValueString = UKismetStringLibrary::Conv_IntToString(FMath::Abs(Value));
 

@@ -27,4 +27,9 @@ public:
 
 	virtual void CalculateHealth(FExecCalculationParameters& Params, float& MitigatedDamage, FGameplayEffectCustomExecutionOutput& OutExecutionOutput) const;
 
+	virtual void CalculateCritical(FExecCalculationParameters& Params, float& MitigatedDamage, FGameplayEffectCustomExecutionOutput& OutExecutionOutput) const;
+
+	virtual bool CalculateCriticalChance(float CriticalChance) const;
+
+	virtual void CalculateLifeSteal(FExecCalculationParameters& Params, float DamageDone, float& HealDone, FGameplayEffectCustomExecutionOutput& OutExecutionOutput) const;
 };

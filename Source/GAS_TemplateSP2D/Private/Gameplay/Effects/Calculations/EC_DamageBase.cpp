@@ -2,6 +2,8 @@
 
 
 #include "Gameplay/Effects/Calculations/EC_DamageBase.h"
+#include "Gameplay/Attributes/AS_Hero.h"
+
 
 void UEC_DamageBase::ExecuteWithParams(FExecCalculationParameters Params, FGameplayEffectCustomExecutionOutput& OutExecutionOutput) const
 {
@@ -17,6 +19,9 @@ void UEC_DamageBase::ExecuteWithParams(FExecCalculationParameters Params, FGamep
 
 	float MitigatedDamage = GetTotalDamage(Params);
 
+	// Calculate Critical Damage
+	CalculateCritical(Params, MitigatedDamage, OutExecutionOutput);
+
 	float HealthDamageDone = MitigatedDamage;
 	CalculateHealth(Params, MitigatedDamage, OutExecutionOutput);
 	if (MitigatedDamage < HealthDamageDone)
@@ -24,6 +29,9 @@ void UEC_DamageBase::ExecuteWithParams(FExecCalculationParameters Params, FGamep
 		HealthDamageDone -= MitigatedDamage;
 	}
 
+	//life steal
+	float LifeStealDone = .0f;
+	CalculateLifeSteal(Params, HealthDamageDone, LifeStealDone, OutExecutionOutput);
 	/*
 	// Capture DamageDone in spec for acces from outside of effect
 	Params.MutableSpec->SetSetByCallerMagnitude(HDA_Tags::TAG_Gameplay_ExecCalculation_TotalDamageDone, HealthDamageDone + ShieldDamageDone);
@@ -79,7 +87,6 @@ void UEC_DamageBase::CalculateHealth(FExecCalculationParameters& Params, float& 
 		TakeDamagePaload.ContextHandle = Params.GetSpec().GetContext();
 		TakeDamagePaload.InstigatorTags = Params.GetSpec().CapturedSourceTags.GetActorTags();
 
-		//FScopedPredictionWindow NewScopedWindow(Params.TargetASC, true);
 		Params.TargetASC->HandleGameplayEvent(TakeDamagePaload.EventTag, &TakeDamagePaload);
 	}
 
@@ -93,10 +100,71 @@ void UEC_DamageBase::CalculateHealth(FExecCalculationParameters& Params, float& 
 		DeathPayload.ContextHandle = Params.GetSpec().GetContext();
 		DeathPayload.InstigatorTags = Params.GetSpec().CapturedSourceTags.GetActorTags();
 
-		//FScopedPredictionWindow NewScopedWindow(Params.TargetASC, true);
 		Params.TargetASC->HandleGameplayEvent(DeathPayload.EventTag, &DeathPayload);
 	}
 
 	// subtract health damage done from mitigated damage
 	MitigatedDamage -= HealthDamageDone;
 }
+
+void UEC_DamageBase::CalculateCritical(FExecCalculationParameters& Params, float& MitigatedDamage, FGameplayEffectCustomExecutionOutput& OutExecutionOutput) const
+{
+	if (const UAS_Hero* HeroAttributeSet = Cast<UAS_Hero>(Params.GetSourceAttributeSet()))
+	{
+		// Critical, if target is build we don't allow critical hit 
+		if (Params.EffectAssetTags.HasTag(GAS_Tags::TAG_Gameplay_EffectData_EnableCriticalDamage))
+		{
+			float CriticalChance = HeroAttributeSet->GetCriticalChance();
+			if (CriticalChance > 0 && CalculateCriticalChance(CriticalChance))
+			{
+				const float CriticalDamage = MitigatedDamage * (HeroAttributeSet->GetCriticalDamage() / 100);
+
+				if (CriticalDamage > 0)
+				{
+					// For ShowText gameplaycue, we need to know it is critical 
+					Params.MutableSpec->AddDynamicAssetTag(GAS_Tags::TAG_UI_HitTypeText_Critical);
+				}
+
+				MitigatedDamage += CriticalDamage;
+			}
+		}
+	}
+}
+
+bool UEC_DamageBase::CalculateCriticalChance(float CriticalChance) const
+{
+	int32 x = 100 / CriticalChance;
+	float RandomNumber = FMath::RandRange(1, x);
+	if (RandomNumber == FMath::RandRange(1, x))
+	{
+		return true;
+	}
+
+	return false;
+}
+
+void UEC_DamageBase::CalculateLifeSteal(FExecCalculationParameters& Params, float DamageDone, float& HealDone, FGameplayEffectCustomExecutionOutput& OutExecutionOutput) const
+{
+	if (const UAS_Hero* HeroAttributeSet = Cast<UAS_Hero>(Params.GetSourceAttributeSet()))
+	{
+		/*
+		if (Params.EffectAssetTags.HasTag(HDA_Tags::TAG_Gameplay_EnableLifeSteal))
+		{
+			const float LifeSteal = HeroAttributeSet->GetLifeSteal();
+			if (LifeSteal <= 0)
+			{
+				return;
+			}
+			HealDone = UHDA_ExecCalcFunctionLibary::CalculateLifeSteal(DamageDone, LifeSteal);
+			// Create Effect and assign spec
+			FGameplayEffectSpec HealingSpec; // TODO: Life steal
+			UHDA_EffectFunctionLibary::CreateEffectWithMagnitude(HealingSpec, Params.SourceASC, UGE_Healing::StaticClass(), HDA_Tags::TAG_Gameplay_SetByCallerHealingAmount, HealDone);
+			// Making spec customize 
+			UHDA_EffectFunctionLibary::AddTagInEffectSpecWithContain(HealingSpec, Params.EffectAssetTags);
+			FActiveGameplayEffectHandle ActiveGEHandle = Params.SourceASC->ApplyGameplayEffectSpecToTarget(HealingSpec, Params.SourceASC);
+		}
+		*/
+	}
+}
+
+

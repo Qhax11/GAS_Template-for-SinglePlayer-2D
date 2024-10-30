@@ -32,7 +32,7 @@ void UGA_DeathBase::DisableCollisions()
 {
 	if (AGAS_PaperCharacterBase* CharBase = Cast<AGAS_PaperCharacterBase>(GetAvatarActorFromActorInfo()))
 	{
-		// Dead object collision
+		// Dead object collision, you can check ProjectSettings->Engine->Collision->CollisionObject
 		CharBase->GetCapsuleComponent()->SetCollisionObjectType(ECollisionChannel::ECC_GameTraceChannel1);
 	}
 }

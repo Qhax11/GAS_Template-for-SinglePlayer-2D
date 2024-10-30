@@ -25,5 +25,6 @@ public:
 
 	void CreateTraceFromTargetingData(TArray<AActor*>& OutActors);
 	
+	void CreateEffectWithMagnitude(FGameplayEffectSpec& Spec, UAbilitySystemComponent* SourceAbilitySystemComponent, TSubclassOf<UGameplayEffect> GameplayEffectClass, const FGameplayTag SetByCallerTag, float SetByCallerValue);
 
 };

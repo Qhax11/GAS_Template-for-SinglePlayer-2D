@@ -13,3 +13,21 @@ void UGAS_GameplayAbilityBase::CreateTraceFromTargetingData(TArray<AActor*>& Out
 	TargetingData->Trace->MakeTrace(GetAvatarActorFromActorInfo(), GetWorld(), StartLocation, TraceDirection, OutActors);
 }
 
+void UGAS_GameplayAbilityBase::CreateEffectWithMagnitude(FGameplayEffectSpec& Spec, UAbilitySystemComponent* SourceAbilitySystemComponent, TSubclassOf<UGameplayEffect> GameplayEffectClass, const FGameplayTag SetByCallerTag, float SetByCallerValue)
+{
+	FGameplayEffectContextHandle EffectContext = SourceAbilitySystemComponent->MakeEffectContext();
+	FGameplayEffectSpecHandle NewHandle = SourceAbilitySystemComponent->MakeOutgoingSpec(GameplayEffectClass, 1, EffectContext);
+	if (NewHandle.IsValid())
+	{
+		FGameplayEffectSpec* EffectSpec = NewHandle.Data.Get();
+		if (EffectSpec)
+		{
+			if (SetByCallerTag.IsValid() && SetByCallerValue != 0)
+			{
+				EffectSpec->SetSetByCallerMagnitude(SetByCallerTag, SetByCallerValue);
+			}
+			Spec = *EffectSpec;
+		}
+	}
+}
+

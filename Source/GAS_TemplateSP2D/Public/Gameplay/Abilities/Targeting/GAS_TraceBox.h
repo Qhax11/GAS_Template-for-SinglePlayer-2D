@@ -16,13 +16,13 @@ class GAS_TEMPLATESP2D_API UGAS_TraceBox : public UGAS_TraceBase
 
 public:
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Trace", meta = (ExposeOnSpawn = true))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "TraceBox", meta = (ExposeOnSpawn = true))
 	float HalfLength = 50.0f;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Trace", meta = (ExposeOnSpawn = true))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "TraceBox", meta = (ExposeOnSpawn = true))
 	float HalfWidth = 50.0f;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Trace", meta = (ExposeOnSpawn = true))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "TraceBox", meta = (ExposeOnSpawn = true))
 	float HalfHeight = 50.0f;
 	
 protected:

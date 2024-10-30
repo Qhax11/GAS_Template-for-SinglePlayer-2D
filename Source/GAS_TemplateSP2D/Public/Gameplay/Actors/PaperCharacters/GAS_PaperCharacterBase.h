@@ -34,7 +34,4 @@ public:
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "CharacterBase|Components")
 	UAC_AbilitySet* AbilitySetComponent;
 
-	UFUNCTION()
-	void HealthChanged(const FAttributeChangeCallbackData& Data);
-
 };

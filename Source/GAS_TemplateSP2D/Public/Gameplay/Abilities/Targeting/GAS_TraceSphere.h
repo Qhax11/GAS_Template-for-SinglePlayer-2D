@@ -16,7 +16,7 @@ class GAS_TEMPLATESP2D_API UGAS_TraceSphere : public UGAS_TraceBase
 	
 public:
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Trace", meta = (ExposeOnSpawn = true))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "TraceSphere", meta = (ExposeOnSpawn = true))
 	float Radius = 100.0f;
 
 protected:
