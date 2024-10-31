@@ -16,5 +16,6 @@ class GAS_TEMPLATESP2D_API UGA_HeroDeath : public UGA_DeathBase
 	
 public:
 
+	virtual void OnCompleted();
 
 };
