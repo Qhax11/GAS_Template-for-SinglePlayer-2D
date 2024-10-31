@@ -16,7 +16,7 @@ class GAS_TEMPLATESP2D_API UW_HealthBar : public UW_PropertyBar
 
 public:
 
-	virtual void Initialize(AActor* Owner);
+	virtual void InitializeHealthBar(AActor* Owner);
 protected:
 
 	virtual void BindAttributesAndSetDefaultValues(UAbilitySystemComponent* OwnerASC);

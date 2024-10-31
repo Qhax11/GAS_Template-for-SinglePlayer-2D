@@ -8,6 +8,7 @@ FCollisionShape UGAS_TraceSphere::GetCollisionShape() const
     return FCollisionShape::MakeSphere(Radius);
 }
 
+#if WITH_EDITOR
 void UGAS_TraceSphere::DrawDebugShape(const UWorld* World, const FVector& Location) const
 {
 	DrawDebugCapsule(
@@ -23,3 +24,4 @@ void UGAS_TraceSphere::DrawDebugShape(const UWorld* World, const FVector& Locati
 		2.0f
 	);
 }
+#endif // WITH_EDITOR

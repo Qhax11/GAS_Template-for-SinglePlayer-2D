@@ -72,9 +72,9 @@ FCollisionShape UGAS_TraceBase::GetCollisionShape() const
     return FCollisionShape();
 }
 
+#if WITH_EDITOR
 void UGAS_TraceBase::DrawDebugShape(const UWorld* World, const FVector& Location) const
 {
 	// Logic will be implmeneted in subclasses.
 }
-
-
+#endif // WITH_EDITOR

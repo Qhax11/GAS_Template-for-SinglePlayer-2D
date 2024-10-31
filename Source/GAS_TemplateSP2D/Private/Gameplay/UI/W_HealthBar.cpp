@@ -6,7 +6,7 @@
 #include "AbilitySystemGlobals.h"
 
 
-void UW_HealthBar::Initialize(AActor* Owner)
+void UW_HealthBar::InitializeHealthBar(AActor* Owner)
 {
 	UAbilitySystemComponent* OwnerASC = UAbilitySystemGlobals::GetAbilitySystemComponentFromActor(Owner);
 	if (!OwnerASC)

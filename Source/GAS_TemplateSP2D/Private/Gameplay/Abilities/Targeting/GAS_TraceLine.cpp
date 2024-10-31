@@ -15,6 +15,7 @@ void UGAS_TraceLine::TraceLogic(const UWorld* World, const FVector& Location, co
 	);
 }
 
+#if WITH_EDITOR
 void UGAS_TraceLine::DrawDebugShape(const UWorld* World, const FVector& Location) const
 {
 	DrawDebugLine(
@@ -28,3 +29,4 @@ void UGAS_TraceLine::DrawDebugShape(const UWorld* World, const FVector& Location
 		2.0f
 	);
 }
+#endif // WITH_EDITOR
