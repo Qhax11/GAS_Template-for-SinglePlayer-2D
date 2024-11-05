@@ -4,22 +4,21 @@
 
 #include "CoreMinimal.h"
 #include "Gameplay/UI/W_PropertyBar.h"
-#include "Gameplay/Attributes/AS_Base.h"
-#include "W_HealthBar.generated.h"
+#include "Gameplay/Attributes/AS_Hero.h"
+#include "W_ManaBar.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class GAS_TEMPLATESP2D_API UW_HealthBar : public UW_PropertyBar
+class GAS_TEMPLATESP2D_API UW_ManaBar : public UW_PropertyBar
 {
 	GENERATED_BODY()
-
+	
 protected:
 
 	virtual void BindAttributesAndSetDefaultValues(UAbilitySystemComponent* OwnerASC);
 
 	UFUNCTION()
-	void HealthChanged(const FAttributeChangeCallbackData& Data);
-
+	void ManaChanged(const FAttributeChangeCallbackData& Data);
 };

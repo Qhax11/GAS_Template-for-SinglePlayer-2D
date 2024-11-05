@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
+#include "AbilitySystemComponent.h"
 #include "W_PropertyBar.generated.h"
 
 /**
@@ -14,10 +15,17 @@ class GAS_TEMPLATESP2D_API UW_PropertyBar : public UUserWidget
 {
 	GENERATED_BODY()
 
+public:
+
+	virtual void InitializePropertyBar(AActor* Owner);
+
 protected:
 
 	UPROPERTY(BlueprintReadOnly, meta = (BindWidget))
 	class UProgressBar* ProgressBar;
 	
 	void SetPercantage(float Value1, float Value2);
+	
+	virtual void BindAttributesAndSetDefaultValues(UAbilitySystemComponent* OwnerASC);
+
 };

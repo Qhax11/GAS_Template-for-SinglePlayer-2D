@@ -25,6 +25,6 @@ void UWC_PropertyBar::OnAbilitySetGiven(const AActor* OwnerActor)
 	PropertyBar = Cast<UW_HealthBar>(GetUserWidgetObject());
 	if (PropertyBar && OwnerActor)
 	{
-		PropertyBar->InitializeHealthBar(GetOwner());
+		PropertyBar->InitializePropertyBar(GetOwner());
 	}
 }

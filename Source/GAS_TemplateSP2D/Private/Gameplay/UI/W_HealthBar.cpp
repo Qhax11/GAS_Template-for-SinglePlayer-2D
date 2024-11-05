@@ -6,22 +6,12 @@
 #include "AbilitySystemGlobals.h"
 
 
-void UW_HealthBar::InitializeHealthBar(AActor* Owner)
-{
-	UAbilitySystemComponent* OwnerASC = UAbilitySystemGlobals::GetAbilitySystemComponentFromActor(Owner);
-	if (!OwnerASC)
-	{
-		return;
-	}
-	BindAttributesAndSetDefaultValues(OwnerASC);
-}
-
 void UW_HealthBar::BindAttributesAndSetDefaultValues(UAbilitySystemComponent* OwnerASC)
 {
-	if (UAS_Base* GSCAttributeSet = const_cast<UAS_Base*>(OwnerASC->GetSet<UAS_Base>()))
+	if (UAS_Base* AttributeBase = const_cast<UAS_Base*>(OwnerASC->GetSet<UAS_Base>()))
 	{
-		SetPercantage(GSCAttributeSet->GetHealth(), GSCAttributeSet->GetMaxHealth());
-		GSCAttributeSet->OnHealthChanged.AddDynamic(this, &UW_HealthBar::HealthChanged);
+		SetPercantage(AttributeBase->GetHealth(), AttributeBase->GetMaxHealth());
+		AttributeBase->OnHealthChanged.AddDynamic(this, &UW_HealthBar::HealthChanged);
 	}
 }
 

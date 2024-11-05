@@ -3,7 +3,8 @@
 
 #include "Gameplay/UI/W_PropertyBar.h"
 #include "Components/ProgressBar.h"
-
+#include "Gameplay/Attributes/AS_Base.h"
+#include "AbilitySystemGlobals.h"
 
 void UW_PropertyBar::SetPercantage(float Value1, float Value2)
 {
@@ -12,4 +13,19 @@ void UW_PropertyBar::SetPercantage(float Value1, float Value2)
 	{
 		ProgressBar->SetPercent(NewValue);
 	}
+}
+
+void UW_PropertyBar::InitializePropertyBar(AActor* Owner)
+{
+	UAbilitySystemComponent* OwnerASC = UAbilitySystemGlobals::GetAbilitySystemComponentFromActor(Owner);
+	if (!OwnerASC)
+	{
+		return;
+	}
+	BindAttributesAndSetDefaultValues(OwnerASC);
+}
+
+void UW_PropertyBar::BindAttributesAndSetDefaultValues(UAbilitySystemComponent* OwnerASC)
+{
+	// Implementation will be in subclasses
 }
