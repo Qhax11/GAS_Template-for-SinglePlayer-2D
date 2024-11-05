@@ -17,6 +17,16 @@ class GAS_TEMPLATESP2D_API UAS_Hero : public UAS_Base
 public:
 
 	UPROPERTY(BlueprintReadOnly, Category = "Hero")
+	FGameplayAttributeData Mana;
+	ATTRIBUTE_ACCESSORS(UAS_Hero, Mana)
+		FOnPropertyValueChanged OnManaChanged;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Hero")
+	FGameplayAttributeData MaxMana;
+	ATTRIBUTE_ACCESSORS(UAS_Hero, MaxMana)
+		FOnPropertyValueChanged OnMaxManaChanged;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Hero")
 	FGameplayAttributeData CriticalDamage;
 	ATTRIBUTE_ACCESSORS(UAS_Hero, CriticalDamage)
 		FOnPropertyValueChanged OnCriticalDamageChanged;
@@ -25,6 +35,8 @@ public:
 	FGameplayAttributeData CriticalChance;
 	ATTRIBUTE_ACCESSORS(UAS_Hero, CriticalChance)
 		FOnPropertyValueChanged OnCriticalChanceChanged;
+
+	virtual void ClampingAttributeValues(const FGameplayEffectModCallbackData& Data);
 
 protected:
 

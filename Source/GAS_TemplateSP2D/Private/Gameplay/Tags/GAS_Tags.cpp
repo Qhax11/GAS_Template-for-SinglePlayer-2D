@@ -75,6 +75,7 @@ namespace GAS_Tags
 	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_ShowText_Blood, "GameplayCue.ShowText.Blood");
 	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_ShowText_Healing, "GameplayCue.ShowText.Healing");
 	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_ShowText_Critical, "GameplayCue.ShowText.Critical");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_ShowText_Mana, "GameplayCue.ShowText.Mana");
 
 	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_Effect_Blood, "GameplayCue.Effect.Blood");
 	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_Effect_Healing, "GameplayCue.Effect.Healing");

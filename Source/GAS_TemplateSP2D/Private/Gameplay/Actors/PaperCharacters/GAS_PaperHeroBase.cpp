@@ -37,6 +37,31 @@ void AGAS_PaperHeroBase::BeginPlay()
             Subsystem->AddMappingContext(HeroInputMappingContext, 0);
         }
     }
+
+    if (UAS_Hero* HeroAttributes = const_cast<UAS_Hero*>(PaperCharacterASC->GetSet<UAS_Hero>()))
+    {
+        HeroAttributes->OnManaChanged.AddDynamic(this, &AGAS_PaperHeroBase::ManaChanged);
+
+        if (HeroAttributes->GetMana() == HeroAttributes->GetMaxMana())
+        {
+            GetAbilitySystemComponent()->AddLooseGameplayTag(GAS_Tags::TAG_Gameplay_Mana_Full);
+        }
+    }
+}
+
+void AGAS_PaperHeroBase::ManaChanged(const FAttributeChangeCallbackData& Data)
+{
+    if (Data.CurrentValue >= Data.MaxValue)
+    {
+        GetAbilitySystemComponent()->AddLooseGameplayTag(GAS_Tags::TAG_Gameplay_Mana_Full);
+    }
+    else
+    {
+        if (GetAbilitySystemComponent()->HasMatchingGameplayTag(GAS_Tags::TAG_Gameplay_Mana_Full))
+        {
+            GetAbilitySystemComponent()->RemoveLooseGameplayTag(GAS_Tags::TAG_Gameplay_Mana_Full, 100);
+        }
+    }
 }
 
 
