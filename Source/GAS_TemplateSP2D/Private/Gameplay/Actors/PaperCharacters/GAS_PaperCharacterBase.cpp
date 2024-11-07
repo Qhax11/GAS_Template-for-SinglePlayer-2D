@@ -12,6 +12,7 @@ AGAS_PaperCharacterBase::AGAS_PaperCharacterBase()
 
 	PaperCharacterASC = CreateDefaultSubobject<UGAS_AbilitySystemComponent>(TEXT("PaperCharacterASC"));
 	AbilitySetComponent = CreateDefaultSubobject<UAC_AbilitySet>(TEXT("AbilitySetComponent"));
+	TeamComponent = CreateDefaultSubobject<UAC_Team>(TEXT("TeamComponent"));
 }
 
 void AGAS_PaperCharacterBase::BeginPlay()

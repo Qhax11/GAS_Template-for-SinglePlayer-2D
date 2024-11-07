@@ -6,7 +6,7 @@
 void UGA_MeleeAttackBase::OnEventRecieved()
 {
 	TArray<AActor*> OutResultActors;
-	CreateTraceFromTargetingData(OutResultActors);
+	CreateTraceFromTargetingDataWithTeamFilter(OutResultActors, ETeamAttitude::Hostile);
 
 	FGameplayEffectSpec DamageSpec;
 	CreateEffectWithMagnitude(DamageSpec,

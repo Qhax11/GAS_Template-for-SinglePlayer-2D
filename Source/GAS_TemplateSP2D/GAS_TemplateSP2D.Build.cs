@@ -18,7 +18,8 @@ public class GAS_TemplateSP2D : ModuleRules
             "EnhancedInput",
             "GameplayTasks",
             "GameplayTags",
-            "SlateCore"
+            "SlateCore",
+            "AIModule"
         });
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });

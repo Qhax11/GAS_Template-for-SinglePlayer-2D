@@ -13,6 +13,23 @@ void UGAS_GameplayAbilityBase::CreateTraceFromTargetingData(TArray<AActor*>& Out
 	TargetingData->Trace->MakeTrace(GetAvatarActorFromActorInfo(), GetWorld(), StartLocation, TraceDirection, OutActors);
 }
 
+void UGAS_GameplayAbilityBase::CreateTraceFromTargetingDataWithTeamFilter(TArray<AActor*>& OutActors, ETeamAttitude::Type TeamAttidue)
+{
+	CreateTraceFromTargetingData(OutActors);
+
+	const AActor& Owner = *GetAvatarActorFromActorInfo();
+	for (AActor* CollectedActor : OutActors)
+	{
+		if (UAC_Team* TeamComp = CollectedActor->GetComponentByClass<UAC_Team>())
+		{
+			if (TeamComp->GetTeamAttitudeTowards(Owner) != TeamAttidue)
+			{
+				OutActors.Remove(CollectedActor);
+			}
+		}
+	}
+}
+
 void UGAS_GameplayAbilityBase::CreateEffectWithMagnitude(FGameplayEffectSpec& Spec, UAbilitySystemComponent* SourceAbilitySystemComponent, TSubclassOf<UGameplayEffect> GameplayEffectClass, const FGameplayTag SetByCallerTag, float SetByCallerValue)
 {
 	FGameplayEffectContextHandle EffectContext = SourceAbilitySystemComponent->MakeEffectContext();

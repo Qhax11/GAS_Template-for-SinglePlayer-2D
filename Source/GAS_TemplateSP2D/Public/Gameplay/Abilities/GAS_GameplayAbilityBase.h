@@ -8,6 +8,7 @@
 #include "Gameplay/Tags/GAS_Tags.h"
 #include "AbilitySystemComponent.h"
 #include "Gameplay/Attributes/AS_Base.h"
+#include "Gameplay/Components/AC_Team.h"
 #include "GAS_GameplayAbilityBase.generated.h"
 
 /**
@@ -24,6 +25,8 @@ public:
 	UGAS_AbilityTargetingData* TargetingData;
 
 	void CreateTraceFromTargetingData(TArray<AActor*>& OutActors);
+
+	void CreateTraceFromTargetingDataWithTeamFilter(TArray<AActor*>& OutActors, ETeamAttitude::Type TeamAttidue);
 	
 	void CreateEffectWithMagnitude(FGameplayEffectSpec& Spec, UAbilitySystemComponent* SourceAbilitySystemComponent, TSubclassOf<UGameplayEffect> GameplayEffectClass, const FGameplayTag SetByCallerTag, float SetByCallerValue);
 
