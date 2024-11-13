@@ -10,12 +10,12 @@ void UEC_DamageBase::ExecuteWithParams(FExecCalculationParameters Params, FGamep
 	// Gameplay tags that are attached to the ***Effect*** (not the actor!)
 
 	// If we target has a damage immune tage, we shouldn't be able to attack
-	/*
+	
 	if (Params.TargetASC->HasMatchingGameplayTag(GAS_Tags::TAG_Gameplay_DamageImmune))
 	{
 		return;
 	}
-	*/
+	
 
 	float MitigatedDamage = GetTotalDamage(Params);
 
@@ -40,7 +40,7 @@ void UEC_DamageBase::ExecuteWithParams(FExecCalculationParameters Params, FGamep
 
 float UEC_DamageBase::GetBaseDamage(const FExecCalculationParameters& Params) const
 {
-	const float CustomDamage = FMath::Max<float>(Params.GetSpec().GetSetByCallerMagnitude(GAS_Tags::TAG_Gameplay_SetByCaller_DamageAmount, .0f, true), .0f);
+	const float CustomDamage = FMath::Max<float>(Params.GetSpec().GetSetByCallerMagnitude(GAS_Tags::TAG_Gameplay_EffectData_SetByCaller_DamageAmount, .0f, true), .0f);
 	return CustomDamage;
 }
 
@@ -80,7 +80,7 @@ void UEC_DamageBase::CalculateHealth(FExecCalculationParameters& Params, float& 
 	if (HealthDamageDone > 0)
 	{
 		FGameplayEventData TakeDamagePaload;
-		TakeDamagePaload.EventTag = GAS_Tags::TAG_Gameplay_GameplayEvent_TakeDamage;
+		TakeDamagePaload.EventTag = GAS_Tags::TAG_Gameplay_Event_TakeDamage;
 		TakeDamagePaload.Instigator = Params.SourceActor;
 		TakeDamagePaload.Target = Params.TargetActor;
 		TakeDamagePaload.EventMagnitude = HealthDamageDone;
@@ -94,7 +94,7 @@ void UEC_DamageBase::CalculateHealth(FExecCalculationParameters& Params, float& 
 	if (MitigatedDamage >= CurrentTargetHealth)
 	{
 		FGameplayEventData DeathPayload;
-		DeathPayload.EventTag = GAS_Tags::TAG_Gameplay_GameplayEvent_Death;
+		DeathPayload.EventTag = GAS_Tags::TAG_Gameplay_Event_Death;
 		DeathPayload.Instigator = Params.SourceActor;
 		DeathPayload.Target = Params.TargetActor;
 		DeathPayload.ContextHandle = Params.GetSpec().GetContext();

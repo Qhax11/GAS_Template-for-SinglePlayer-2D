@@ -12,7 +12,7 @@ void UGA_MeleeAttackBase::OnEventRecieved()
 	CreateEffectWithMagnitude(DamageSpec,
 		GetAbilitySystemComponentFromActorInfo(), 
 		GEPhysicalDamage, 
-		GAS_Tags::TAG_Gameplay_SetByCaller_DamageAmount,
+		GAS_Tags::TAG_Gameplay_EffectData_SetByCaller_DamageAmount,
 		Damage.GetValueAtLevel(GetAbilityLevel())
 	);
 

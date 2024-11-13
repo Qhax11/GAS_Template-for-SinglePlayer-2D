@@ -24,28 +24,31 @@ namespace GAS_Tags
 	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_Attack_Cooldown, "Gameplay.Attack.Cooldown");
 	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_Attack_Event, "Gameplay.Attack.Event");
 
+	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_DamageImmune, "Gameplay.DamageImmune");
+
 	UE_DEFINE_GAMEPLAY_TAG(TAG_State_Debuff, "State.Debuff");
 	UE_DEFINE_GAMEPLAY_TAG(TAG_State_Debuff_Stun, "State.Debuff.Stun");
 
+	// Section name should be in here.
 
-	// Secntion name should be in here.
-
-	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_EntityHero, "Entity.Hero");
-	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_EntityShades, "Entity.Shades");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_Entity_Hero, "Entity.Hero");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_Entity_Enemy, "Entity.Enemy");
 
 	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_HeroAbility0, "Hero.Ability0");
 	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_HeroAbility1, "Hero.Ability1");
 	
-	UE_DEFINE_GAMEPLAY_TAG(TAG_UI_Cooldown_Skill_Ability0, "Cooldown.Skill.Ability0");
-	UE_DEFINE_GAMEPLAY_TAG(TAG_UI_Cooldown_Skill_Ability1, "Cooldown.Skill.Ability1");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_EffectData_SetByCaller_DamageAmount, "Gameplay.EffectData.SetByCaller.DamageAmount");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_EffectData_SetByCaller_HealingAmount, "Gameplay.EffectData.SetByCaller.HealingAmount");
 
-	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_SetByCaller_DamageAmount, "EffectData.SetByCaller.DamageAmount");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_EffectData_EnableLifeSteal, "Gameplay.EffectData.EnableLifeSteal");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_EffectData_EnableSelfHeal, "Gameplay.EffectData.EnableSelfHeal");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_EffectData_EnableCriticalDamage, "Gameplay.EffectData.EnableCriticalDamage");
 
-	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_EffectData_EnableLifeSteal, "EffectData.EnableLifeSteal");
-	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_EffectData_EnableSelfHeal, "EffectData.EnableSelfHeal");
-	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_EffectData_EnableCriticalDamage, "EffectData.EnableCriticalDamage");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_Event_TakeDamage, "Gameplay.Event.TakeDamage");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_Event_Death, "Gameplay.Event.Death");
 
-	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_EffectData_OverrideShowText, "EffectData.OverrideShowText");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_State_Dead, "Gameplay.State.Dead");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_State_InCombat, "Gameplay.State.InCombat");
 
 	/**********************************************
 	*----------------<Filter Tags>----------------*
@@ -57,14 +60,6 @@ namespace GAS_Tags
 	UE_DEFINE_GAMEPLAY_TAG(TAG_Filter_Team_Friend, "Filter.Team.Friend");
 	UE_DEFINE_GAMEPLAY_TAG(TAG_Filter_Team_Hostile, "Filter.Team.Hostile");
 	UE_DEFINE_GAMEPLAY_TAG(TAG_Filter_Team_Neutral, "Filter.Team.Neutral");
-
-
-	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_GameplayEvent_TakeDamage, "GameplayEvent.TakeDamage");
-	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_GameplayEvent_Death, "GameplayEvent.Death");
-
-	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_State_Dead, "State.Dead");
-
-	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_InCombat, "Gameplay.InCombat");
 
 	/***************************************************
 	*----------------<GameplayCue Tags>----------------*
@@ -80,9 +75,8 @@ namespace GAS_Tags
 	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_Effect_Blood, "GameplayCue.Effect.Blood");
 	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_Effect_Healing, "GameplayCue.Effect.Healing");
 	
-	/* These tags are for reaching data  */
-	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_Sound, "Gameplay.Sound");
-	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_Sound_Jump, "Gameplay.Sound.Jump");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_Sound, "GameplayCue.Sound");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_Sound_Jump, "GameplayCue.Sound.Jump");
 
 	/************************************************
 	*-------------------<AI Tags>-------------------*
@@ -105,6 +99,9 @@ namespace GAS_Tags
 	UE_DEFINE_GAMEPLAY_TAG(TAG_UI_HitTypeText_Physical, "UI.HitTypeText.Physical");
 	UE_DEFINE_GAMEPLAY_TAG(TAG_UI_HitTypeText_Magical, "UI.HitTypeText.Magical");
 	UE_DEFINE_GAMEPLAY_TAG(TAG_UI_HitTypeText_Healing, "UI.HitTypeText.Healing");
+
+	UE_DEFINE_GAMEPLAY_TAG(TAG_UI_Cooldown_Skill_Ability0, "Cooldown.Skill.Ability0");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_UI_Cooldown_Skill_Ability1, "Cooldown.Skill.Ability1");
 
 	/* TODO: Tags below are incorrect they If These tags being used for GameplayCues,
 	 * These tags should be under GameplayCue, You can make a them more specific by
