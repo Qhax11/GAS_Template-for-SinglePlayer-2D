@@ -29,6 +29,10 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category = "SequenceAbility|Montage")
 	float PlayRate = 1.0f;
 
+	// Icon of ability that will seen on Gameplay UI, Sequence Ability and icon related 
+	UPROPERTY(EditAnywhere, Category = "AbilitySlotData")
+	class UTexture2D* AbilityIcon;
+
 	virtual void ActivateAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo, const FGameplayEventData* TriggerEventData);
 
 protected:

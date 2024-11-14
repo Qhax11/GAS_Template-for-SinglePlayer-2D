@@ -18,7 +18,6 @@ class GAS_TEMPLATESP2D_API UW_HUD : public UUserWidget
 
 public:
 
-	virtual void NativePreConstruct();
 	virtual void NativeConstruct();
 
 	UFUNCTION()

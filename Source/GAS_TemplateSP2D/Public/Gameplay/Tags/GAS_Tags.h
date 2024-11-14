@@ -12,6 +12,7 @@ namespace GAS_Tags
 	* Add all of the Gameplay related tags to here. *
 	*************************************************/
 
+
 	GAS_TEMPLATESP2D_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(TAG_Gameplay);
 
 	GAS_TEMPLATESP2D_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(TAG_Gameplay_Health);
@@ -52,11 +53,11 @@ namespace GAS_Tags
 	GAS_TEMPLATESP2D_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(TAG_Gameplay_State_Dead);
 	GAS_TEMPLATESP2D_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(TAG_Gameplay_State_InCombat);
 
-
 	/**********************************************
 	*----------------<Filter Tags>----------------*
 	* Add all of the Filter related tags to here. *
 	***********************************************/
+
 
 	GAS_TEMPLATESP2D_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(TAG_Filter);
 	GAS_TEMPLATESP2D_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(TAG_Filter_Team);
@@ -64,11 +65,11 @@ namespace GAS_Tags
 	GAS_TEMPLATESP2D_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(TAG_Filter_Team_Friend);
 	GAS_TEMPLATESP2D_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(TAG_Filter_Team_Neutral);
 
-
 	/***************************************************
 	*----------------<GameplayCue Tags>----------------*
 	* Add all of the GameplayCue related tags to here. *
 	****************************************************/
+
 
 	GAS_TEMPLATESP2D_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(TAG_GameplayCue_ShowText_Damage);
 	GAS_TEMPLATESP2D_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(TAG_GameplayCue_ShowText_Blood);
@@ -84,15 +85,16 @@ namespace GAS_Tags
 	* Add all of the AI related tags to here.       *
 	*************************************************/
 
+
 	GAS_TEMPLATESP2D_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(TAG_AI);
 	GAS_TEMPLATESP2D_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(TAG_AI_Logic_AttackToAttackingHero);
 	GAS_TEMPLATESP2D_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(TAG_AI_Logic_AttackToTargetHero);
-	
 
 	/************************************************
 	*-------------------<UI Tags>-------------------*
 	* Add all of the UI related tags to here.       *
 	*************************************************/
+
 
 	GAS_TEMPLATESP2D_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(TAG_UI);
 

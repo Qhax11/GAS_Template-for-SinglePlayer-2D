@@ -4,20 +4,15 @@
 #include "Gameplay/UI/W_HUD.h"
 #include "Gameplay/Components/AC_AbilitySet.h"
 
-void UW_HUD::NativePreConstruct()
-{
-	Super::NativePreConstruct();
-
-}
 
 void UW_HUD::NativeConstruct()
 {
 	Super::NativeConstruct();
 
 	// BeginPlay is running before AbilitySet Initialize, so we need wait
-	if (UAC_AbilitySet* AbiltySetComp = GetOwningPlayerPawn()->GetComponentByClass<UAC_AbilitySet>())
+	if (UAC_AbilitySet* PlayerAbiltySetComp = GetOwningPlayerPawn()->GetComponentByClass<UAC_AbilitySet>())
 	{
-		AbiltySetComp->OnAbilitySetGiven.AddDynamic(this, &UW_HUD::OnAbilitySetGiven);
+		PlayerAbiltySetComp->OnAbilitySetGiven.AddDynamic(this, &UW_HUD::OnAbilitySetGiven);
 	}
 	else
 	{

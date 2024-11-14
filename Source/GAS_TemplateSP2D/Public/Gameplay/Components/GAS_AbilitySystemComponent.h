@@ -15,7 +15,7 @@ struct FAbilityData
 	GENERATED_USTRUCT_BODY()
 public:
 	// TODO: remove "class" ?
-	UPROPERTY(EditAnywhere, Category = "AbilityData")
+	UPROPERTY(EditDefaultsOnly, Category = "AbilityData")
 	class TSubclassOf<class UGameplayAbility> Ability;
 
 	UPROPERTY(EditAnywhere, Category = "AbilityData")
@@ -30,11 +30,11 @@ struct FAttributeSetData
 public:
 
 	/** Attribute Set to grant */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Attributes)
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Attributes)
 	TSoftClassPtr<UAttributeSet> AttributeSet;
 
 	/** Data table referent to initialize the attributes with, if any (can be left unset) */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Attributes, meta = (RequiredAssetDataTags = "RowStructure=/Script/GameplayAbilities.AttributeMetaData"))
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Attributes, meta = (RequiredAssetDataTags = "RowStructure=/Script/GameplayAbilities.AttributeMetaData"))
 	TSoftObjectPtr<UDataTable> InitializationData;
 
 };
@@ -45,16 +45,16 @@ class GAS_TEMPLATESP2D_API UGAS_GameplayAbilitySet : public UDataAsset
 	GENERATED_BODY()
 public:
 
-	UPROPERTY(EditAnywhere, Category = "AbilitySet")
+	UPROPERTY(EditDefaultsOnly, Category = "AbilitySet")
 	TArray<FAbilityData> Abilities;
 
-	UPROPERTY(EditAnywhere, Category = "AbilitySet")
+	UPROPERTY(EditDefaultsOnly, Category = "AbilitySet")
 	TArray<TSubclassOf<class UGameplayEffect>> StartupEffects;
 
-	UPROPERTY(EditAnywhere, Category = "AbilitySet")
+	UPROPERTY(EditDefaultsOnly, Category = "AbilitySet")
 	FAttributeSetData AttributeData;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AbilitySet")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "AbilitySet")
 	FGameplayTagContainer PermenantTags;
 
 };
