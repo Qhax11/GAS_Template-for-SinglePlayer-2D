@@ -1,7 +1,6 @@
 // Qhax's GAS Template for SinglePlayer
 
 #include "Gameplay/Components/GAS_AbilitySystemComponent.h"
-#include "Abilities/GameplayAbility.h"
 #include "Gameplay/Actors/PaperCharacters/Heroes/Components/AC_AbilityInputBinding.h"
 #include "Abilities/GameplayAbility.h"
 
@@ -35,9 +34,14 @@ void UGAS_AbilitySystemComponent::GiveAbilities(const UGAS_GameplayAbilitySet* A
 
 	for (const FAbilityData& AbilityData : AbilitySet->Abilities)
 	{
-		FGameplayAbilitySpecHandle GivenAbilitySpecHandle = GiveAbility(FGameplayAbilitySpec(AbilityData.Ability));
-		TryAbilityInputBind(AbilityData.AbilityInput, GivenAbilitySpecHandle);
+		GiveAbilityWithInputAction(AbilityData.AbilityInput, AbilityData.Ability);
 	}
+}
+
+void UGAS_AbilitySystemComponent::GiveAbilityWithInputAction(UInputAction* AbilityInput, const TSubclassOf<UGameplayAbility> Ability)
+{
+	FGameplayAbilitySpecHandle GivenAbilitySpecHandle = GiveAbility(FGameplayAbilitySpec(Ability.Get()));
+	TryAbilityInputBind(AbilityInput, GivenAbilitySpecHandle);
 }
 
 void UGAS_AbilitySystemComponent::TryAbilityInputBind(UInputAction* AbilityInput, const FGameplayAbilitySpecHandle& AbilitySpecHandle)
@@ -82,3 +86,11 @@ void UGAS_AbilitySystemComponent::GivePermenantTags(FGameplayTagContainer Permen
 		AddLooseGameplayTags(PermenantTags);
 	}
 }
+
+void UGAS_AbilitySystemComponent::OnGiveAbility(FGameplayAbilitySpec& AbilitySpec)
+{
+	Super::OnGiveAbility(AbilitySpec);
+
+	OnAbilityGranted.Broadcast(this ,AbilitySpec);
+}
+

@@ -9,14 +9,18 @@
 #include "Engine/DataAsset.h"
 #include "GAS_AbilitySystemComponent.generated.h"
 
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnAbilityGiven, UAbilitySystemComponent*, ASC, FGameplayAbilitySpec&, AbilitySpec);
+
+
 USTRUCT(BlueprintType)
 struct FAbilityData
 {
 	GENERATED_USTRUCT_BODY()
 public:
-	// TODO: remove "class" ?
+
 	UPROPERTY(EditDefaultsOnly, Category = "AbilityData")
-	class TSubclassOf<class UGameplayAbility> Ability;
+	TSubclassOf<UGameplayAbility> Ability;
 
 	UPROPERTY(EditAnywhere, Category = "AbilityData")
 	class UInputAction* AbilityInput;
@@ -71,9 +75,18 @@ public:
 	
 	void GiveAbilities(const UGAS_GameplayAbilitySet* AbilitySet);
 
+	UFUNCTION(BlueprintCallable)
+	void GiveAbilityWithInputAction(UInputAction* AbilityInput, const TSubclassOf<UGameplayAbility> Ability);
+
 	void TryAbilityInputBind(UInputAction* AbilityInput, const FGameplayAbilitySpecHandle& AbilitySpecHandle);
 
 	void GiveAttributes(const UGAS_GameplayAbilitySet* AbilitySet);
 
 	void GivePermenantTags(FGameplayTagContainer PermenantTags);
+
+	// Overrided for OnAbilityGiven broadcast
+	virtual void OnGiveAbility(FGameplayAbilitySpec& AbilitySpec) override;
+
+	UPROPERTY(BlueprintAssignable)
+	FOnAbilityGiven OnAbilityGranted;
 };

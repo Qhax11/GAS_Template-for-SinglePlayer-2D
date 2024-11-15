@@ -28,8 +28,12 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void AddAbilitySlotToAbilityPanel(UAbilitySystemComponent* ASC, UGAS_GameplayAbilityBase* AbilityBase);
 
+	UFUNCTION()
+	void OnAbilityGranted(UAbilitySystemComponent* ASC, FGameplayAbilitySpec& AbilitySpec);
+
 	UPROPERTY(BlueprintReadOnly, meta = (BindWidget))
 	UHorizontalBox* HorizontalBoxAbilities;
 
 	const UDS_HUD* HUDSettings;
+
 };

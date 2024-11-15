@@ -9,6 +9,7 @@
 #include "Gameplay/UI/DS_HUD.h"
 #include "Components/Spacer.h"
 #include "Blueprint/WidgetTree.h"
+#include "Gameplay/Components/GAS_AbilitySystemComponent.h"
 
 
 void UW_AbilitySlotPanel::NativeConstruct()
@@ -28,12 +29,15 @@ void UW_AbilitySlotPanel::NativeConstruct()
 
 void UW_AbilitySlotPanel::OnAbilitySetGiven(const AActor* OwnerActor)
 {
-	UAbilitySystemComponent* PlayerASC = UAbilitySystemGlobals::GetAbilitySystemComponentFromActor(OwnerActor);
+	UGAS_AbilitySystemComponent* PlayerASC = Cast<UGAS_AbilitySystemComponent>(UAbilitySystemGlobals::GetAbilitySystemComponentFromActor(OwnerActor));
 	if (!PlayerASC)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("PlayerASC is null in %s, cannot initialize ability slots."), *this->GetName());
 		return;
 	}
+
+	// Bind delegate for granted abilities in runtime
+	PlayerASC->OnAbilityGranted.AddDynamic(this, &UW_AbilitySlotPanel::OnAbilityGranted);
 
 	HUDSettings = GetDefault<UDS_HUD>();
 	if (!HUDSettings)
@@ -77,4 +81,9 @@ void UW_AbilitySlotPanel::AddAbilitySlotToAbilityPanel(UAbilitySystemComponent* 
 		Spacer->SetSize(HUDSettings->SpacerSizeBetweenAbilitySlots);
 		HorizontalBoxAbilities->AddChild(Spacer);
 	}
+}
+
+void UW_AbilitySlotPanel::OnAbilityGranted(UAbilitySystemComponent* ASC, FGameplayAbilitySpec& AbilitySpec)
+{
+	AddAbilitySlotToAbilityPanel(ASC, Cast<UGAS_GameplayAbilityBase>(AbilitySpec.Ability.Get()));
 }

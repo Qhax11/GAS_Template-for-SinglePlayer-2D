@@ -21,7 +21,10 @@ void UW_AbilitySlot::CustomInitialize(UAbilitySystemComponent* ASC, UGAS_Gamepla
 		ImageMaterial->SetTextureParameterValue(FName("IconParam"), AbilityBase->AbilityIcon);
 	}
 
-	InitialListenCooldown(ASC, AbilityBase->GetCooldownTags()->GetByIndex(0));
+	if (AbilityBase->GetCooldownTags()->GetByIndex(0).IsValid()) 
+	{
+		InitialListenCooldown(ASC, AbilityBase->GetCooldownTags()->GetByIndex(0));
+	}
 }
 
 void UW_AbilitySlot::InitialListenCooldown(UAbilitySystemComponent* AbilitySystemComponent, FGameplayTag CooldownTag)

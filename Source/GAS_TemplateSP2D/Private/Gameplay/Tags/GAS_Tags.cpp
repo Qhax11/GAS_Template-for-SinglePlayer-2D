@@ -36,6 +36,8 @@ namespace GAS_Tags
 
 	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_HeroAbility0, "Hero.Ability0");
 	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_HeroAbility1, "Hero.Ability1");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_HeroAbility2, "Hero.Ability2");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_HeroAbility3, "Hero.Ability3");
 	
 	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_EffectData_SetByCaller_DamageAmount, "Gameplay.EffectData.SetByCaller.DamageAmount");
 	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_EffectData_SetByCaller_HealingAmount, "Gameplay.EffectData.SetByCaller.HealingAmount");
@@ -100,8 +102,10 @@ namespace GAS_Tags
 	UE_DEFINE_GAMEPLAY_TAG(TAG_UI_HitTypeText_Magical, "UI.HitTypeText.Magical");
 	UE_DEFINE_GAMEPLAY_TAG(TAG_UI_HitTypeText_Healing, "UI.HitTypeText.Healing");
 
-	UE_DEFINE_GAMEPLAY_TAG(TAG_UI_Cooldown_Skill_Ability0, "Cooldown.Skill.Ability0");
-	UE_DEFINE_GAMEPLAY_TAG(TAG_UI_Cooldown_Skill_Ability1, "Cooldown.Skill.Ability1");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_UI_Cooldown_Ability0, "UI.Cooldown.Ability0");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_UI_Cooldown_Ability1, "UI.Cooldown.Ability1");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_UI_Cooldown_Ability2, "UI.Cooldown.Ability2");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_UI_Cooldown_Ability3, "UI.Cooldown.Ability3");
 
 	/* TODO: Tags below are incorrect they If These tags being used for GameplayCues,
 	 * These tags should be under GameplayCue, You can make a them more specific by
