@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "Gameplay/Abilities/GA_TakeDamageBase.h"
-#include "GA_TakeDamageEnemy.generated.h"
+#include "GA_EnemyTakeDamage.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class GAS_TEMPLATESP2D_API UGA_TakeDamageEnemy : public UGA_TakeDamageBase
+class GAS_TEMPLATESP2D_API UGA_EnemyTakeDamage : public UGA_TakeDamageBase
 {
 	GENERATED_BODY()
 	
