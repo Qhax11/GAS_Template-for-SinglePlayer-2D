@@ -17,8 +17,12 @@ class GAS_TEMPLATESP2D_API UDS_HUD : public UDeveloperSettings
 	
 public:
 
-	UPROPERTY(Config, EditDefaultsOnly, BlueprintReadOnly)
-	TSoftClassPtr<UW_AbilitySlot> BP_AbilitySlot;
+	UPROPERTY(Config, EditDefaultsOnly, Category = "AbilitySlotPanel")
+	TSoftClassPtr<UW_AbilitySlot> WBP_AbilitySlot;
 
+	UPROPERTY(Config, EditDefaultsOnly, Category = "AbilitySlotPanel")
+	FGameplayTagContainer DisplayedAbilitiesTags;
 
+	UPROPERTY(Config, EditDefaultsOnly, Category = "AbilitySlotPanel")
+	FVector2D SpacerSizeBetweenAbilitySlots = FVector2D(10, 0);
 };

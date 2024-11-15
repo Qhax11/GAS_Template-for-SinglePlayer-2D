@@ -24,6 +24,10 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category = "GameplayAbilityBase|TargetingData")
 	UGAS_AbilityTargetingData* TargetingData;
 
+	// Icon of ability that will seen on Gameplay UI
+	UPROPERTY(EditAnywhere, Category = "GameplayAbilityBase|UI")
+	class UTexture2D* AbilityIcon;
+
 	void CreateTraceFromTargetingData(TArray<AActor*>& OutActors);
 
 	void CreateTraceFromTargetingDataWithTeamFilter(TArray<AActor*>& OutActors, ETeamAttitude::Type TeamAttidue);

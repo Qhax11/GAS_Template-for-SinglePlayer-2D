@@ -6,30 +6,12 @@
 #include "Blueprint/UserWidget.h"
 #include "Gameplay/UI/AbilityData/W_AbilitySlot.h"
 #include "Components/HorizontalBox.h"
+#include "Gameplay/UI/DS_HUD.h"
 #include "W_AbilitySlotPanel.generated.h"
 
-USTRUCT(BlueprintType)
-struct FAbilitySlotData
-{
-	GENERATED_BODY()
-public:
-
-	UPROPERTY(EditDefaultsOnly, Category = "AbilitySlotData")
-	FGameplayTagContainer WhichAbilitiesShowOnHUD;
-};
-
-UCLASS()
-class GAS_TEMPLATESP2D_API UGAS_AbilitySlotPanel : public UDataAsset
-{
-	GENERATED_BODY()
-public:
-
-	UPROPERTY(EditDefaultsOnly, Category = "AbilitySlotPanel")
-	TArray<FAbilitySlotData> AbilitySlotDates;
-
-
-};
-
+/*
+* This class creates Ability Slots as dynamic.
+*/
 
 UCLASS()
 class GAS_TEMPLATESP2D_API UW_AbilitySlotPanel : public UUserWidget
@@ -43,10 +25,11 @@ public:
 	UFUNCTION()
 	void OnAbilitySetGiven(const AActor* OwnerActor);
 
-	UPROPERTY(EditDefaultsOnly, Category = "AbilitySlotData")
-	FGameplayTagContainer WhichAbilitiesShowOnHUD;
+	UFUNCTION(BlueprintCallable)
+	void AddAbilitySlotToAbilityPanel(UAbilitySystemComponent* ASC, UGAS_GameplayAbilityBase* AbilityBase);
 
 	UPROPERTY(BlueprintReadOnly, meta = (BindWidget))
-	UHorizontalBox* HorizontalAbilities;
+	UHorizontalBox* HorizontalBoxAbilities;
 
+	const UDS_HUD* HUDSettings;
 };
