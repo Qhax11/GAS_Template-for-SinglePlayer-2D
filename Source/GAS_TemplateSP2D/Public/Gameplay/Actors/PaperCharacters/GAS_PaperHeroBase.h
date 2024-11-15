@@ -27,6 +27,9 @@ public:
 
 protected:
 
+	UFUNCTION()
+	virtual void ManaChanged(const FAttributeChangeCallbackData& Data);
+
 	//* Components *//
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Hero|Components|Camera")
 	class USpringArmComponent* CameraBoom;
@@ -39,8 +42,5 @@ protected:
 
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Hero|Components")
 	class UAC_AbilityInputBinding* AbilityInputBindingComp;
-	
-	UFUNCTION()
-	virtual void ManaChanged(const FAttributeChangeCallbackData& Data);
 
 };

@@ -8,7 +8,7 @@ void UW_ShowTextHandleParent::AddChildText(UUserWidget* Child)
 {
 	if (!Child) 
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Child is null (This message comes from UW_ShowTextHandleParent)"));
+		UE_LOG(LogTemp, Warning, TEXT("Child widget is null in %s"), *this->GetName());
 		return;
 	}
 	UCanvasPanelSlot* CanvasPanelSlot = Canvas->AddChildToCanvas(Child);

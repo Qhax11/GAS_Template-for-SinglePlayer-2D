@@ -17,21 +17,17 @@ public:
 	// Sets default values for this component's properties
 	UAC_Team();
 
-	UPROPERTY(EditAnywhere, Category = "Team Properties")
-	TEnumAsByte <EGAS_PredefinedTeamId> TeamID;
-
-	FGenericTeamId GetGenericTeamId() const override;
-
 	UFUNCTION(BlueprintCallable)
 	void SetTeamID(TEnumAsByte<EGAS_PredefinedTeamId> NewTeamID);
 
+	FGenericTeamId GetGenericTeamId() const override;
+
 	FGenericTeamId AssignedTeamID;
+
+	UPROPERTY(EditAnywhere, Category = "Team Properties")
+	TEnumAsByte <EGAS_PredefinedTeamId> TeamID;
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
-
-private:
-
-
 
 };

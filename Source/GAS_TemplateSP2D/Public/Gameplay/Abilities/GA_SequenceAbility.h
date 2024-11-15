@@ -17,6 +17,9 @@ class GAS_TEMPLATESP2D_API UGA_SequenceAbility : public UGAS_GameplayAbilityBase
 	GENERATED_BODY()
 
 public:
+
+	virtual void ActivateAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo, const FGameplayEventData* TriggerEventData);
+
 	UPROPERTY(EditDefaultsOnly, Category = "SequenceAbility|Montage")
 	UPaperZDAnimSequence* AnimSequence;
 
@@ -28,8 +31,6 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, Category = "SequenceAbility|Montage")
 	float PlayRate = 1.0f;
-
-	virtual void ActivateAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo, const FGameplayEventData* TriggerEventData);
 
 protected:
 	virtual void OnCompleted();

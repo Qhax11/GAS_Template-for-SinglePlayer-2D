@@ -25,4 +25,5 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void AddChildText(UUserWidget* Child);
 	
+
 };

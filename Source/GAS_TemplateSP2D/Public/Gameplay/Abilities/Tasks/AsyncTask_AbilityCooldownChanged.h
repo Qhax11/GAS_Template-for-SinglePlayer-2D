@@ -20,11 +20,6 @@ class GAS_TEMPLATESP2D_API UAsyncTask_AbilityCooldownChanged : public UBlueprint
 	GENERATED_BODY()
 	
 public:
-	UPROPERTY(BlueprintAssignable)
-	FOnCooldownChanged OnCooldownBegin;
-
-	UPROPERTY(BlueprintAssignable)
-	FOnCooldownChanged OnCooldownEnd;
 
 	// Listens for changes (Begin and End) to cooldown GameplayEffects based on the cooldown tag.
 	// UseServerCooldown determines if the Sever's cooldown is returned in addition to the local predicted cooldown.
@@ -37,16 +32,25 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void EndTask();
 
+	UPROPERTY(BlueprintAssignable)
+	FOnCooldownChanged OnCooldownBegin;
+
+	UPROPERTY(BlueprintAssignable)
+	FOnCooldownChanged OnCooldownEnd;
+
 protected:
+	
+	virtual void OnActiveGameplayEffectAddedCallback(UAbilitySystemComponent* Target, const FGameplayEffectSpec& SpecApplied, FActiveGameplayEffectHandle ActiveHandle);
+
+	virtual void CooldownTagChanged(const FGameplayTag CooldownTag, int32 NewCount);
+
+	bool GetCooldownRemainingForTag(FGameplayTagContainer CooldownTags, float& TimeRemaining, float& CooldownDuration);
+
 	UPROPERTY()
 	UAbilitySystemComponent* ASC;
 
 	FGameplayTagContainer CooldownTags;
 
 	bool UseServerCooldown;
-
-	virtual void OnActiveGameplayEffectAddedCallback(UAbilitySystemComponent* Target, const FGameplayEffectSpec& SpecApplied, FActiveGameplayEffectHandle ActiveHandle);
-	virtual void CooldownTagChanged(const FGameplayTag CooldownTag, int32 NewCount);
-
-	bool GetCooldownRemainingForTag(FGameplayTagContainer CooldownTags, float& TimeRemaining, float& CooldownDuration);
+	
 };

@@ -4,8 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
-#include "Gameplay/UI/W_HealthBar.h"
-#include "Gameplay/UI/W_ManaBar.h"
+#include "Gameplay/UI/Bars/W_HealthBar.h"
+#include "Gameplay/UI/Bars/W_ManaBar.h"
 #include "W_HUD.generated.h"
 
 /**

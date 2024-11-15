@@ -35,8 +35,6 @@ public:
 
 	virtual void BeginPlay() override;
 
-	UGAS_AbilitySystemComponent* OwnerAbilitySystemComponent;
-
 	/**
 	 * Updates the Ability Input Binding Component registered bindings or create a new one for the passed in Ability Handle.
 	 *
@@ -52,8 +50,10 @@ public:
 
 	void OnAbilityInputReleased(UInputAction* InputAction);
 
-
 	void TryBindAbilityInput(UInputAction* InputAction, FAbilityInputBinding& AbilityInputBinding);
+
+protected:
+	UGAS_AbilitySystemComponent* OwnerAbilitySystemComponent;
 
 	UPROPERTY(transient)
 	TMap<UInputAction*, FAbilityInputBinding> MappedAbilities;

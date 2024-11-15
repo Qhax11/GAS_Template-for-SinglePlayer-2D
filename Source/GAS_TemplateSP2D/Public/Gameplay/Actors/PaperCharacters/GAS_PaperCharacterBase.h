@@ -25,10 +25,10 @@ public:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
+	UAbilitySystemComponent* GetAbilitySystemComponent() const override;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Abilities, meta = (AllowPrivateAccess = "true"))
 	UGAS_AbilitySystemComponent* PaperCharacterASC;
-
-	UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 
 public:
 

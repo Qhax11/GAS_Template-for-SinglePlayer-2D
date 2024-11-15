@@ -22,6 +22,14 @@ protected:
 	virtual void BeginPlay() override;
 
 public:	
+	void MoveLeft(const FInputActionValue& Value);
+
+	void MoveRight(const FInputActionValue& Value);
+
+	void MoveForward(const FInputActionValue& Value);
+
+	void MoveBackward(const FInputActionValue& Value);
+
 	AGAS_PaperHeroBase* PaperHero;
 
 	UPROPERTY(EditAnywhere)
@@ -35,13 +43,5 @@ public:
 
 	UPROPERTY(EditAnywhere)
 	const UInputAction* BackwardInputAction;
-
-	void MoveLeft(const FInputActionValue& Value);
-		
-	void MoveRight(const FInputActionValue& Value);
-
-	void MoveForward(const FInputActionValue& Value);
-
-	void MoveBackward(const FInputActionValue& Value);
 
 };

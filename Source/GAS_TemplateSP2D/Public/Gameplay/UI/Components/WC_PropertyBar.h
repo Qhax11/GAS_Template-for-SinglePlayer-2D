@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/WidgetComponent.h"
-#include "Gameplay/UI/W_HealthBar.h"
+#include "Gameplay/UI/Bars/W_HealthBar.h"
 #include "WC_PropertyBar.generated.h"
 
 /**
@@ -19,8 +19,10 @@ public:
 
 	virtual void BeginPlay() override;
 
-	UW_HealthBar* PropertyBar;
+protected:
 
 	UFUNCTION()
 	void OnAbilitySetGiven(const AActor* OwnerActor);
+
+	UW_HealthBar* PropertyBar;
 };

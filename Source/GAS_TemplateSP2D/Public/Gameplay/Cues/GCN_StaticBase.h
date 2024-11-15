@@ -14,9 +14,8 @@ class GAS_TEMPLATESP2D_API UGCN_StaticBase : public UGameplayCueNotify_Static
 {
 	GENERATED_BODY()
 
-	// Default functions
 public:
-
+	// Default functions
 	bool OnExecute_Implementation(AActor* MyTarget, const FGameplayCueParameters& Parameters) const final;
 
 	bool OnActive_Implementation(AActor* MyTarget, const FGameplayCueParameters& Parameters) const final;
@@ -25,9 +24,8 @@ public:
 
 	bool OnRemove_Implementation(AActor* MyTarget, const FGameplayCueParameters& Parameters) const final;
 
-	// Our functions with flex
 protected:
-
+	// Our functions with flexibility
 	virtual void OnExecuted(AActor* Source, AActor* Target, const FGameplayCueParameters& Parameters) const;
 
 	virtual void OnActivated(AActor* Source, AActor* Target, const FGameplayCueParameters& Parameters) const;

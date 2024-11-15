@@ -1,7 +1,7 @@
 // Qhax's GAS Template for SinglePlayer
 
 
-#include "Gameplay/UI/W_HealthBar.h"
+#include "Gameplay/UI/Bars/W_HealthBar.h"
 #include "Gameplay/Attributes/AS_Base.h"
 #include "AbilitySystemGlobals.h"
 

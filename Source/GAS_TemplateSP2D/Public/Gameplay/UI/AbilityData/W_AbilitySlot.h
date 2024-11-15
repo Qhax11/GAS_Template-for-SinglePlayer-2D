@@ -22,6 +22,7 @@ public:
 	UFUNCTION(Blueprintcallable)
 	void InitialListenCooldown(UAbilitySystemComponent* AbilitySystemComponent, FGameplayTag CooldownTag);
 
+protected:
 	//This function starts working when the cooldown of the ability starts and starts a timer.
 	UFUNCTION(Blueprintcallable)
 	void OnCooldownBegin(FGameplayTag CooldownTag, float TimeRemaining, float Duration);

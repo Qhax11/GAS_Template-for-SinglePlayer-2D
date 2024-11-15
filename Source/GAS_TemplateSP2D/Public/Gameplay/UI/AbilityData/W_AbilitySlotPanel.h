@@ -22,6 +22,8 @@ public:
 
 	virtual void NativeConstruct();
 
+protected:
+
 	UFUNCTION()
 	void OnAbilitySetGiven(const AActor* OwnerActor);
 

@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Gameplay/UI/W_PropertyBar.h"
+#include "Gameplay/UI/Bars/W_PropertyBar.h"
 #include "Gameplay/Attributes/AS_Base.h"
 #include "W_HealthBar.generated.h"
 

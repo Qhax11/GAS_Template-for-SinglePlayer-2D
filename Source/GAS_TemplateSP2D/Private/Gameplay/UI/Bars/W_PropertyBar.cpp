@@ -1,7 +1,7 @@
 // Qhax's GAS Template for SinglePlayer
 
 
-#include "Gameplay/UI/W_PropertyBar.h"
+#include "Gameplay/UI/Bars/W_PropertyBar.h"
 #include "Components/ProgressBar.h"
 #include "Gameplay/Attributes/AS_Base.h"
 #include "AbilitySystemGlobals.h"

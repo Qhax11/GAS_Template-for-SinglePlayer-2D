@@ -23,7 +23,6 @@ protected:
 
 	virtual FCollisionShape GetCollisionShape() const override;
 
-
 protected:
 
 #if WITH_EDITOR

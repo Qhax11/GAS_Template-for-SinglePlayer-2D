@@ -1,7 +1,7 @@
 // Qhax's GAS Template for SinglePlayer
 
 
-#include "Gameplay/UI/W_ManaBar.h"
+#include "Gameplay/UI/Bars/W_ManaBar.h"
 
 void UW_ManaBar::BindAttributesAndSetDefaultValues(UAbilitySystemComponent* OwnerASC)
 {
