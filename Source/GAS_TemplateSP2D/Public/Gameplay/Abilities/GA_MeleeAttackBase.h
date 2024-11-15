@@ -21,7 +21,7 @@ public:
 	TSubclassOf<UGameplayEffect> GEPhysicalDamage;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Parameters")
-	FGameplayTagContainer ToBeAddedTagsInPhysicalDamageEffect;
+	FGameplayTagContainer TagsToAddToPhysicalDamageEffect;
 	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Parameters")
     FScalableFloat Damage;

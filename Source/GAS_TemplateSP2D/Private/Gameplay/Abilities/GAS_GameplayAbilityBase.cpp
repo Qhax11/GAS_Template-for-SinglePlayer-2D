@@ -30,7 +30,7 @@ void UGAS_GameplayAbilityBase::CreateTraceFromTargetingDataWithTeamFilter(TArray
 	}
 }
 
-void UGAS_GameplayAbilityBase::CreateEffectWithMagnitude(FGameplayEffectSpec& Spec, UAbilitySystemComponent* SourceAbilitySystemComponent, TSubclassOf<UGameplayEffect> GameplayEffectClass, const FGameplayTag SetByCallerTag, float SetByCallerValue)
+bool UGAS_GameplayAbilityBase::CreateEffectWithMagnitude(FGameplayEffectSpec& Spec, UAbilitySystemComponent* SourceAbilitySystemComponent, TSubclassOf<UGameplayEffect> GameplayEffectClass, const FGameplayTag SetByCallerTag, float SetByCallerValue)
 {
 	FGameplayEffectContextHandle EffectContext = SourceAbilitySystemComponent->MakeEffectContext();
 	FGameplayEffectSpecHandle NewHandle = SourceAbilitySystemComponent->MakeOutgoingSpec(GameplayEffectClass, 1, EffectContext);
@@ -44,7 +44,9 @@ void UGAS_GameplayAbilityBase::CreateEffectWithMagnitude(FGameplayEffectSpec& Sp
 				EffectSpec->SetSetByCallerMagnitude(SetByCallerTag, SetByCallerValue);
 			}
 			Spec = *EffectSpec;
+			return true;
 		}
 	}
+	return false;
 }
 
