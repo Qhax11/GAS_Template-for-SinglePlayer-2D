@@ -2,7 +2,7 @@
 
 
 #include "Gameplay/Actors/PaperCharacters/GAS_PaperHeroBase.h"
-#include "Gameplay/Actors/PaperCharacters/Heroes/Components/AC_HeroMoving2D.h"
+#include "Gameplay/Actors/PaperCharacters/Heroes/Components/AC_HeroMoving.h"
 #include "Gameplay/Actors/PaperCharacters/Heroes/Components/AC_AbilityInputBinding.h"
 #include "EnhancedInputSubsystems.h"
 
@@ -20,9 +20,11 @@ AGAS_PaperHeroBase::AGAS_PaperHeroBase()
     FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName); // Attach the camera to the end of the boom and let the boom adjust to match the controller orientation
     FollowCamera->bUsePawnControlRotation = false; // Camera does not rotate relative to arm
 
-    HeroMoving2DComp = CreateDefaultSubobject<UAC_HeroMoving2D>(TEXT("HeroMoving2DComp"));
+    HeroMovingComp = CreateDefaultSubobject<UAC_HeroMoving>(TEXT("HeroMovingComp"));
 
     AbilityInputBindingComp = CreateDefaultSubobject<UAC_AbilityInputBinding>(TEXT("AbilityInputBindingComp"));
+
+    HeroTagDispatcher = CreateDefaultSubobject<UAC_HeroTagDispatcher>(TEXT("HeroTagDispatcher"));
 }
 
 void AGAS_PaperHeroBase::BeginPlay()
@@ -63,6 +65,7 @@ void AGAS_PaperHeroBase::ManaChanged(const FAttributeChangeCallbackData& Data)
         }
     }
 }
+
 
 
 

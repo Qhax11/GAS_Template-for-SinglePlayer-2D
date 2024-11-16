@@ -19,9 +19,9 @@ void AGCN_ShowTextWidgetCompBase::OnExecuted(AActor* Source, AActor* Target, con
 		return;
 	}
 
+	// If we execute different cue
 	if (TagChecks(Target, Parameters))
 	{
-		// If we execute different cue
 		return;
 	}
 

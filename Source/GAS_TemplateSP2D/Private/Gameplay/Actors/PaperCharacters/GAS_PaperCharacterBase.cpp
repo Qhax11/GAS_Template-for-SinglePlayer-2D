@@ -11,8 +11,12 @@ AGAS_PaperCharacterBase::AGAS_PaperCharacterBase()
 	GetSprite()->CastShadow = true;
 
 	PaperCharacterASC = CreateDefaultSubobject<UGAS_AbilitySystemComponent>(TEXT("PaperCharacterASC"));
+
 	AbilitySetComponent = CreateDefaultSubobject<UAC_AbilitySet>(TEXT("AbilitySetComponent"));
+
 	TeamComponent = CreateDefaultSubobject<UAC_Team>(TEXT("TeamComponent"));
+
+	TagDelegatesComponent = CreateDefaultSubobject<UC_TagDelegates>(TEXT("TagDelegatesComponent"));
 }
 
 void AGAS_PaperCharacterBase::BeginPlay()

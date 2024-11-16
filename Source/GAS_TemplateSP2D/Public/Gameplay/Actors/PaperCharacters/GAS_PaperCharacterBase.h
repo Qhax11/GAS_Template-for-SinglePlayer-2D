@@ -9,6 +9,7 @@
 #include "Gameplay/Components/GAS_AbilitySystemComponent.h"
 #include "Gameplay/Components/AC_AbilitySet.h"
 #include "Gameplay/Components/AC_Team.h"
+#include "Gameplay/Components/C_TagDelegates.h"
 #include "Gameplay/Tags/GAS_Tags.h"
 #include "GAS_PaperCharacterBase.generated.h"
 
@@ -38,6 +39,9 @@ public:
 
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "CharacterBase|Components")
 	UAC_Team* TeamComponent;
+
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "CharacterBase|Components")
+	UC_TagDelegates* TagDelegatesComponent;
 
 protected:
 

@@ -72,14 +72,14 @@ void UW_AbilitySlotPanel::AddAbilitySlotToAbilityPanel(UAbilitySystemComponent* 
 
 	AbilitySlot->CustomInitialize(ASC, AbilityBase);
 
-	HorizontalBoxAbilities->AddChild(AbilitySlot);
+	HB_Abilities->AddChild(AbilitySlot);
 	
 	// Adding spacer for better UI
 	USpacer* Spacer = WidgetTree->ConstructWidget<USpacer>(USpacer::StaticClass());
 	if (Spacer)
 	{
 		Spacer->SetSize(HUDSettings->SpacerSizeBetweenAbilitySlots);
-		HorizontalBoxAbilities->AddChild(Spacer);
+		HB_Abilities->AddChild(Spacer);
 	}
 }
 

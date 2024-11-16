@@ -38,9 +38,12 @@ protected:
 	class UCameraComponent* FollowCamera;
 
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Hero|Components")
-	class UAC_HeroMoving2D* HeroMoving2DComp;
+	class UAC_HeroMoving* HeroMovingComp;
 
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Hero|Components")
 	class UAC_AbilityInputBinding* AbilityInputBindingComp;
+
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Hero|Components")
+	class UAC_HeroTagDispatcher* HeroTagDispatcher;
 
 };

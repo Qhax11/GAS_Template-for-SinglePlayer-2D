@@ -34,7 +34,7 @@ protected:
 	void OnAbilityGranted(UAbilitySystemComponent* ASC, FGameplayAbilitySpec& AbilitySpec);
 
 	UPROPERTY(BlueprintReadOnly, meta = (BindWidget))
-	UHorizontalBox* HorizontalBoxAbilities;
+	UHorizontalBox* HB_Abilities;
 
 	const UDS_HUD* HUDSettings;
 

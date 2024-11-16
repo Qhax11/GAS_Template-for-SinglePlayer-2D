@@ -5,20 +5,20 @@
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "Gameplay/Actors/PaperCharacters/GAS_PaperHeroBase.h"
-#include "AC_HeroMoving2D.generated.h"
+#include "AC_HeroMoving.generated.h"
 
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
-class GAS_TEMPLATESP2D_API UAC_HeroMoving2D : public UActorComponent
+class GAS_TEMPLATESP2D_API UAC_HeroMoving : public UActorComponent
 {
 	GENERATED_BODY()
 
 public:	
-	// Sets default values for this component's properties
-	UAC_HeroMoving2D();
+
+	UAC_HeroMoving();
 
 protected:
-	// Called when the game starts
+
 	virtual void BeginPlay() override;
 
 public:	
