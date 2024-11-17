@@ -25,7 +25,7 @@ struct FTagDelegate
 public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Tag Delegate")
-	FGameplayTag ListeningTag;
+	TArray<FGameplayTag> ListeningTags;
 
 	UPROPERTY(BlueprintReadOnly, Category = "Tag Delegate")
 	FOnGameplayTagChangeReceived OnAddedTargetFunction;
@@ -35,26 +35,41 @@ public:
 
 	FTagDelegate() = default;
 
-	FTagDelegate(FGameplayTag ListenTag) :
-		ListeningTag(ListenTag)
+	FTagDelegate(const FGameplayTag& ListenTag)
 	{
-		
+		ListeningTags.Add(ListenTag);
+	}
+
+	FTagDelegate(const FGameplayTagContainer& TagContainer)
+	{
+		AddUniqueTags(TagContainer);
 	}
 
 	bool TryExecute(const UAbilitySystemComponent* AbilitySystemComponent, const FGameplayTag& Tag, const int32 TagCount) const
 	{
-		if (Tag == ListeningTag)
+		for (int32 i = 0; i < ListeningTags.Num(); ++i)
 		{
-			if (TagCount > 0)
+			if (Tag == ListeningTags[i])
 			{
-				OnAddedTargetFunction.ExecuteIfBound(AbilitySystemComponent, Tag);
-			}
-			else
-			{
-				OnRemovedTargetFunction.ExecuteIfBound(AbilitySystemComponent, Tag);
+				if (TagCount > 0)
+				{
+					return OnAddedTargetFunction.ExecuteIfBound(AbilitySystemComponent, Tag);
+				}
+				else
+				{
+					return OnRemovedTargetFunction.ExecuteIfBound(AbilitySystemComponent, Tag);
+				}
 			}
 		}
 		return false;
+	}
+
+	void AddUniqueTags(const FGameplayTagContainer& TagContainer)
+	{
+		for (int32 i = 0; i < TagContainer.Num(); ++i)
+		{
+			ListeningTags.AddUnique(TagContainer.GetByIndex(i));
+		}
 	}
 
 };
@@ -84,9 +99,9 @@ public:
 	UFUNCTION()
 	void OnGameplayTagChanged(const FGameplayTag Tag, const int32 TagCount) const;
 	
-	FOnGameplayTagChangeReceived& RegisterDelegateForTag(FGameplayTag Tag, EListenMode ListenMode);
+	FOnGameplayTagChangeReceived& RegisterDelegateForTag(const FGameplayTag& Tag, const EListenMode ListenMode);
 	
-	FOnGameplayTagChangeReceived& RegisterDelegateForTags(FGameplayTagContainer Tags, EListenMode ListenMode);
+	FOnGameplayTagChangeReceived& RegisterDelegateForTags(const FGameplayTagContainer& TagContainer, const EListenMode ListenMode);
 
 protected:
 

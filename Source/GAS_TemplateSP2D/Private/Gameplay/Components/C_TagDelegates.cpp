@@ -38,29 +38,16 @@ void UC_TagDelegates::OnGameplayTagChanged(const FGameplayTag Tag, const int32 T
 	}
 }
 
-FOnGameplayTagChangeReceived& UC_TagDelegates::RegisterDelegateForTag(FGameplayTag Tag, EListenMode ListenMode)
+FOnGameplayTagChangeReceived& UC_TagDelegates::RegisterDelegateForTag(const FGameplayTag& Tag, const EListenMode ListenMode)
 {
-	TagDelegates.Add(FTagDelegate(Tag));
-
-	if (ListenMode == EListenMode::OnAdded) 
-	{
-		return TagDelegates[TagDelegates.Num() - 1].OnAddedTargetFunction;
-	}
-	else
-	{
-		return TagDelegates[TagDelegates.Num() - 1].OnRemovedTargetFunction;
-	}
-	// this is much better
-	//RegisterDelegateForTags(FGameplayTagContainer(Tag), ListenMode);
+	return RegisterDelegateForTags(FGameplayTagContainer(Tag), ListenMode);
 }
 
-FOnGameplayTagChangeReceived& UC_TagDelegates::RegisterDelegateForTags(FGameplayTagContainer Tags, EListenMode ListenMode)
+FOnGameplayTagChangeReceived& UC_TagDelegates::RegisterDelegateForTags(const FGameplayTagContainer& TagContainer, const EListenMode ListenMode)
 {
-	for (int32 i = 0; i < Tags.Num(); ++i)
-	{
-		TagDelegates.Add(FTagDelegate(Tags.GetByIndex(i)));
-	}
+	TagDelegates.Add(FTagDelegate(TagContainer));
 
+	// Return the new delegate pair's target function so each added tag gets executed with the same function.
 	if (ListenMode == EListenMode::OnAdded)
 	{
 		return TagDelegates[TagDelegates.Num() - 1].OnAddedTargetFunction;
