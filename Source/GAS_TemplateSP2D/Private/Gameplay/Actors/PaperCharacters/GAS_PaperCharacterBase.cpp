@@ -16,7 +16,7 @@ AGAS_PaperCharacterBase::AGAS_PaperCharacterBase()
 
 	TeamComponent = CreateDefaultSubobject<UAC_Team>(TEXT("TeamComponent"));
 
-	TagDelegatesComponent = CreateDefaultSubobject<UC_TagDelegates>(TEXT("TagDelegatesComponent"));
+	TagDelegatesComponent = CreateDefaultSubobject<UAC_TagDelegates>(TEXT("TagDelegatesComponent"));
 }
 
 void AGAS_PaperCharacterBase::BeginPlay()

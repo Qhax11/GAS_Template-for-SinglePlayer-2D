@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "AbilitySystemComponent.h"
-#include "C_TagDelegates.generated.h"
+#include "AC_TagDelegates.generated.h"
 
 DECLARE_DYNAMIC_DELEGATE_TwoParams(FOnGameplayTagChangeReceived, const UAbilitySystemComponent*, AbilitySystemComponent, const FGameplayTag&, Tag);
 
@@ -75,13 +75,13 @@ public:
 };
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
-class GAS_TEMPLATESP2D_API UC_TagDelegates : public UActorComponent
+class GAS_TEMPLATESP2D_API UAC_TagDelegates : public UActorComponent
 {
 	GENERATED_BODY()
 
 public:	
 
-	UC_TagDelegates();
+	UAC_TagDelegates();
 
 protected:
 
