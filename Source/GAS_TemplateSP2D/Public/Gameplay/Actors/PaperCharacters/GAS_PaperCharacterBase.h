@@ -43,9 +43,4 @@ public:
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "CharacterBase|Components")
 	UAC_TagDelegates* TagDelegatesComponent;
 
-protected:
-
-	UFUNCTION()
-	virtual void HealthChanged(const FAttributeChangeCallbackData& Data);
-
 };

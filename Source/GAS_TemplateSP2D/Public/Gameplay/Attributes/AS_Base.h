@@ -118,4 +118,5 @@ protected:
 
 	virtual bool BroadcastPropertyChange(const FGameplayEffectModCallbackData& Data);
 
+	float MakeClampManuel(float ClampedValue, float Min, float Max);
 };

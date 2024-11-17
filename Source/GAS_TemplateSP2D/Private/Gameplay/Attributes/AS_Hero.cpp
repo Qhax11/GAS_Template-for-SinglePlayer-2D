@@ -10,6 +10,7 @@ void UAS_Hero::ClampingAttributeValues(const FGameplayEffectModCallbackData& Dat
 	if (Data.EvaluatedData.Attribute == GetManaAttribute())
 	{
 		Mana.SetCurrentValue(FMath::Clamp(Mana.GetCurrentValue(), 0, MaxMana.GetCurrentValue()));
+		Mana.SetBaseValue(FMath::Clamp(Mana.GetBaseValue(), 0, MaxMana.GetCurrentValue()));
 	}
 }
 
