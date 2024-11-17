@@ -18,7 +18,7 @@ class GAS_TEMPLATESP2D_API AGAS_PaperHeroBase : public AGAS_PaperCharacterBase
 	GENERATED_BODY()
 
 public:
-	AGAS_PaperHeroBase();
+	AGAS_PaperHeroBase(const class FObjectInitializer& ObjectInitializer);
 
 	virtual void BeginPlay() override;
 

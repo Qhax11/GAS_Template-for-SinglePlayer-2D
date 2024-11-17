@@ -21,7 +21,7 @@ class GAS_TEMPLATESP2D_API AGAS_PaperCharacterBase : public APaperZDCharacter, p
 	
 public:
 	// Sets default values for this character's properties
-	AGAS_PaperCharacterBase();
+	AGAS_PaperCharacterBase(const class FObjectInitializer& ObjectInitializer);
 
 	// Called when the game starts
 	virtual void BeginPlay() override;
@@ -42,5 +42,8 @@ public:
 
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "CharacterBase|Components")
 	UAC_TagDelegates* TagDelegatesComponent;
+
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "CharacterBase|Components")
+	class UAC_AttributesListenerBase* AttributesListenerBase;
 
 };

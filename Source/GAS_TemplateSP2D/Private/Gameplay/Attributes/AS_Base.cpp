@@ -54,22 +54,4 @@ bool UAS_Base::BroadcastPropertyChange(const FGameplayEffectModCallbackData& Dat
 	return bIsBroadcasted;
 }
 
-float UAS_Base::MakeClampManuel(float ClampedValue, float Min, float Max)
-{
-	if (ClampedValue > Max) 
-	{
-		UE_LOG(LogTemp, Warning, TEXT("A"));
 
-		return Max;
-	}
-
-	else if (ClampedValue < Min)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("B"));
-
-		return Min;
-	}
-
-	UE_LOG(LogTemp, Warning, TEXT("C"));
-	return ClampedValue;
-}

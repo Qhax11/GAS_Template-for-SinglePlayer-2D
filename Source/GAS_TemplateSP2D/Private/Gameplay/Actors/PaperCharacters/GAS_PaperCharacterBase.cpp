@@ -5,7 +5,7 @@
 #include "PaperFlipbookComponent.h"
 
 
-AGAS_PaperCharacterBase::AGAS_PaperCharacterBase()
+AGAS_PaperCharacterBase::AGAS_PaperCharacterBase(const class FObjectInitializer& ObjectInitializer)
 {
 	// We want see shadows of characters
 	GetSprite()->CastShadow = true;
@@ -17,6 +17,8 @@ AGAS_PaperCharacterBase::AGAS_PaperCharacterBase()
 	TeamComponent = CreateDefaultSubobject<UAC_Team>(TEXT("TeamComponent"));
 
 	TagDelegatesComponent = CreateDefaultSubobject<UAC_TagDelegates>(TEXT("TagDelegatesComponent"));
+
+	AttributesListenerBase = CreateDefaultSubobject<UAC_AttributesListenerBase>(TEXT("AttributesListenerBase"));
 }
 
 void AGAS_PaperCharacterBase::BeginPlay()

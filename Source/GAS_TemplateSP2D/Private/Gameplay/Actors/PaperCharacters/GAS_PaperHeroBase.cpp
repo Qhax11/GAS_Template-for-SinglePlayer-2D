@@ -5,9 +5,11 @@
 #include "Gameplay/Actors/PaperCharacters/Heroes/Components/AC_HeroMoving.h"
 #include "Gameplay/Actors/PaperCharacters/Heroes/Components/AC_AbilityInputBinding.h"
 #include "EnhancedInputSubsystems.h"
+#include "Gameplay/Actors/PaperCharacters/Heroes/Components/AC_HeroAttributesListener.h"
 
 
-AGAS_PaperHeroBase::AGAS_PaperHeroBase()
+AGAS_PaperHeroBase::AGAS_PaperHeroBase(const class FObjectInitializer& ObjectInitializer):
+    Super(ObjectInitializer.SetDefaultSubobjectClass<UAC_HeroAttributesListener>(TEXT("AttributesListenerBase")))
 {
     // Create a camera boom (pulls in towards the player if there is a collision)
     CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));

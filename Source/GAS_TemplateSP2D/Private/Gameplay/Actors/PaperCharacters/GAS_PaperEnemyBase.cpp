@@ -4,7 +4,8 @@
 #include "Gameplay/Actors/PaperCharacters/GAS_PaperEnemyBase.h"
 
 
-AGAS_PaperEnemyBase::AGAS_PaperEnemyBase()
+AGAS_PaperEnemyBase::AGAS_PaperEnemyBase(const class FObjectInitializer& ObjectInitializer):
+	Super(ObjectInitializer)
 {
 	
 }
