@@ -21,7 +21,7 @@ public:
 	virtual void ActivateAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo, const FGameplayEventData* TriggerEventData);
 
 	UPROPERTY(EditDefaultsOnly, Category = "SequenceAbility|Montage")
-	UPaperZDAnimSequence* AnimSequence;
+	TArray<TObjectPtr<UPaperZDAnimSequence>> AnimSequences;
 
 	UPROPERTY(EditDefaultsOnly, Category = "SequenceAbility|Montage")
 	FGameplayTag EventTag;
@@ -33,6 +33,8 @@ public:
 	float PlayRate = 1.0f;
 
 protected:
+	virtual UPaperZDAnimSequence* SelectSequence();
+
 	virtual void OnCompleted();
 
 	virtual void OnCancelled();
@@ -43,6 +45,6 @@ protected:
 private:
 	void OnOverrideEnd(bool OverrideEnd);
 
-	void BindEventRecievedInAnimSequence();
+	void BindEventRecievedInAnimSequence(UPaperZDAnimSequence* SelectedSequence);
 
 };

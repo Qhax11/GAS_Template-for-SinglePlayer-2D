@@ -15,6 +15,14 @@ void UGA_SequenceAbility::ActivateAbility(const FGameplayAbilitySpecHandle Handl
 {
 	Super::ActivateAbility(Handle, ActorInfo, ActivationInfo, TriggerEventData);
 
+	UPaperZDAnimSequence* SelectedSequence = SelectSequence();
+	if (!SelectedSequence)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("SelectSequence function couldn't selcet sequence in: %s"), *this->GetName());
+		EndAbility(Handle, ActorInfo, ActivationInfo, true, true);
+		return;
+	}
+
 	if (!CommitAbility(Handle, ActorInfo, ActivationInfo))
 	{
 		EndAbility(Handle, ActorInfo, ActivationInfo, true, true);
@@ -35,14 +43,18 @@ void UGA_SequenceAbility::ActivateAbility(const FGameplayAbilitySpecHandle Handl
 		return;
 	}
 
-	BindEventRecievedInAnimSequence();
-
 	if (UPaperZDAnimInstance* AnimInstance = PaperZDAnimComp->GetAnimInstance())
 	{
 		FZDOnAnimationOverrideEndSignature OnOverrideEnd;
 		OnOverrideEnd.BindUObject(this, &UGA_SequenceAbility::OnOverrideEnd);
-		AnimInstance->PlayAnimationOverride(AnimSequence, SlotName, PlayRate, 0.0f, OnOverrideEnd);
+		AnimInstance->PlayAnimationOverride(SelectedSequence, SlotName, PlayRate, 0.0f, OnOverrideEnd);
+		BindEventRecievedInAnimSequence(SelectedSequence);
 	}
+}
+
+UPaperZDAnimSequence* UGA_SequenceAbility::SelectSequence()
+{
+	return AnimSequences.IsValidIndex(0) ? AnimSequences[0] : nullptr;
 }
 
 void UGA_SequenceAbility::OnCompleted()
@@ -72,11 +84,11 @@ void UGA_SequenceAbility::OnEventRecieved()
 	/* Will be implemented in child classes */
 }
 
-void UGA_SequenceAbility::BindEventRecievedInAnimSequence()
+void UGA_SequenceAbility::BindEventRecievedInAnimSequence(UPaperZDAnimSequence* SelectedSequence)
 {
-	if (AnimSequence) 
+	if (SelectedSequence)
 	{
-		TArray<UPaperZDAnimNotify_Base*> AnimNotifies = AnimSequence->GetAnimNotifies();
+		TArray<UPaperZDAnimNotify_Base*> AnimNotifies = SelectedSequence->GetAnimNotifies();
 		for (UPaperZDAnimNotify_Base* PaperZDAnimNotify_Base : AnimNotifies)
 		{
 			if (UAN_EventReceived* EventReceived = Cast<UAN_EventReceived>(PaperZDAnimNotify_Base))
