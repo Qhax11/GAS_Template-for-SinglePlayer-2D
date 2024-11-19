@@ -36,7 +36,7 @@ public:
 	ATTRIBUTE_ACCESSORS(UAS_Hero, CriticalChance)
 		FOnPropertyValueChanged OnCriticalChanceChanged;
 
-	virtual void ClampingAttributeValues(const FGameplayEffectModCallbackData& Data)  override;
+	virtual bool ClampAttributeValues(const FGameplayEffectModCallbackData& Data)  override;
 
 protected:
 

@@ -5,6 +5,8 @@
 #include "AbilitySystemGlobals.h"
 #include "Gameplay/Attributes/AS_Base.h"
 #include "Gameplay/Components/AC_AbilitySet.h"
+#include "GameFramework/CharacterMovementComponent.h"
+#include "GameFramework/Character.h"
 
 
 UAC_AttributesListenerBase::UAC_AttributesListenerBase()
@@ -43,11 +45,12 @@ bool UAC_AttributesListenerBase::Initialize(const AActor* OwnerActor)
 	if (UAS_Base* BaseAttributes = const_cast<UAS_Base*>(OwnerASC->GetSet<UAS_Base>()))
 	{
 		BaseAttributes->OnHealthChanged.AddDynamic(this, &UAC_AttributesListenerBase::HealthChanged);
-
 		if (BaseAttributes->GetHealth() == BaseAttributes->GetMaxHealth())
 		{
 			OwnerASC->AddLooseGameplayTag(GAS_Tags::TAG_Gameplay_Health_Full);
 		}
+
+		BaseAttributes->OnMovementSpeedChanged.AddDynamic(this, &UAC_AttributesListenerBase::MovementSpeedChanged);
 
 		return true;
 	}
@@ -66,6 +69,17 @@ void UAC_AttributesListenerBase::HealthChanged(const FAttributeChangeCallbackDat
 		if (OwnerASC->HasMatchingGameplayTag(GAS_Tags::TAG_Gameplay_Health_Full))
 		{
 			OwnerASC->RemoveLooseGameplayTag(GAS_Tags::TAG_Gameplay_Health_Full, 100);
+		}
+	}
+}
+
+void UAC_AttributesListenerBase::MovementSpeedChanged(const FAttributeChangeCallbackData& Data)
+{
+	if (ACharacter* Character = Cast<ACharacter>(GetOwner()))
+	{
+		if (UCharacterMovementComponent* CharacterMoveComp = Character->GetCharacterMovement())
+		{
+			CharacterMoveComp->MaxWalkSpeed = Data.CurrentValue;
 		}
 	}
 }

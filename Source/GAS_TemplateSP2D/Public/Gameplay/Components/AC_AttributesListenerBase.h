@@ -35,4 +35,7 @@ protected:
 	UFUNCTION()
 	virtual void HealthChanged(const FAttributeChangeCallbackData& Data);
 
+	UFUNCTION()
+	virtual void MovementSpeedChanged(const FAttributeChangeCallbackData& Data);
+
 };
