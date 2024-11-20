@@ -27,8 +27,6 @@ AGAS_PaperHeroBase::AGAS_PaperHeroBase(const class FObjectInitializer& ObjectIni
     AbilityInputBindingComp = CreateDefaultSubobject<UAC_AbilityInputBinding>(TEXT("AbilityInputBindingComp"));
 
     HeroTagDispatcher = CreateDefaultSubobject<UAC_HeroTagDispatcher>(TEXT("HeroTagDispatcher"));
-
-    HeroAttributesListener = CreateDefaultSubobject<UAC_HeroAttributesListener>(TEXT("HeroAttributesListener"));
 }
 
 void AGAS_PaperHeroBase::BeginPlay()

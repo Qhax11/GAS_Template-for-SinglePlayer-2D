@@ -24,12 +24,19 @@ UAS_Base::UAS_Base()
 
 void UAS_Base::ActiveGameplayEffectAdded(UAbilitySystemComponent* OwnerASC, const FGameplayEffectSpec& EffectSpec, FActiveGameplayEffectHandle EffectHandle)
 {
-	if (EffectSpec.ModifiedAttributes.IsEmpty())
+	FGameplayAttribute GameplayAttribute;
+	if (!EffectSpec.ModifiedAttributes.IsEmpty())
 	{
-		return;
+		GameplayAttribute = EffectSpec.ModifiedAttributes[0].Attribute;
 	}
 
-	FGameplayModifierEvaluatedData EvaluatedData = FGameplayModifierEvaluatedData(EffectSpec.ModifiedAttributes[0].Attribute, EGameplayModOp::Max, EffectSpec.Modifiers[0].GetEvaluatedMagnitude(), EffectHandle);
+	float EvaluatedMagnitude = 0;
+	if (!EffectSpec.Modifiers.IsEmpty())
+	{
+		EvaluatedMagnitude = EffectSpec.Modifiers[0].GetEvaluatedMagnitude();
+	}
+
+	FGameplayModifierEvaluatedData EvaluatedData = FGameplayModifierEvaluatedData(GameplayAttribute, EGameplayModOp::Max, EvaluatedMagnitude, EffectHandle);
 	FGameplayEffectModCallbackData Data = FGameplayEffectModCallbackData(EffectSpec, EvaluatedData, *EffectHandle.GetOwningAbilitySystemComponent());
 
 	ClampAttributeValues(Data);
@@ -38,12 +45,19 @@ void UAS_Base::ActiveGameplayEffectAdded(UAbilitySystemComponent* OwnerASC, cons
 
 void UAS_Base::ActiveGameplayEffectRemoved(const FActiveGameplayEffect& ActiveGameplayEffect)
 {
-	if (ActiveGameplayEffect.Spec.ModifiedAttributes.IsEmpty())
+	FGameplayAttribute GameplayAttribute;
+	if (!ActiveGameplayEffect.Spec.ModifiedAttributes.IsEmpty())
 	{
-		return;
+		GameplayAttribute = ActiveGameplayEffect.Spec.ModifiedAttributes[0].Attribute;
 	}
 
-	FGameplayModifierEvaluatedData EvaluatedData = FGameplayModifierEvaluatedData(ActiveGameplayEffect.Spec.ModifiedAttributes[0].Attribute, EGameplayModOp::Max, ActiveGameplayEffect.Spec.Modifiers[0].GetEvaluatedMagnitude(), ActiveGameplayEffect.Handle);
+	float EvaluatedMagnitude = 0;
+	if (!ActiveGameplayEffect.Spec.Modifiers.IsEmpty())
+	{
+		EvaluatedMagnitude = ActiveGameplayEffect.Spec.Modifiers[0].GetEvaluatedMagnitude();
+	}
+
+	FGameplayModifierEvaluatedData EvaluatedData = FGameplayModifierEvaluatedData(GameplayAttribute, EGameplayModOp::Max, EvaluatedMagnitude, ActiveGameplayEffect.Handle);
 	FGameplayEffectModCallbackData Data = FGameplayEffectModCallbackData(ActiveGameplayEffect.Spec, EvaluatedData, *ActiveGameplayEffect.Handle.GetOwningAbilitySystemComponent());
 
 	ClampAttributeValues(Data);
@@ -83,7 +97,12 @@ bool UAS_Base::BroadcastPropertyChange(const FGameplayEffectModCallbackData& Dat
 	}
 
 	FGameplayAttributeData AttributeData;
+	if (!Data.EvaluatedData.Attribute.GetGameplayAttributeData(this)) 
+	{
+		return bIsBroadcasted;
+	}
 	AttributeData = *Data.EvaluatedData.Attribute.GetGameplayAttributeData(this);
+
 	FAttributeChangeCallbackData PropertyCallbackData = FAttributeChangeCallbackData(GetOwningAbilitySystemComponent(), AttributeData);
 
 	if (Data.EvaluatedData.Attribute.GetUProperty() == FindFieldChecked<FProperty>(UAS_Base::StaticClass(), GET_MEMBER_NAME_CHECKED(UAS_Base, Health)))

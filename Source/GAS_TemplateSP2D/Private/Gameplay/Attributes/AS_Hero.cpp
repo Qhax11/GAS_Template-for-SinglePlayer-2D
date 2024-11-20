@@ -34,7 +34,12 @@ bool UAS_Hero::BroadcastPropertyChange(const FGameplayEffectModCallbackData& Dat
 	}
 
 	FGameplayAttributeData AttributeData;
+	if (!Data.EvaluatedData.Attribute.GetGameplayAttributeData(this))
+	{
+		return bIsBroadcasted;
+	}
 	AttributeData = *Data.EvaluatedData.Attribute.GetGameplayAttributeData(this);
+
 	FAttributeChangeCallbackData PropertyCallbackData = FAttributeChangeCallbackData(GetOwningAbilitySystemComponent(), AttributeData);
 
 	if (Data.EvaluatedData.Attribute.GetUProperty() == FindFieldChecked<FProperty>(UAS_Hero::StaticClass(), GET_MEMBER_NAME_CHECKED(UAS_Hero, Mana)))

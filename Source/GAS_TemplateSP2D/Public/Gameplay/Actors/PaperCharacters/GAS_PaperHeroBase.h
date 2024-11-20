@@ -43,6 +43,4 @@ protected:
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Hero|Components")
 	class UAC_HeroTagDispatcher* HeroTagDispatcher;
 
-	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Hero|Components")
-	class UAC_HeroAttributesListener* HeroAttributesListener;
 };
