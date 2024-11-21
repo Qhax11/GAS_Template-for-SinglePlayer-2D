@@ -8,3 +8,9 @@ void UGA_EnemyDeath::DisableCollisions()
 {
 	Super::DisableCollisions();
 }
+
+void UGA_EnemyDeath::OnCompleted()
+{
+	Super::OnCompleted();
+	GetAvatarActorFromActorInfo()->Destroy();
+}

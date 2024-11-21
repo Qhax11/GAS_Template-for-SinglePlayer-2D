@@ -16,6 +16,8 @@ class GAS_TEMPLATESP2D_API UGA_EnemyDeath : public UGA_DeathBase
 	
 protected:
 
-	virtual void DisableCollisions();
+	virtual void DisableCollisions() override;
+
+	virtual void OnCompleted() override;
 
 };

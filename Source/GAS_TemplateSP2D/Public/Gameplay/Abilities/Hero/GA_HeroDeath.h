@@ -16,6 +16,8 @@ class GAS_TEMPLATESP2D_API UGA_HeroDeath : public UGA_DeathBase
 	
 public:
 
-	virtual void OnCompleted();
+	virtual void ActivateAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo, const FGameplayEventData* TriggerEventData) override;
+
+
 
 };

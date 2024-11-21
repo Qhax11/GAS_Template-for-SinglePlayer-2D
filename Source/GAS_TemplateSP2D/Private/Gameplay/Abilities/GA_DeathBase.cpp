@@ -37,8 +37,4 @@ void UGA_DeathBase::DisableCollisions()
 	}
 }
 
-void UGA_DeathBase::OnCompleted()
-{
-	GetAvatarActorFromActorInfo()->Destroy();
-	Super::OnCompleted();
-}
+

@@ -8,7 +8,6 @@
 #include "Camera/CameraComponent.h"
 #include "EnhancedInputComponent.h"
 #include "InputMappingContext.h"
-#include "Gameplay/Attributes/AS_Hero.h"
 #include "GAS_PaperHeroBase.generated.h"
 
 
@@ -42,5 +41,16 @@ protected:
 
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Hero|Components")
 	class UAC_HeroTagDispatcher* HeroTagDispatcher;
+
+public:
+
+	void StartHeroDeSpawnCountdown();
+
+	FTimerHandle HeroDeSpawnCountDownTimerHandle;
+
+	void HeroDeSpawn();
+
+	void SetLocationForReSpawn();
+
 
 };

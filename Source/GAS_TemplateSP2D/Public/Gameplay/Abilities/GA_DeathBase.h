@@ -26,6 +26,4 @@ protected:
 
 	virtual void DisableCollisions();
 	
-	virtual void OnCompleted();
-
 };
