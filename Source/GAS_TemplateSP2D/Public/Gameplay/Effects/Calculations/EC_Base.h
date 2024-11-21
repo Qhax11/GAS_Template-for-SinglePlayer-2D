@@ -110,7 +110,6 @@ struct FExecCalculationParameters
 		return ExecutionParams.GetOwningSpec().GetContext().GetHitResult();
 	}
 
-
 	AActor* SourceActor = nullptr;
 
 	UAbilitySystemComponent* SourceASC = nullptr;

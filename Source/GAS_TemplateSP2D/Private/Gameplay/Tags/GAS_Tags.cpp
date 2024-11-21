@@ -43,6 +43,7 @@ namespace GAS_Tags
 
 	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_EffectData_SetByCaller_DamageAmount, "Gameplay.EffectData.SetByCaller.DamageAmount");
 	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_EffectData_SetByCaller_HealingAmount, "Gameplay.EffectData.SetByCaller.HealingAmount");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_EffectData_SetByCaller_GiveManaAmount, "Gameplay.EffectData.SetByCaller.GiveManaAmount");
 
 	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_EffectData_EnableLifeSteal, "Gameplay.EffectData.EnableLifeSteal");
 	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_EffectData_EnableSelfHeal, "Gameplay.EffectData.EnableSelfHeal");

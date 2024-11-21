@@ -10,12 +10,10 @@ void UEC_DamageBase::ExecuteWithParams(FExecCalculationParameters Params, FGamep
 	// Gameplay tags that are attached to the ***Effect*** (not the actor!)
 
 	// If we target has a damage immune tage, we shouldn't be able to attack
-	
 	if (Params.TargetASC->HasMatchingGameplayTag(GAS_Tags::TAG_Gameplay_DamageImmune))
 	{
 		return;
 	}
-	
 
 	float MitigatedDamage = GetTotalDamage(Params);
 
