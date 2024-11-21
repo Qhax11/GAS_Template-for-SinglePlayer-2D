@@ -11,7 +11,7 @@ UGAS_AbilitySystemComponent::UGAS_AbilitySystemComponent()
 
 bool UGAS_AbilitySystemComponent::GiveAbilitySet(const UGAS_GameplayAbilitySet* AbilitySet)
 {
-	if (AbilitySet) 
+	if (AbilitySet)
 	{
 		GiveAbilities(AbilitySet);
 		GiveAttributes(AbilitySet);
@@ -27,7 +27,7 @@ bool UGAS_AbilitySystemComponent::GiveAbilitySet(const UGAS_GameplayAbilitySet* 
 
 void UGAS_AbilitySystemComponent::GiveAbilities(const UGAS_GameplayAbilitySet* AbilitySet)
 {
-	if (AbilitySet->Abilities.IsEmpty()) 
+	if (AbilitySet->Abilities.IsEmpty())
 	{
 		return;
 	}
@@ -40,8 +40,24 @@ void UGAS_AbilitySystemComponent::GiveAbilities(const UGAS_GameplayAbilitySet* A
 
 void UGAS_AbilitySystemComponent::GiveAbilityWithInputAction(UInputAction* AbilityInput, const TSubclassOf<UGameplayAbility> Ability)
 {
-	FGameplayAbilitySpecHandle GivenAbilitySpecHandle = GiveAbility(FGameplayAbilitySpec(Ability.Get()));
-	TryAbilityInputBind(AbilityInput, GivenAbilitySpecHandle);
+	if(!IsAbilityGivenAlready(Ability))
+	{
+		FGameplayAbilitySpecHandle GivenAbilitySpecHandle = GiveAbility(FGameplayAbilitySpec(Ability.Get()));
+		TryAbilityInputBind(AbilityInput, GivenAbilitySpecHandle);
+	}
+}
+
+bool UGAS_AbilitySystemComponent::IsAbilityGivenAlready(const TSubclassOf<UGameplayAbility> Ability)
+{
+	TArray<FGameplayAbilitySpec>& LocalActivatableAbilities = GetActivatableAbilities();
+	for (FGameplayAbilitySpec Spec : LocalActivatableAbilities)
+	{
+		if (Spec.Ability == Ability.GetDefaultObject())
+		{
+			return true;
+		}
+	}
+	return false;
 }
 
 void UGAS_AbilitySystemComponent::TryAbilityInputBind(UInputAction* AbilityInput, const FGameplayAbilitySpecHandle& AbilitySpecHandle)

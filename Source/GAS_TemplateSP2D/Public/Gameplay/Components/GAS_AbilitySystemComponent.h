@@ -78,6 +78,8 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void GiveAbilityWithInputAction(UInputAction* AbilityInput, const TSubclassOf<UGameplayAbility> Ability);
 
+	bool IsAbilityGivenAlready(const TSubclassOf<UGameplayAbility> Ability);
+
 	void TryAbilityInputBind(UInputAction* AbilityInput, const FGameplayAbilitySpecHandle& AbilitySpecHandle);
 
 	void GiveAttributes(const UGAS_GameplayAbilitySet* AbilitySet);
@@ -89,4 +91,5 @@ public:
 
 	UPROPERTY(BlueprintAssignable)
 	FOnAbilityGiven OnAbilityGranted;
+
 };

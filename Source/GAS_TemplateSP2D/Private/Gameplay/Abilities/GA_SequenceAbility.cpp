@@ -95,7 +95,7 @@ void UGA_SequenceAbility::BindEventRecievedInAnimSequence(UPaperZDAnimSequence* 
 			{
 				if (EventReceived->EventTag == EventTag)
 				{
-					if (!EventReceived->OnEventReceived.IsBound()) 
+					if (!EventReceived->OnEventReceived.IsAlreadyBound(this, &UGA_SequenceAbility::OnEventRecieved))
 					{
 						EventReceived->OnEventReceived.AddDynamic(this, &UGA_SequenceAbility::OnEventRecieved);
 					}
