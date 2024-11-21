@@ -21,7 +21,7 @@ public:
 
 protected:
 	
-	void SetPercantage(float Value1, float Value2);
+	virtual void SetPercantage(float Value1, float Value2);
 	
 	virtual void BindAttributesAndSetDefaultValues(UAbilitySystemComponent* OwnerASC);
 

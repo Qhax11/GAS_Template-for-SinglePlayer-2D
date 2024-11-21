@@ -17,9 +17,14 @@ class GAS_TEMPLATESP2D_API UW_HealthBar : public UW_PropertyBar
 
 protected:
 
-	virtual void BindAttributesAndSetDefaultValues(UAbilitySystemComponent* OwnerASC);
+	virtual void BindAttributesAndSetDefaultValues(UAbilitySystemComponent* OwnerASC) override;
 
 	UFUNCTION()
 	void HealthChanged(const FAttributeChangeCallbackData& Data);
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void BP_OnHealthChanged(const FAttributeChangeCallbackData& Data);
+
+	UPROPERTY(BlueprintReadOnly, meta = (BindWidget))
+	class UProgressBar* BackgroundProgressBar;
 };
