@@ -21,14 +21,14 @@ public:
 	virtual void InitializePropertyBar(AActor* Owner);
 
 protected:
-	
-	virtual void SetPercantage(float Value1, float Value2);
-
-	void SetValuesToTexts(float CurrentValue, float MaxValue);
-	
-	virtual void BindAttributes(UAbilitySystemComponent* OwnerASC);
 
 	virtual void SetDefaultValues(UAbilitySystemComponent* OwnerASC);
+
+	virtual void BindAttributes(UAbilitySystemComponent* OwnerASC);
+	
+	void SetPercantage(float Value1, float Value2);
+
+	void SetValuesToTexts(float CurrentValue, float MaxValue);
 
 	UPROPERTY(BlueprintReadOnly, meta = (BindWidget))
 	class UProgressBar* ProgressBar;

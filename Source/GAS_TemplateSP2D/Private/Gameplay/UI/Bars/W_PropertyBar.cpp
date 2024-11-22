@@ -7,6 +7,27 @@
 #include "AbilitySystemGlobals.h"
 #include "Kismet/KismetTextLibrary.h"
 
+void UW_PropertyBar::InitializePropertyBar(AActor* Owner)
+{
+	UAbilitySystemComponent* OwnerASC = UAbilitySystemGlobals::GetAbilitySystemComponentFromActor(Owner);
+	if (!OwnerASC)
+	{
+		return;
+	}
+	SetDefaultValues(OwnerASC);
+	BindAttributes(OwnerASC);
+}
+
+void UW_PropertyBar::SetDefaultValues(UAbilitySystemComponent* OwnerASC)
+{
+	// Implementation will be in subclasses
+}
+
+void UW_PropertyBar::BindAttributes(UAbilitySystemComponent* OwnerASC)
+{
+	// Implementation will be in subclasses
+}
+
 void UW_PropertyBar::SetPercantage(float Value1, float Value2)
 {
 	float NewValue = Value1 / Value2;
@@ -28,24 +49,7 @@ void UW_PropertyBar::SetValuesToTexts(float CurrentValue, float MaxValue)
 	}
 }
 
-void UW_PropertyBar::BindAttributes(UAbilitySystemComponent* OwnerASC)
-{
-	// Implementation will be in subclasses
-}
 
-void UW_PropertyBar::SetDefaultValues(UAbilitySystemComponent* OwnerASC)
-{
-	// Implementation will be in subclasses
-}
 
-void UW_PropertyBar::InitializePropertyBar(AActor* Owner)
-{
-	UAbilitySystemComponent* OwnerASC = UAbilitySystemGlobals::GetAbilitySystemComponentFromActor(Owner);
-	if (!OwnerASC)
-	{
-		return;
-	}
-	SetDefaultValues(OwnerASC);
-	BindAttributes(OwnerASC);
-}
+
 

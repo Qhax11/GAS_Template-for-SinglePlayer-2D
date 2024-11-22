@@ -3,6 +3,14 @@
 
 #include "Gameplay/UI/Bars/W_ManaBar.h"
 
+void UW_ManaBar::SetDefaultValues(UAbilitySystemComponent* OwnerASC)
+{
+	if (UAS_Hero* HeroAttributes = const_cast<UAS_Hero*>(OwnerASC->GetSet<UAS_Hero>()))
+	{
+		SetPercantage(HeroAttributes->GetMana(), HeroAttributes->GetMaxMana());
+		SetValuesToTexts(HeroAttributes->GetMana(), HeroAttributes->GetMaxMana());
+	}
+}
 
 void UW_ManaBar::BindAttributes(UAbilitySystemComponent* OwnerASC)
 {
@@ -10,15 +18,6 @@ void UW_ManaBar::BindAttributes(UAbilitySystemComponent* OwnerASC)
 	{
 		HeroAttributes->OnManaChanged.AddDynamic(this, &UW_ManaBar::ManaChanged);
 		HeroAttributes->OnMaxManaChanged.AddDynamic(this, &UW_ManaBar::MaxManaChanged);
-	}
-}
-
-void UW_ManaBar::SetDefaultValues(UAbilitySystemComponent* OwnerASC)
-{
-	if (UAS_Hero* HeroAttributes = const_cast<UAS_Hero*>(OwnerASC->GetSet<UAS_Hero>()))
-	{
-		SetPercantage(HeroAttributes->GetMana(), HeroAttributes->GetMaxMana());
-		SetValuesToTexts(HeroAttributes->GetMana(), HeroAttributes->GetMaxMana());
 	}
 }
 

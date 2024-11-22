@@ -17,9 +17,9 @@ class GAS_TEMPLATESP2D_API UW_ManaBar : public UW_PropertyBar
 	
 protected:
 
-	virtual void BindAttributes(UAbilitySystemComponent* OwnerASC) override;
-
 	virtual void SetDefaultValues(UAbilitySystemComponent* OwnerASC) override;
+
+	virtual void BindAttributes(UAbilitySystemComponent* OwnerASC) override;
 
 	UFUNCTION()
 	void ManaChanged(const FAttributeChangeCallbackData& Data);
