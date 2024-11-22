@@ -11,9 +11,11 @@
 #include "Gameplay/Components/AC_Team.h"
 #include "GAS_GameplayAbilityBase.generated.h"
 
-/**
- * 
- */
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnAbilityLevelChanged, UGameplayAbility*, Ability, int32, NewLevel);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnAbilityCostChanged, UGameplayAbility*, Ability, float, NewCost);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnAbilityCooldownChanged, UGameplayAbility*, Ability, float, NewCooldown);
+
+
 UCLASS()
 class GAS_TEMPLATESP2D_API UGAS_GameplayAbilityBase : public UGameplayAbility
 {
@@ -27,10 +29,30 @@ public:
 	
 	bool CreateEffectWithMagnitude(FGameplayEffectSpec& Spec, UAbilitySystemComponent* SourceAbilitySystemComponent, TSubclassOf<UGameplayEffect> GameplayEffectClass, const FGameplayTag SetByCallerTag, float SetByCallerValue);
 
+	UFUNCTION(BlueprintPure, Category = "GameplayAbilityBase")
+	float GetCost(int32 AbilityLevel) const;
+
+	UFUNCTION(BlueprintPure, Category = "GameplayAbilityBase")
+	float GetCoolDown(int32 AbilityLevel) const;
+
+	UPROPERTY(BlueprintAssignable, Category = "GameplayAbilityBase|Delegates")
+	FOnAbilityLevelChanged OnAbilityLevelChanged;
+
+	UPROPERTY(BlueprintAssignable, Category = "GameplayAbilityBase|Delegates")
+	FOnAbilityCostChanged OnAbilityCostChanged;
+
+	UPROPERTY(BlueprintAssignable, Category = "GameplayAbilityBase|Delegates")
+	FOnAbilityCooldownChanged OnAbilityCooldownChanged;
+
 	UPROPERTY(EditDefaultsOnly, Category = "GameplayAbilityBase|TargetingData")
 	UGAS_AbilityTargetingData* TargetingData;
 
 	// Icon of ability that will seen on Gameplay UI
 	UPROPERTY(EditAnywhere, Category = "GameplayAbilityBase|UI")
 	class UTexture2D* AbilityIcon;
+
+protected:
+
+	UFUNCTION(BlueprintCallable, Category = "Ability")
+	void IncreaseLevel(UAbilitySystemComponent* AbilitySystemComp);
 };
