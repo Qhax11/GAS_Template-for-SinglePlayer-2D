@@ -94,7 +94,7 @@ void UGAS_GameplayAbilityBase::IncreaseLevel(UAbilitySystemComponent* AbilitySys
 	int CurrentAbilityLevel = AbilitySpec->Level;
 	CurrentAbilityLevel++;
 
-	// This line is actual setting.
+	// This is actual setting.
 	AbilitySpec->Level = CurrentAbilityLevel;
 
 	int32 NewAbilityLevel = AbilitySpec->Level;

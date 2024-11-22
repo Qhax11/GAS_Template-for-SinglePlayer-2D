@@ -8,6 +8,11 @@ UGA_ComboMeleeAttack::UGA_ComboMeleeAttack()
 	InstancingPolicy = EGameplayAbilityInstancingPolicy::InstancedPerActor;
 }
 
+void UGA_ComboMeleeAttack::OnEventRecieved()
+{
+	Super::OnEventRecieved();
+}
+
 UPaperZDAnimSequence* UGA_ComboMeleeAttack::SelectSequence()
 {
 	return GetNextComboSequence();

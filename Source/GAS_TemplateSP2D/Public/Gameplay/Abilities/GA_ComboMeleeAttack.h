@@ -20,6 +20,8 @@ public:
 
 protected:
 
+	virtual void OnEventRecieved();
+
 	virtual UPaperZDAnimSequence* SelectSequence() override;
 	
 	UPaperZDAnimSequence* GetNextComboSequence();

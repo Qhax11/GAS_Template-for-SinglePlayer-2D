@@ -17,10 +17,15 @@ class GAS_TEMPLATESP2D_API UW_HealthBar : public UW_PropertyBar
 
 protected:
 
-	virtual void BindAttributesAndSetDefaultValues(UAbilitySystemComponent* OwnerASC) override;
+	virtual void BindAttributes(UAbilitySystemComponent* OwnerASC) override;
+
+	virtual void SetDefaultValues(UAbilitySystemComponent* OwnerASC) override;
 
 	UFUNCTION()
 	void HealthChanged(const FAttributeChangeCallbackData& Data);
+
+	UFUNCTION()
+	void MaxHealthChanged(const FAttributeChangeCallbackData& Data);
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void BP_OnHealthChanged(const FAttributeChangeCallbackData& Data);

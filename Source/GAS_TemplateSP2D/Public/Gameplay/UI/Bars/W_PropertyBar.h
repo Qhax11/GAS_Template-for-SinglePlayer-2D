@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include "AbilitySystemComponent.h"
+#include "Components/TextBlock.h"
 #include "W_PropertyBar.generated.h"
 
 /**
@@ -22,9 +23,19 @@ public:
 protected:
 	
 	virtual void SetPercantage(float Value1, float Value2);
+
+	void SetValuesToTexts(float CurrentValue, float MaxValue);
 	
-	virtual void BindAttributesAndSetDefaultValues(UAbilitySystemComponent* OwnerASC);
+	virtual void BindAttributes(UAbilitySystemComponent* OwnerASC);
+
+	virtual void SetDefaultValues(UAbilitySystemComponent* OwnerASC);
 
 	UPROPERTY(BlueprintReadOnly, meta = (BindWidget))
 	class UProgressBar* ProgressBar;
+
+	UPROPERTY(BlueprintReadOnly, meta = (BindWidget, OptionalWidget = true))
+	UTextBlock* T_CurrentValue;
+
+	UPROPERTY(BlueprintReadOnly, meta = (BindWidget, OptionalWidget = true))
+	UTextBlock* T_MaxValue;
 };

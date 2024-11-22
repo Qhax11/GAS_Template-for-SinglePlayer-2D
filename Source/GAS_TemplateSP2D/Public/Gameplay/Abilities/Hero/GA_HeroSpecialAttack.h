@@ -13,5 +13,9 @@ UCLASS()
 class GAS_TEMPLATESP2D_API UGA_HeroSpecialAttack : public UGA_MeleeAttackBase
 {
 	GENERATED_BODY()
+
+protected:
+
+	virtual void OnEventRecieved();
 	
 };
