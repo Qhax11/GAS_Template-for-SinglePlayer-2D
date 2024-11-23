@@ -82,22 +82,22 @@ void UGAS_GameplayAbilityBase::IncreaseLevel(UAbilitySystemComponent* AbilitySys
 {
 	if (!AbilitySystemComp) 
 	{
+		UE_LOG(LogTemp, Warning, TEXT("AbilitySystemComp is null in %s."), *GetName());
 		return;
 	}
 
 	FGameplayAbilitySpec* AbilitySpec = AbilitySystemComp->FindAbilitySpecFromClass(this->GetClass());
 	if (!AbilitySpec)
 	{
+		UE_LOG(LogTemp, Warning, TEXT("AbilitySpec is null in %s."), *GetName());
 		return;
 	}
 
-	int CurrentAbilityLevel = AbilitySpec->Level;
-	CurrentAbilityLevel++;
+	int32 NewAbilityLevel = ++AbilitySpec->Level;
 
 	// This is actual setting.
-	AbilitySpec->Level = CurrentAbilityLevel;
+	AbilitySpec->Level = NewAbilityLevel;
 
-	int32 NewAbilityLevel = AbilitySpec->Level;
 	OnAbilityLevelChanged.Broadcast(this, NewAbilityLevel);
 
 	float NewCost = GetCost(NewAbilityLevel);
