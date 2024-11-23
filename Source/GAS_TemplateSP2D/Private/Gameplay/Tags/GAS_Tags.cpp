@@ -68,14 +68,14 @@ namespace GAS_Tags
 	* Add all of the GameplayCue related tags to here. *
 	****************************************************/
 
-	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_ShowText_Damage, "GameplayCue.ShowText.Damage");
-	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_ShowText_Blood, "GameplayCue.ShowText.Blood");
-	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_ShowText_Healing, "GameplayCue.ShowText.Healing");
-	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_ShowText_Critical, "GameplayCue.ShowText.Critical");
-	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_ShowText_Mana, "GameplayCue.ShowText.Mana");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_AttachedEffectText_Damage, "GameplayCue.AttachedEffectText.Damage");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_AttachedEffectText_Bleed, "GameplayCue.AttachedEffectText.Bleed");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_AttachedEffectText_Heal, "GameplayCue.AttachedEffectText.Heal");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_AttachedEffectText_Critical, "GameplayCue.AttachedEffectText.Critical");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_AttachedEffectText_Mana, "GameplayCue.AttachedEffectText.Mana");
 
-	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_Effect_Blood, "GameplayCue.Effect.Blood");
-	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_Effect_Healing, "GameplayCue.Effect.Healing");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_VFX_Blood, "GameplayCue.VFX.Blood");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_VFX_Heal, "GameplayCue.VFX.Heal");
 	
 	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_Sound, "GameplayCue.Sound");
 	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_Sound_Jump, "GameplayCue.Sound.Jump");
@@ -100,7 +100,7 @@ namespace GAS_Tags
 	UE_DEFINE_GAMEPLAY_TAG(TAG_UI_HitTypeText_Blind, "UI.HitTypeText.Blind");
 	UE_DEFINE_GAMEPLAY_TAG(TAG_UI_HitTypeText_Physical, "UI.HitTypeText.Physical");
 	UE_DEFINE_GAMEPLAY_TAG(TAG_UI_HitTypeText_Magical, "UI.HitTypeText.Magical");
-	UE_DEFINE_GAMEPLAY_TAG(TAG_UI_HitTypeText_Healing, "UI.HitTypeText.Healing");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_UI_HitTypeText_Healing, "UI.HitTypeText.Heal");
 
 	UE_DEFINE_GAMEPLAY_TAG(TAG_UI_Cooldown_Ability0, "UI.Cooldown.Ability0");
 	UE_DEFINE_GAMEPLAY_TAG(TAG_UI_Cooldown_Ability1, "UI.Cooldown.Ability1");

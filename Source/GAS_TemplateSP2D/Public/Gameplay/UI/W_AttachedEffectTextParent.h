@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include "Components/CanvasPanel.h"
-#include "W_ShowTextHandleParent.generated.h"
+#include "W_AttachedEffectTextParent.generated.h"
 
 /**
  * This class just for add the created show text widgets to the canvas
@@ -13,7 +13,7 @@
  */
 
 UCLASS()
-class GAS_TEMPLATESP2D_API UW_ShowTextHandleParent : public UUserWidget
+class GAS_TEMPLATESP2D_API UW_AttachedEffectTextParent : public UUserWidget
 {
 	GENERATED_BODY()
 

@@ -1,18 +1,18 @@
 // Qhax's GAS Template for SinglePlayer
 
 
-#include "Gameplay/Cues/GCN_ShowTextWidgetCompBase.h"
+#include "Gameplay/Cues/GCN_AttachedEffectTextBase.h"
 #include "Kismet/KismetStringLibrary.h"
 #include "Gameplay/Tags/GAS_Tags.h"
 #include "AbilitySystemGlobals.h"
 #include "AbilitySystemComponent.h"
 
-AGCN_ShowTextWidgetCompBase::AGCN_ShowTextWidgetCompBase()
+AGCN_AttachedEffectTextBase::AGCN_AttachedEffectTextBase()
 {
-	ShowTextHandle = CreateDefaultSubobject<UWC_ShowTextHandle>(TEXT("WC_ShowTextHandle"));
+	WC_AttachedEffectText = CreateDefaultSubobject<UWC_AttachedEffectTextHandle>(TEXT("WC_AttachedEffectTextHandle"));
 }
 
-void AGCN_ShowTextWidgetCompBase::OnExecuted(AActor* Source, AActor* Target, const FGameplayCueParameters& Parameters)
+void AGCN_AttachedEffectTextBase::OnExecuted(AActor* Source, AActor* Target, const FGameplayCueParameters& Parameters)
 {
 	if (!Source || !Target)
 	{
@@ -20,7 +20,7 @@ void AGCN_ShowTextWidgetCompBase::OnExecuted(AActor* Source, AActor* Target, con
 	}
 
 	// If we execute different cue
-	if (TagChecks(Target, Parameters))
+	if (CheckAndExecuteGameplay(Target, Parameters))
 	{
 		return;
 	}
@@ -31,32 +31,31 @@ void AGCN_ShowTextWidgetCompBase::OnExecuted(AActor* Source, AActor* Target, con
 	if (bOverrideText) 
 	{
 		FinalTextString = OverridedText;
-		TriggerWidget(FinalTextColor, FinalTextString, FinalShowTextType);
+		BP_TriggerWidget(FinalTextColor, FinalTextString, FinalShowTextType);
 	}
 	else
 	{
 		PrepareText(Parameters.RawMagnitude);
-		TriggerWidget(FinalTextColor, FinalTextString, FinalShowTextType);
+		BP_TriggerWidget(FinalTextColor, FinalTextString, FinalShowTextType);
 	}
 }
 
-bool AGCN_ShowTextWidgetCompBase::TagChecks(AActor* Target, FGameplayCueParameters Parameters)
+bool AGCN_AttachedEffectTextBase::CheckAndExecuteGameplay(AActor* Target, FGameplayCueParameters Parameters)
 {
-	// If we have a critical text tag in spec we just execute Critical cue
 	if (Parameters.AggregatedSourceTags.HasTagExact(GAS_Tags::TAG_UI_HitTypeText_Critical))
 	{
 		if (UAbilitySystemComponent* TargetASC = UAbilitySystemGlobals::GetAbilitySystemComponentFromActor(Target))
 		{
-			// Removing critical tag for don't be loop
+			// Removing Critical GameplayTag to shouldn't be loop because of ExecuteGameplayCue
 			Parameters.AggregatedSourceTags.RemoveTag(GAS_Tags::TAG_UI_HitTypeText_Critical);
-			TargetASC->ExecuteGameplayCue(GAS_Tags::TAG_GameplayCue_ShowText_Critical, Parameters);
+			TargetASC->ExecuteGameplayCue(GAS_Tags::TAG_GameplayCue_AttachedEffectText_Critical, Parameters);
 			return true;
 		}
 	}
 	return false;
 }
 
-void AGCN_ShowTextWidgetCompBase::PrepareText(float Value)
+void AGCN_AttachedEffectTextBase::PrepareText(float Value)
 {
 	FString ValueString = UKismetStringLibrary::Conv_IntToString(FMath::Abs(Value));
 
@@ -64,7 +63,7 @@ void AGCN_ShowTextWidgetCompBase::PrepareText(float Value)
 	FinalTextString = AddingToString(FinalTextString, WillBeAddedFrontOfText, false);
 }
 
-FString AGCN_ShowTextWidgetCompBase::AddingToString(FString String, FString AddedString, bool EndOfString)
+FString AGCN_AttachedEffectTextBase::AddingToString(FString String, FString AddedString, bool EndOfString)
 {
 	if (EndOfString)
 	{

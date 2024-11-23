@@ -1,10 +1,10 @@
 // Qhax's GAS Template for SinglePlayer
 
 
-#include "Gameplay/UI/W_ShowTextHandleParent.h"
+#include "Gameplay/UI/W_AttachedEffectTextParent.h"
 #include "Components/CanvasPanelSlot.h"
 
-void UW_ShowTextHandleParent::AddChildText(UUserWidget* Child)
+void UW_AttachedEffectTextParent::AddChildText(UUserWidget* Child)
 {
 	if (!Child) 
 	{

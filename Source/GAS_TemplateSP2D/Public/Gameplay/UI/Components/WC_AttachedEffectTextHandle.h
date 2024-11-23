@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "Components/WidgetComponent.h"
-#include "WC_ShowTextHandle.generated.h"
+#include "WC_AttachedEffectTextHandle.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class GAS_TEMPLATESP2D_API UWC_ShowTextHandle : public UWidgetComponent
+class GAS_TEMPLATESP2D_API UWC_AttachedEffectTextHandle : public UWidgetComponent
 {
 	GENERATED_BODY()
 	

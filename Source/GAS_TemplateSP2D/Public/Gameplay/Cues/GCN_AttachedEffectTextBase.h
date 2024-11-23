@@ -5,12 +5,12 @@
 #include "CoreMinimal.h"
 #include "Gameplay/Cues/GCN_ActorBase.h"
 #include "Styling/SlateColor.h"
-#include "Gameplay/UI/Components/WC_ShowTextHandle.h"
-#include "GCN_ShowTextWidgetCompBase.generated.h"
+#include "Gameplay/UI/Components/WC_AttachedEffectTextHandle.h"
+#include "GCN_AttachedEffectTextBase.generated.h"
 
 
 UENUM(BlueprintType)
-enum EShowTextAnim : uint8
+enum EAttachedEffectTextAnim : uint8
 {
 	Default,
 	Blind,
@@ -21,24 +21,28 @@ enum EShowTextAnim : uint8
 
 
 UCLASS()
-class GAS_TEMPLATESP2D_API AGCN_ShowTextWidgetCompBase : public AGCN_ActorBase
+class GAS_TEMPLATESP2D_API AGCN_AttachedEffectTextBase : public AGCN_ActorBase
 {
 	GENERATED_BODY()
 	
 
 public:
-	AGCN_ShowTextWidgetCompBase();
+	AGCN_AttachedEffectTextBase();
 
 	virtual void OnExecuted(AActor* Source, AActor* Target, const FGameplayCueParameters& Parameters) override;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Components")
-	UWC_ShowTextHandle* ShowTextHandle;
+	UWC_AttachedEffectTextHandle* WC_AttachedEffectText;
 
 protected:
 	UFUNCTION(BlueprintImplementableEvent)
-	void TriggerWidget(const FSlateColor FinalColor, const FString& FinalString, EShowTextAnim TextType);
+	void BP_TriggerWidget(const FSlateColor FinalColor, const FString& FinalString, EAttachedEffectTextAnim TextType);
 
-	bool TagChecks(AActor* Target, FGameplayCueParameters Parameters);
+	/**
+	 * This function checks if a Critical hit occurred within the Damage GameplayCue. 
+	 * If a Critical hit is detected, it triggers the Critical GameplayCue instead of the Damage GameplayCue.
+     */
+	bool CheckAndExecuteGameplay(AActor* Target, FGameplayCueParameters Parameters);
 
 	void PrepareText(float Value);
 
@@ -48,7 +52,7 @@ protected:
 	FSlateColor WidgetTextColor;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Config")
-	TEnumAsByte<EShowTextAnim> WidgetTextAnim;
+	TEnumAsByte<EAttachedEffectTextAnim> WidgetTextAnim;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Config", meta = (EditCondition = "!bOverrideText"))
 	FString WillBeAddedFrontOfText;
@@ -63,8 +67,7 @@ protected:
 	FString OverridedText;
 
 private:
-	// These are sent to the ShowText widget
 	FSlateColor FinalTextColor;
 	FString FinalTextString;
-	TEnumAsByte<EShowTextAnim> FinalShowTextType;
+	TEnumAsByte<EAttachedEffectTextAnim> FinalShowTextType;
 };
