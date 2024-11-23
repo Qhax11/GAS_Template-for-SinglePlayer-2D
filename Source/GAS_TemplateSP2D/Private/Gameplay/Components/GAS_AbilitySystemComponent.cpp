@@ -40,7 +40,7 @@ void UGAS_AbilitySystemComponent::GiveAbilities(const UGAS_GameplayAbilitySet* A
 
 void UGAS_AbilitySystemComponent::GiveAbilityWithInputAction(UInputAction* AbilityInput, const TSubclassOf<UGameplayAbility> Ability)
 {
-	if(!IsAbilityGivenAlready(Ability))
+	if(Ability && !IsAbilityGivenAlready(Ability))
 	{
 		FGameplayAbilitySpecHandle GivenAbilitySpecHandle = GiveAbility(FGameplayAbilitySpec(Ability.Get()));
 		TryAbilityInputBind(AbilityInput, GivenAbilitySpecHandle);
