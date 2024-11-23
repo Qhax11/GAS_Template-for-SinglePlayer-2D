@@ -4,10 +4,10 @@
 #include "Gameplay/Abilities/Hero/GA_HeroDash.h"
 #include "Abilities/Tasks/AbilityTask_ApplyRootMotionConstantForce.h"
 #include "GameFramework/RootMotionSource.h"
+#include "Abilities/Tasks/AbilityTask_ApplyRootMotionMoveToForce.h"
 
 void UGA_HeroDash::OnEventRecieved()
 {
-	// I used same params in Blueprint side, still the duration twice as much
 	/*
 	UAbilityTask_ApplyRootMotionConstantForce* RootMotionTask =
 		UAbilityTask_ApplyRootMotionConstantForce::ApplyRootMotionConstantForce(
@@ -22,5 +22,10 @@ void UGA_HeroDash::OnEventRecieved()
 			FVector(0, 0, 0),
 			0.f,
 			bEnableGravity);
-			*/
+			
+
+	RootMotionTask->ReadyForActivation();
+	RootMotionTask->OnFinish.AddDynamic(this, &UGA_HeroDash::OnTaskFinished);
+	*/
 }
+

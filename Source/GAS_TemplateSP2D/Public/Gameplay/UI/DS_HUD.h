@@ -10,19 +10,19 @@
 /**
  * 
  */
-UCLASS(Config = Game, defaultconfig, meta = (DisplayName = "HUD")) // Give it a better looking name in UI
+UCLASS(Config = Game, defaultconfig, meta = (DisplayName = "HUD")) 
 class GAS_TEMPLATESP2D_API UDS_HUD : public UDeveloperSettings
 {
 	GENERATED_BODY()
 	
 public:
 
-	UPROPERTY(Config, EditDefaultsOnly, Category = "AbilitySlotPanel")
+	UPROPERTY(Config, EditDefaultsOnly, Category = "DynamicAbilitySlotPanel")
 	TSoftClassPtr<UW_AbilitySlot> WBP_AbilitySlot;
 
-	UPROPERTY(Config, EditDefaultsOnly, Category = "AbilitySlotPanel")
+	UPROPERTY(Config, EditDefaultsOnly, Category = "DynamicAbilitySlotPanel")
 	FGameplayTagContainer DisplayedAbilitiesTags;
 
-	UPROPERTY(Config, EditDefaultsOnly, Category = "AbilitySlotPanel")
+	UPROPERTY(Config, EditDefaultsOnly, Category = "DynamicAbilitySlotPanel")
 	FVector2D SpacerSizeBetweenAbilitySlots = FVector2D(10, 0);
 };

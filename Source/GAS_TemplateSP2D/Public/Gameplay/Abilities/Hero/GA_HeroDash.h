@@ -30,4 +30,5 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, Category = "RootMotionTaskParams")
 	bool bEnableGravity;
+
 };
