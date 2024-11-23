@@ -86,27 +86,27 @@ void UGAS_GameplayAbilityBase::IncreaseLevel(UAbilitySystemComponent* AbilitySys
 		return;
 	}
 
-	FGameplayAbilitySpec* AbilitySpec = AbilitySystemComp->FindAbilitySpecFromClass(this->GetClass());
-	if (!AbilitySpec)
+	// Using the CDO here because "FindAbilitySpecFromClass" returns the CDO if called immediately after granting the ability.
+	UGAS_GameplayAbilityBase* CDO_AbilityBase = Cast<UGAS_GameplayAbilityBase>(GetClass()->GetDefaultObject());
+	FGameplayAbilitySpec* CDO_AbilitySpec = AbilitySystemComp->FindAbilitySpecFromClass(CDO_AbilityBase->GetClass());
+	if (!CDO_AbilitySpec)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("AbilitySpec is null in %s."), *GetName());
 		return;
 	}
 
-	int32 NewAbilityLevel = ++AbilitySpec->Level;
+	int32 NewAbilityLevel = ++CDO_AbilitySpec->Level;
 
 	// This is actual setting.
-	AbilitySpec->Level = NewAbilityLevel;
+	CDO_AbilitySpec->Level = NewAbilityLevel;
 
-	OnAbilityLevelChanged.Broadcast(this, NewAbilityLevel);
+	CDO_AbilityBase->OnAbilityLevelChanged.Broadcast(this, NewAbilityLevel);
 
 	float NewCost = GetCost(NewAbilityLevel);
-	OnAbilityCostChanged.Broadcast(this, NewCost);
+	CDO_AbilityBase->OnAbilityCostChanged.Broadcast(this, NewCost);
 
 	float NewCooldown = GetCoolDown(NewAbilityLevel);
-	OnAbilityCooldownChanged.Broadcast(this, NewCooldown);
-
-	AbilitySystemComp->MarkAbilitySpecDirty(*AbilitySpec);
+	CDO_AbilityBase->OnAbilityCooldownChanged.Broadcast(this, NewCooldown);
 }
 
 

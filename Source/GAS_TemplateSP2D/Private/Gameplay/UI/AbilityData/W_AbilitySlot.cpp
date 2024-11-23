@@ -26,7 +26,7 @@ void UW_AbilitySlot::CustomInitialize(UAbilitySystemComponent* ASC, UGAS_Gamepla
 		InitialListenCooldown(ASC, AbilityBase->GetCooldownTags()->GetByIndex(0));
 	}
 
-	BP_CustomInitialize(ASC, AbilityBase);
+ 	BP_CustomInitialize(ASC, AbilityBase);
 }
 
 void UW_AbilitySlot::InitialListenCooldown(UAbilitySystemComponent* AbilitySystemComponent, FGameplayTag CooldownTag)

@@ -53,6 +53,13 @@ public:
 
 protected:
 
+	/**
+	 * For "Instanced Per Actor" abilities:
+	 * Normally, broadcasting delegates over the CDO is not required for proper functionality. 
+	 * However, since the "FindAbilitySpecFromClass" function is used immediately after granting the ability, 
+	 * it returns the CDO instead of the instance object. As a result, we use the CDO here to ensure that
+	 * delegates remain connected and can be broadcast over the same object.
+	 */
 	UFUNCTION(BlueprintCallable, Category = "Ability")
 	void IncreaseLevel(UAbilitySystemComponent* AbilitySystemComp);
 };
