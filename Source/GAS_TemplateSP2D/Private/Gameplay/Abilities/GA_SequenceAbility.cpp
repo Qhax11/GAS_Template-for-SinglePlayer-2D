@@ -5,7 +5,7 @@
 #include "Gameplay/Actors/PaperCharacters/GAS_PaperCharacterBase.h"
 #include "PaperZDAnimationComponent.h"
 #include "PaperZDAnimInstance.h"
-#include "Animations/Notifys/AN_EventReceived.h"
+#include "Gameplay/Animations/Notifys/AN_EventReceived.h"
 
 
 void UGA_SequenceAbility::ActivateAbility(const FGameplayAbilitySpecHandle Handle,
