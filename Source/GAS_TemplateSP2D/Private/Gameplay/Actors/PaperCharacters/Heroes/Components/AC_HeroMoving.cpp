@@ -21,9 +21,14 @@ void UAC_HeroMoving::BeginPlay()
 	}
 
 	UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PaperHero->InputComponent);
+	TryBindMovingInputs(EnhancedInputComponent);
+}
+
+void UAC_HeroMoving::TryBindMovingInputs(UEnhancedInputComponent* EnhancedInputComponent)
+{
 	if (!EnhancedInputComponent)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("EnhancedInputComponent is null! (This message comes from %s)"), *this->GetName());
+		UE_LOG(LogTemp, Warning, TEXT("EnhancedInputComponent is null in: %s"), *this->GetName());
 		return;
 	}
 
@@ -36,7 +41,7 @@ void UAC_HeroMoving::BeginPlay()
 	}
 	else
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Input actions are null! (This message comes from %s)"), *this->GetName());
+		UE_LOG(LogTemp, Warning, TEXT("Input actions are null in: %s"), *this->GetName());
 	}
 }
 

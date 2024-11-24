@@ -22,6 +22,8 @@ protected:
 	virtual void BeginPlay() override;
 
 public:	
+	void TryBindMovingInputs(UEnhancedInputComponent* EnhancedInputComponent);
+
 	void MoveLeft(const FInputActionValue& Value);
 
 	void MoveRight(const FInputActionValue& Value);
@@ -29,8 +31,6 @@ public:
 	void MoveForward(const FInputActionValue& Value);
 
 	void MoveBackward(const FInputActionValue& Value);
-
-	AGAS_PaperHeroBase* PaperHero;
 
 	UPROPERTY(EditAnywhere)
 	const UInputAction* LeftInputAction;
@@ -44,4 +44,7 @@ public:
 	UPROPERTY(EditAnywhere)
 	const UInputAction* BackwardInputAction;
 
+protected:
+
+	AGAS_PaperHeroBase* PaperHero;
 };

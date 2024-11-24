@@ -51,6 +51,13 @@ void UAC_HeroRespawn::HeroRespawn(AGAS_PaperHeroBase* Hero)
     {
         Hero->GetAbilitySystemComponent()->ApplyGameplayEffectToSelf(ReSpawnEffect, 1, EffectContextHandle);
     }
+
+    if (US_SpawnDelegates* SpawnDelegatesSubsystem = GetWorld()->GetGameInstance()->GetSubsystem<US_SpawnDelegates>())
+    {
+        SpawnDelegatesSubsystem->OnHeroReSpawn.Broadcast(Hero);
+    }
+
+    Hero->PrepareReSpawn();
 }
 
 void UAC_HeroRespawn::SetHeroLocation(AGAS_PaperHeroBase* Hero)

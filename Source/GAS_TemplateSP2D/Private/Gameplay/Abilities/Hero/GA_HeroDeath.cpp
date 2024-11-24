@@ -20,6 +20,11 @@ void UGA_HeroDeath::ActivateAbility(const FGameplayAbilitySpecHandle Handle,
 	}
 
 	GetAbilitySystemComponentFromActorInfo()->ExecuteGameplayCue(GAS_Tags::TAG_GameplayCue_PlayerMessageHUD_Died, FGameplayCueParameters());
+
+	if (AGAS_PaperHeroBase* HeroBase = Cast<AGAS_PaperHeroBase>(GetAvatarActorFromActorInfo())) 
+	{
+		HeroBase->PrepareDeSpawn();
+	}
 }
 
 
