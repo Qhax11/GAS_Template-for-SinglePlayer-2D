@@ -18,6 +18,22 @@ public:
 protected:
 	virtual void BeginPlay() override;
 
+	void Initialize();
 
+	UFUNCTION()
+	void OnHeroDeSpawn(AGAS_PaperHeroBase* Hero);
+
+	void StartHeroDeSpawnCountdown(AGAS_PaperHeroBase* Hero);
+
+	void HeroRespawn(AGAS_PaperHeroBase* Hero);
+
+	void SetHeroLocation(AGAS_PaperHeroBase* Hero);
+
+	FTimerHandle HeroDeSpawnCountDownTimerHandle;
 		
+	UPROPERTY(EditDefaultsOnly, Category = "HeroRespawn|Params")
+	float ReSpawnDelay = 2.0f;
+
+	UPROPERTY(EditDefaultsOnly, Category = "HeroRespawn|Params")
+	TSubclassOf<UGameplayEffect> ReSpawnEffectClass;
 };

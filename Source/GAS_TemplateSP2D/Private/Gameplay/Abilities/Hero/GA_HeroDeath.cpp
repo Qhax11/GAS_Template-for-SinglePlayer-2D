@@ -4,6 +4,7 @@
 #include "Gameplay/Abilities/Hero/GA_HeroDeath.h"
 #include "Gameplay/StaticDelegates/S_SpawnDelegates.h"
 #include "Gameplay/Actors/PaperCharacters/GAS_PaperHeroBase.h"
+#include "Gameplay/Actors/PaperCharacters/Heroes/Components/AC_HeroRespawn.h"
 
 
 void UGA_HeroDeath::ActivateAbility(const FGameplayAbilitySpecHandle Handle,
@@ -13,11 +14,10 @@ void UGA_HeroDeath::ActivateAbility(const FGameplayAbilitySpecHandle Handle,
 {
 	Super::ActivateAbility(Handle, ActorInfo, ActivationInfo, TriggerEventData);
 
-	US_SpawnDelegates* SpawnDelegatesSubsystem = GetWorld()->GetGameInstance()->GetSubsystem<US_SpawnDelegates>();
-	SpawnDelegatesSubsystem->OnHeroDeSpawn.Broadcast(GetAvatarActorFromActorInfo());
-
-	AGAS_PaperHeroBase* HeroBase = Cast<AGAS_PaperHeroBase>(GetAvatarActorFromActorInfo());
-	HeroBase->StartHeroDeSpawnCountdown();
+	if (US_SpawnDelegates* SpawnDelegatesSubsystem = GetWorld()->GetGameInstance()->GetSubsystem<US_SpawnDelegates>()) 
+	{
+		SpawnDelegatesSubsystem->OnHeroDeSpawn.Broadcast(Cast<AGAS_PaperHeroBase>(GetAvatarActorFromActorInfo()));
+	}
 
 	GetAbilitySystemComponentFromActorInfo()->ExecuteGameplayCue(GAS_Tags::TAG_GameplayCue_PlayerMessageHUD_Died, FGameplayCueParameters());
 }

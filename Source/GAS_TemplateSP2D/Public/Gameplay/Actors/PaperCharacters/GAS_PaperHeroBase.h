@@ -45,15 +45,5 @@ protected:
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Hero|Components")
 	class UAC_HeroRespawn* HeroRespawnComponent;
 
-public:
-
-	void StartHeroDeSpawnCountdown();
-
-	FTimerHandle HeroDeSpawnCountDownTimerHandle;
-
-	void HeroDeSpawn();
-
-	void SetLocationForReSpawn();
-
 
 };

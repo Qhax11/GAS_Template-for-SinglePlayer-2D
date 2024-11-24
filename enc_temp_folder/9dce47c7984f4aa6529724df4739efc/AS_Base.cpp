@@ -26,11 +26,6 @@ void UAS_Base::ActiveGameplayEffectAdded(UAbilitySystemComponent* OwnerASC, cons
 {
 	FGameplayAttribute GameplayAttribute;
 
-	for (int32 i = 0; i < EffectSpec.ModifiedAttributes.Num(); i++)
-	{
-		FGameplayEffectModifiedAttribute aa = EffectSpec.ModifiedAttributes[i];
-
-	}
 	if (!EffectSpec.ModifiedAttributes.IsEmpty())
 	{
 		GameplayAttribute = EffectSpec.ModifiedAttributes[0].Attribute;

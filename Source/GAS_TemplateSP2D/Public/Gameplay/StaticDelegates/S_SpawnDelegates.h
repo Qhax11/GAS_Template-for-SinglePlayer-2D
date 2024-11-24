@@ -4,11 +4,12 @@
 
 #include "CoreMinimal.h"
 #include "Subsystems/GameInstanceSubsystem.h"
+#include "Gameplay/Actors/PaperCharacters/GAS_PaperHeroBase.h"
 #include "S_SpawnDelegates.generated.h"
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnHeroSpawn, AActor*, Hero);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnHeroReSpawn, AActor*, Hero);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnHeroDeSpawn, AActor*, Hero);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnHeroSpawn, AGAS_PaperHeroBase*, Hero);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnHeroReSpawn, AGAS_PaperHeroBase*, Hero);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnHeroDeSpawn, AGAS_PaperHeroBase*, Hero);
 
 
 UCLASS()

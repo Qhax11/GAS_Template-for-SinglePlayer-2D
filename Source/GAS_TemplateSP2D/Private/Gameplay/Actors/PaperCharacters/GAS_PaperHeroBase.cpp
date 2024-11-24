@@ -7,7 +7,6 @@
 #include "Gameplay/Actors/PaperCharacters/Heroes/Components/AC_HeroAttributesListener.h"
 #include "Gameplay/Actors/PaperCharacters/Heroes/Components/AC_HeroRespawn.h"
 #include "EnhancedInputSubsystems.h"
-#include "GameFramework/GameMode.h"
 
 
 AGAS_PaperHeroBase::AGAS_PaperHeroBase(const class FObjectInitializer& ObjectInitializer):
@@ -47,30 +46,9 @@ void AGAS_PaperHeroBase::BeginPlay()
     }
 }
 
-void AGAS_PaperHeroBase::StartHeroDeSpawnCountdown()
-{
-    GetWorld()->GetTimerManager().SetTimer(HeroDeSpawnCountDownTimerHandle, this, &AGAS_PaperHeroBase::HeroDeSpawn, 2, false);
-}
 
-void AGAS_PaperHeroBase::HeroDeSpawn()
-{
-    SetLocationForReSpawn();
-}
 
-void AGAS_PaperHeroBase::SetLocationForReSpawn()
-{
-    if (UWorld* World = this->GetWorld())
-    {
-        if (AGameModeBase* AuthGameMode = World->GetAuthGameMode())
-        {
-            if (AActor* StartPoint = AuthGameMode->FindPlayerStart(GetController()))
-            {
-                this->SetActorLocation(StartPoint->GetActorLocation());
-                this->SetActorRotation(StartPoint->GetActorRotation());
-            }
-        }
-    }
-}
+
 
 
 

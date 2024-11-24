@@ -77,20 +77,12 @@ public:
 
 	UAS_Base();
 
+	// We are using "ActiveGameplayEffectAdded" and "ActiveGameplayEffectRemoved" insted of PreAttributeChange and PostGameplayEffectExecute for detect instant and duration based effect
 	UFUNCTION()
 	void ActiveGameplayEffectAdded(UAbilitySystemComponent* OwnerASC, const FGameplayEffectSpec& EffectSpec, FActiveGameplayEffectHandle EffectHandle);
 
 	UFUNCTION()
 	void ActiveGameplayEffectRemoved(const FActiveGameplayEffect& ActiveGameplayEffect);
-
-	/* We are using "ActiveGameplayEffectAdded" and "ActiveGameplayEffectRemoved" insted of default classes
-	
-	// PreAttributeChange is one of the main functions in the AttributeSet to respond to changes to an Attribute's CurrentValue before the change happens. Source: https://github.com/tranek/GASDocumentation?tab=readme-ov-file#concepts-as-preattributechange
-	virtual void PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue) override;
-
-	// PostGameplayEffectExecute only triggers after changes to the BaseValue of an Attribute from an instant GameplayEffect. Source: https://github.com/tranek/GASDocumentation?tab=readme-ov-file#concepts-as-postgameplayeffectexecute
-	virtual void PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data) override;
-	*/
 
 	virtual bool ClampAttributeValues(const FGameplayEffectModCallbackData& Data);
 
