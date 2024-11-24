@@ -34,13 +34,16 @@ protected:
 	class UCameraComponent* FollowCamera;
 
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Hero|Components")
-	class UAC_HeroMoving* HeroMovingComp;
+	class UAC_HeroMoving* HeroMovingComponent;
 
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Hero|Components")
-	class UAC_AbilityInputBinding* AbilityInputBindingComp;
+	class UAC_AbilityInputBinding* AbilityInputBindingComponent;
 
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Hero|Components")
-	class UAC_HeroTagDispatcher* HeroTagDispatcher;
+	class UAC_HeroTagDispatcher* HeroTagDispatcherComponent;
+
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Hero|Components")
+	class UAC_HeroRespawn* HeroRespawnComponent;
 
 public:
 

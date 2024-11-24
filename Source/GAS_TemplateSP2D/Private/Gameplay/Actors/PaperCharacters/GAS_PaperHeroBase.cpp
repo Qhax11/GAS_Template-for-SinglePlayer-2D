@@ -5,6 +5,7 @@
 #include "Gameplay/Actors/PaperCharacters/Heroes/Components/AC_HeroMoving.h"
 #include "Gameplay/Actors/PaperCharacters/Heroes/Components/AC_AbilityInputBinding.h"
 #include "Gameplay/Actors/PaperCharacters/Heroes/Components/AC_HeroAttributesListener.h"
+#include "Gameplay/Actors/PaperCharacters/Heroes/Components/AC_HeroRespawn.h"
 #include "EnhancedInputSubsystems.h"
 #include "GameFramework/GameMode.h"
 
@@ -23,11 +24,13 @@ AGAS_PaperHeroBase::AGAS_PaperHeroBase(const class FObjectInitializer& ObjectIni
     FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName); // Attach the camera to the end of the boom and let the boom adjust to match the controller orientation
     FollowCamera->bUsePawnControlRotation = false; // Camera does not rotate relative to arm
 
-    HeroMovingComp = CreateDefaultSubobject<UAC_HeroMoving>(TEXT("HeroMovingComp"));
+    HeroMovingComponent = CreateDefaultSubobject<UAC_HeroMoving>(TEXT("HeroMovingComponent"));
 
-    AbilityInputBindingComp = CreateDefaultSubobject<UAC_AbilityInputBinding>(TEXT("AbilityInputBindingComp"));
+    AbilityInputBindingComponent = CreateDefaultSubobject<UAC_AbilityInputBinding>(TEXT("AbilityInputBindingComponent"));
 
-    HeroTagDispatcher = CreateDefaultSubobject<UAC_HeroTagDispatcher>(TEXT("HeroTagDispatcher"));
+    HeroTagDispatcherComponent = CreateDefaultSubobject<UAC_HeroTagDispatcher>(TEXT("HeroTagDispatcherComponent"));
+
+    HeroRespawnComponent = CreateDefaultSubobject<UAC_HeroRespawn>(TEXT("HeroRespawnComponent"));
 }
 
 void AGAS_PaperHeroBase::BeginPlay()

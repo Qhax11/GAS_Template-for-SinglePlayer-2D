@@ -7,9 +7,7 @@
 #include "AbilitySystemInterface.h"
 #include "Gameplay/Attributes/AS_Base.h"
 #include "Gameplay/Components/GAS_AbilitySystemComponent.h"
-#include "Gameplay/Components/AC_AbilitySet.h"
-#include "Gameplay/Components/AC_Team.h"
-#include "Gameplay/Components/AC_TagDelegates.h"
+
 #include "Gameplay/Tags/GAS_Tags.h"
 #include "GAS_PaperCharacterBase.generated.h"
 
@@ -35,15 +33,15 @@ public:
 
 	/* Components */
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "CharacterBase|Components")
-	UAC_AbilitySet* AbilitySetComponent;
+	class UAC_AbilitySet* AbilitySetComponent;
 
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "CharacterBase|Components")
-	UAC_Team* TeamComponent;
+	class UAC_Team* TeamComponent;
 
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "CharacterBase|Components")
-	UAC_TagDelegates* TagDelegatesComponent;
+	class UAC_TagDelegates* TagDelegatesComponent;
 
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "CharacterBase|Components")
-	class UAC_AttributesListenerBase* AttributesListenerBase;
+	class UAC_AttributesListenerBase* AttributesListenerComponent;
 
 };
