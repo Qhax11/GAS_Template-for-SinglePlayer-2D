@@ -1,7 +1,7 @@
 // Qhax's GAS Template for SinglePlayer
 
 
-#include "Gameplay/Cues/GCN_AttachedEffectTextBase.h"
+#include "Gameplay/Cues/Message/GCN_AttachedEffectTextBase.h"
 #include "Kismet/KismetStringLibrary.h"
 #include "Gameplay/Tags/GAS_Tags.h"
 #include "AbilitySystemGlobals.h"
@@ -14,30 +14,21 @@ AGCN_AttachedEffectTextBase::AGCN_AttachedEffectTextBase()
 
 void AGCN_AttachedEffectTextBase::OnExecuted(AActor* Source, AActor* Target, const FGameplayCueParameters& Parameters)
 {
+	Super::OnExecuted(Source, Target, Parameters);
+
 	if (!Source || !Target)
 	{
 		return;
 	}
 
-	// If we execute different cue
-	if (CheckAndExecuteGameplay(Target, Parameters))
-	{
-		return;
-	}
+	PrepareText(Parameters.RawMagnitude);
 
-	FinalTextColor = WidgetTextColor;
-	FinalShowTextType = WidgetTextAnim;
-
-	if (bOverrideText) 
+	if (bOverrideText)
 	{
 		FinalTextString = OverridedText;
-		BP_TriggerWidget(FinalTextColor, FinalTextString, FinalShowTextType);
 	}
-	else
-	{
-		PrepareText(Parameters.RawMagnitude);
-		BP_TriggerWidget(FinalTextColor, FinalTextString, FinalShowTextType);
-	}
+
+	BP_TriggerWidget(FinalTextColor, FinalTextString, FinalShowTextType);
 }
 
 bool AGCN_AttachedEffectTextBase::CheckAndExecuteGameplay(AActor* Target, FGameplayCueParameters Parameters)

@@ -74,6 +74,9 @@ namespace GAS_Tags
 	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_AttachedEffectText_Critical, "GameplayCue.AttachedEffectText.Critical");
 	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_AttachedEffectText_Mana, "GameplayCue.AttachedEffectText.Mana");
 
+	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_PlayerMessageHUD_LevelUp, "GameplayCue.PlayerMessageHUD.LevelUp");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_PlayerMessageHUD_Died, "GameplayCue.PlayerMessageHUD.Died");
+
 	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_VFX_Blood, "GameplayCue.VFX.Blood");
 	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_VFX_Heal, "GameplayCue.VFX.Heal");
 	

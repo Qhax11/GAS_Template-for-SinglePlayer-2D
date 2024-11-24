@@ -19,11 +19,10 @@ class GAS_TEMPLATESP2D_API UW_AttachedEffectTextParent : public UUserWidget
 
 public:
 
-	UPROPERTY(BlueprintReadWrite, meta = (BindWidget))
-	UCanvasPanel* Canvas;
-
 	UFUNCTION(BlueprintCallable)
 	void AddChildText(UUserWidget* Child);
-	
+
+	UPROPERTY(BlueprintReadWrite, meta = (BindWidget))
+	UCanvasPanel* Canvas;
 
 };
