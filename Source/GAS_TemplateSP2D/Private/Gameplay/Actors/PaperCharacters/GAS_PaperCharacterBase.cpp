@@ -2,9 +2,11 @@
 
 
 #include "Gameplay/Actors/PaperCharacters/GAS_PaperCharacterBase.h"
+#include "Gameplay/Components/AC_AttributesListenerBase.h"
 #include "Gameplay/Components/AC_AbilitySet.h"
 #include "Gameplay/Components/AC_Team.h"
 #include "Gameplay/Components/AC_TagDelegates.h"
+#include "Gameplay/Components/AC_GameplayData.h"
 #include "PaperFlipbookComponent.h"
 
 AGAS_PaperCharacterBase::AGAS_PaperCharacterBase(const class FObjectInitializer& ObjectInitializer)
@@ -21,6 +23,8 @@ AGAS_PaperCharacterBase::AGAS_PaperCharacterBase(const class FObjectInitializer&
 	TagDelegatesComponent = CreateDefaultSubobject<UAC_TagDelegates>(TEXT("TagDelegatesComponent"));
 
 	AttributesListenerComponent = CreateDefaultSubobject<UAC_AttributesListenerBase>(TEXT("AttributesListenerComponent"));
+
+	GameplayDataComponent = CreateDefaultSubobject<UAC_GameplayData>(TEXT("GameplayDataComponent"));
 }
 
 void AGAS_PaperCharacterBase::BeginPlay()

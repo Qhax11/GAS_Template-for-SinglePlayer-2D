@@ -7,7 +7,6 @@
 #include "AbilitySystemInterface.h"
 #include "Gameplay/Attributes/AS_Base.h"
 #include "Gameplay/Components/GAS_AbilitySystemComponent.h"
-
 #include "Gameplay/Tags/GAS_Tags.h"
 #include "GAS_PaperCharacterBase.generated.h"
 
@@ -43,5 +42,8 @@ public:
 
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "CharacterBase|Components")
 	class UAC_AttributesListenerBase* AttributesListenerComponent;
+
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "CharacterBase|Components")
+	class UAC_GameplayData* GameplayDataComponent;
 
 };
