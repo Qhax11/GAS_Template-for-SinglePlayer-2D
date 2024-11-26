@@ -25,10 +25,10 @@ void AGCN_AttachedEffectTextBase::OnExecuted(AActor* Source, AActor* Target, con
 
 	if (bOverrideText)
 	{
-		FinalTextString = OverridedText;
+		WidgetMessageData.MessageString = OverridedText;
 	}
 
-	BP_TriggerWidget(FinalTextColor, FinalTextString, FinalShowTextType);
+	BP_TriggerWidget(WidgetMessageData);
 }
 
 bool AGCN_AttachedEffectTextBase::CheckAndExecuteGameplay(AActor* Target, FGameplayCueParameters Parameters)
@@ -46,22 +46,13 @@ bool AGCN_AttachedEffectTextBase::CheckAndExecuteGameplay(AActor* Target, FGamep
 	return false;
 }
 
-void AGCN_AttachedEffectTextBase::PrepareText(float Value)
+void AGCN_AttachedEffectTextBase::PrepareText(float RawMagnitudeValue)
 {
-	FString ValueString = UKismetStringLibrary::Conv_IntToString(FMath::Abs(Value));
+	FString RawMagnitudeValueString = UKismetStringLibrary::Conv_IntToString(FMath::Abs(RawMagnitudeValue));
 
-	FinalTextString = AddingToString(ValueString, WillBeAddedEndOfText, true);
-	FinalTextString = AddingToString(FinalTextString, WillBeAddedFrontOfText, false);
+	FString FinalMessage = PrefixText + RawMagnitudeValueString + SuffixText;
+
+	WidgetMessageData.MessageString = FinalMessage;
 }
 
-FString AGCN_AttachedEffectTextBase::AddingToString(FString String, FString AddedString, bool EndOfString)
-{
-	if (EndOfString)
-	{
-		return UKismetStringLibrary::Concat_StrStr(String, AddedString);
-	}
-	else
-	{
-		return UKismetStringLibrary::Concat_StrStr(AddedString, String);
-	}
-}
+

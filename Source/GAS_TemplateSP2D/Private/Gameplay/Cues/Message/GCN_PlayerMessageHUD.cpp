@@ -8,5 +8,6 @@ void AGCN_PlayerMessageHUD::OnExecuted(AActor* Source, AActor* Target, const FGa
 {
 	Super::OnExecuted(Source, Target, Parameters);
 
-	BP_TriggerWidget(FinalTextColor, PlayerMessage, FinalShowTextType);
+	WidgetMessageData.MessageString = PlayerMessage;
+	BP_TriggerWidget(WidgetMessageData);
 }
