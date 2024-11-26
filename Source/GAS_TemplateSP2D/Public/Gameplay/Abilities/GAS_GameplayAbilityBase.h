@@ -27,8 +27,6 @@ public:
 
 	void CreateTraceFromTargetingDataWithTeamFilter(TArray<AActor*>& OutActors, ETeamAttitude::Type TeamAttidue);
 	
-	bool CreateEffectWithMagnitude(FGameplayEffectSpec& Spec, UAbilitySystemComponent* SourceAbilitySystemComponent, TSubclassOf<UGameplayEffect> GameplayEffectClass, const FGameplayTag SetByCallerTag, float SetByCallerValue);
-
 	UFUNCTION(BlueprintPure, Category = "GameplayAbilityBase")
 	float GetCost(int32 AbilityLevel) const;
 

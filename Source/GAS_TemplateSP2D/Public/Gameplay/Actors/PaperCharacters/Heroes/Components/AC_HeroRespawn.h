@@ -21,11 +21,11 @@ protected:
 	void Initialize();
 
 	UFUNCTION()
-	void OnHeroDeSpawn(AGAS_PaperHeroBase* Hero);
-
-	void StartHeroDeSpawnCountdown(AGAS_PaperHeroBase* Hero);
+	void StartHeroReSpawnCountdown(AGAS_PaperHeroBase* Hero);
 
 	void HeroRespawn(AGAS_PaperHeroBase* Hero);
+
+	void ApplyHeroReSpawnEffect(AGAS_PaperHeroBase* Hero);
 
 	void SetHeroLocation(AGAS_PaperHeroBase* Hero);
 

@@ -30,32 +30,12 @@ void UGAS_GameplayAbilityBase::CreateTraceFromTargetingDataWithTeamFilter(TArray
 	}
 }
 
-bool UGAS_GameplayAbilityBase::CreateEffectWithMagnitude(FGameplayEffectSpec& Spec, UAbilitySystemComponent* SourceAbilitySystemComponent, TSubclassOf<UGameplayEffect> GameplayEffectClass, const FGameplayTag SetByCallerTag, float SetByCallerValue)
-{
-	FGameplayEffectContextHandle EffectContext = SourceAbilitySystemComponent->MakeEffectContext();
-	FGameplayEffectSpecHandle NewHandle = SourceAbilitySystemComponent->MakeOutgoingSpec(GameplayEffectClass, 1, EffectContext);
-	if (NewHandle.IsValid())
-	{
-		FGameplayEffectSpec* EffectSpec = NewHandle.Data.Get();
-		if (EffectSpec)
-		{
-			if (SetByCallerTag.IsValid() && SetByCallerValue != 0)
-			{
-				EffectSpec->SetSetByCallerMagnitude(SetByCallerTag, SetByCallerValue);
-			}
-			Spec = *EffectSpec;
-			return true;
-		}
-	}
-	return false;
-}
-
 float UGAS_GameplayAbilityBase::GetCost(int32 AbilityLevel) const
 {
 	UGameplayEffect* CostGameplayEffect = GetCostGameplayEffect();
 	float CostValue = 0;
 
-	if (CostGameplayEffect && !CostGameplayEffect->Modifiers.IsEmpty())
+	if (CostGameplayEffect && !CostGameplayEffect->Modifiers.IsValidIndex(0))
 	{
 		// Getting cost value from CostGameplayEffect
 		CostGameplayEffect->Modifiers[0].ModifierMagnitude.GetStaticMagnitudeIfPossible(AbilityLevel, CostValue);

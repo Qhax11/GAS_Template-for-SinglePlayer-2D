@@ -24,14 +24,14 @@ protected:
 	UFUNCTION()
 	void OnAbilitySetGiven(const AActor* OwnerActor);
 
-	UAbilitySystemComponent* OwnerASC;
+	class UAbilitySystemComponent* OwnerASC;
 
 public:
 
 	virtual bool Initialize(const AActor* OwnerActor);
 
 protected:
-	// For update full health state
+	// For update "TAG_Gameplay_Health_Full" GameplayTag
 	UFUNCTION()
 	virtual void HealthChanged(const FAttributeChangeCallbackData& Data);
 

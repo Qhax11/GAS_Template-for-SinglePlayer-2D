@@ -3,7 +3,7 @@
 
 #include "Gameplay/Abilities/Hero/GA_HeroDeath.h"
 #include "Gameplay/StaticDelegates/S_SpawnDelegates.h"
-#include "Gameplay/Actors/PaperCharacters/GAS_PaperHeroBase.h"
+#include "Gameplay/Actors/PaperCharacters/Heroes/GAS_PaperHeroBase.h"
 #include "Gameplay/Actors/PaperCharacters/Heroes/Components/AC_HeroRespawn.h"
 
 
@@ -23,7 +23,7 @@ void UGA_HeroDeath::ActivateAbility(const FGameplayAbilitySpecHandle Handle,
 
 	if (AGAS_PaperHeroBase* HeroBase = Cast<AGAS_PaperHeroBase>(GetAvatarActorFromActorInfo())) 
 	{
-		HeroBase->PrepareDeSpawn();
+		HeroBase->DisableMovement();
 	}
 }
 

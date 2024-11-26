@@ -9,12 +9,13 @@ void UGA_MeleeAttackBase::OnEventRecieved()
 	CreateTraceFromTargetingDataWithTeamFilter(OutResultActors, ETeamAttitude::Hostile);
 
 	FGameplayEffectSpec DamageSpec;
-	bool IsDamageSpecValid = CreateEffectWithMagnitude(DamageSpec,
-		GetAbilitySystemComponentFromActorInfo(), 
-		GEPhysicalDamage, 
+	bool IsDamageSpecValid = UGAS_EffectBlueprintFunctionLibary::CreateInstantEffectSpecWithSetByCallerValue(
+		DamageSpec,
+		GetAbilitySystemComponentFromActorInfo(),
+		GEPhysicalDamage,
 		GAS_Tags::TAG_Gameplay_EffectData_SetByCaller_DamageAmount,
 		Damage.GetValueAtLevel(GetAbilityLevel())
-	);
+		);
 
 	if (!IsDamageSpecValid)
 	{
@@ -22,7 +23,7 @@ void UGA_MeleeAttackBase::OnEventRecieved()
 		return;
 	}
 
-	DamageSpec.AppendDynamicAssetTags(TagsToAddToPhysicalDamageEffect);
+	UGAS_EffectBlueprintFunctionLibary::AddTagsToEffectSpecWithContain(DamageSpec, TagsToAddToPhysicalDamageEffect);
 
 	for (AActor* CollectedActor : OutResultActors)
 	{

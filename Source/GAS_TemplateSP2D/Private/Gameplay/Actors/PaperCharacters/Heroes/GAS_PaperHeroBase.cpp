@@ -1,7 +1,7 @@
 // Qhax's GAS Template for 2D SinglePlayer
 
 
-#include "Gameplay/Actors/PaperCharacters/GAS_PaperHeroBase.h"
+#include "Gameplay/Actors/PaperCharacters/Heroes/GAS_PaperHeroBase.h"
 #include "Gameplay/Actors/PaperCharacters/Heroes/Components/AC_HeroMoving.h"
 #include "Gameplay/Actors/PaperCharacters/Heroes/Components/AC_AbilityInputBinding.h"
 #include "Gameplay/Actors/PaperCharacters/Heroes/Components/AC_HeroAttributesListener.h"
@@ -47,22 +47,12 @@ void AGAS_PaperHeroBase::BeginPlay()
     }
 }
 
-void AGAS_PaperHeroBase::PrepareDeSpawn()
-{
-    DisableMovement();
-}
-
 void AGAS_PaperHeroBase::DisableMovement()
 {
     if (UCharacterMovementComponent* CharacterMovementComponent = GetCharacterMovement())
     {
         CharacterMovementComponent->DisableMovement();
     }
-}
-
-void AGAS_PaperHeroBase::PrepareReSpawn()
-{
-    EnableMovement();
 }
 
 void AGAS_PaperHeroBase::EnableMovement()

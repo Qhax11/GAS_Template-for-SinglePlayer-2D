@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Subsystems/GameInstanceSubsystem.h"
-#include "Gameplay/Actors/PaperCharacters/GAS_PaperHeroBase.h"
+#include "Gameplay/Actors/PaperCharacters/Heroes/GAS_PaperHeroBase.h"
 #include "S_SpawnDelegates.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnHeroSpawn, AGAS_PaperHeroBase*, Hero);

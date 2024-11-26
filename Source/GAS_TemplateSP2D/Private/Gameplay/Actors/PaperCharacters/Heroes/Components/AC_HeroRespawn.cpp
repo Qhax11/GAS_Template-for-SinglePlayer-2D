@@ -2,7 +2,8 @@
 
 
 #include "Gameplay/Actors/PaperCharacters/Heroes/Components/AC_HeroRespawn.h"
-#include "Gameplay/Actors/PaperCharacters/GAS_PaperHeroBase.h"
+#include "Gameplay/Actors/PaperCharacters/Heroes/GAS_PaperHeroBase.h"
+#include "Gameplay/Effects/GAS_EffectBlueprintFunctionLibary.h"
 #include "Gameplay/StaticDelegates/S_SpawnDelegates.h"
 #include "GameFramework/GameMode.h"
 
@@ -23,16 +24,11 @@ void UAC_HeroRespawn::Initialize()
 {
     if (US_SpawnDelegates* SpawnDelegatesSubsystem = GetWorld()->GetGameInstance()->GetSubsystem<US_SpawnDelegates>()) 
     {
-        SpawnDelegatesSubsystem->OnHeroDeSpawn.AddDynamic(this, &UAC_HeroRespawn::OnHeroDeSpawn);
+        SpawnDelegatesSubsystem->OnHeroDeSpawn.AddDynamic(this, &UAC_HeroRespawn::StartHeroReSpawnCountdown);
     }
 }
 
-void UAC_HeroRespawn::OnHeroDeSpawn(AGAS_PaperHeroBase* Hero)
-{
-    StartHeroDeSpawnCountdown(Hero);
-}
-
-void UAC_HeroRespawn::StartHeroDeSpawnCountdown(AGAS_PaperHeroBase* Hero)
+void UAC_HeroRespawn::StartHeroReSpawnCountdown(AGAS_PaperHeroBase* Hero)
 {
     GetWorld()->GetTimerManager().SetTimer(HeroDeSpawnCountDownTimerHandle, [this, Hero]()
         {
@@ -42,22 +38,28 @@ void UAC_HeroRespawn::StartHeroDeSpawnCountdown(AGAS_PaperHeroBase* Hero)
 
 void UAC_HeroRespawn::HeroRespawn(AGAS_PaperHeroBase* Hero)
 {
+    ApplyHeroReSpawnEffect(Hero);
+
     SetHeroLocation(Hero);
 
-    // TODO: create helper functions in another place, dont make code repeat
-    const UGameplayEffect* ReSpawnEffect = ReSpawnEffectClass->GetDefaultObject<UGameplayEffect>();
-    FGameplayEffectContextHandle EffectContextHandle;
-    if (ReSpawnEffect) 
-    {
-        Hero->GetAbilitySystemComponent()->ApplyGameplayEffectToSelf(ReSpawnEffect, 1, EffectContextHandle);
-    }
+    Hero->EnableMovement();
 
     if (US_SpawnDelegates* SpawnDelegatesSubsystem = GetWorld()->GetGameInstance()->GetSubsystem<US_SpawnDelegates>())
     {
         SpawnDelegatesSubsystem->OnHeroReSpawn.Broadcast(Hero);
     }
+}
 
-    Hero->PrepareReSpawn();
+void UAC_HeroRespawn::ApplyHeroReSpawnEffect(AGAS_PaperHeroBase* Hero)
+{
+    if (!ReSpawnEffectClass)
+    {
+        UE_LOG(LogTemp, Warning, TEXT("ReSpawnEffectClass is null in: %s"), *GetName());
+        return;
+    }
+
+    UGameplayEffect* ReSpawnEffect = UGAS_EffectBlueprintFunctionLibary::CreateEffectWithTSubclass(ReSpawnEffectClass);
+    Hero->GetAbilitySystemComponent()->ApplyGameplayEffectToSelf(ReSpawnEffect, 1, FGameplayEffectContextHandle());
 }
 
 void UAC_HeroRespawn::SetHeroLocation(AGAS_PaperHeroBase* Hero)

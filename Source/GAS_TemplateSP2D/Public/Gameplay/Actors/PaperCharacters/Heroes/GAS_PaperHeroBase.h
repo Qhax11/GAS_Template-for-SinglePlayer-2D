@@ -47,11 +47,7 @@ protected:
 
 public:
 
-	void PrepareDeSpawn();
-
 	void DisableMovement();
-
-	void PrepareReSpawn();
 
 	void EnableMovement();
 
