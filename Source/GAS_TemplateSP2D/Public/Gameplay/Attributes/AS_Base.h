@@ -77,12 +77,16 @@ public:
 
 	UAS_Base();
 
-	// We are using "ActiveGameplayEffectAdded" and "ActiveGameplayEffectRemoved" insted of PreAttributeChange and PostGameplayEffectExecute for detect instant and duration based effect
+	// We are using "ActiveGameplayEffectAdded" and "ActiveGameplayEffectRemoved" for instant and duration based effects.
 	UFUNCTION()
 	void ActiveGameplayEffectAdded(UAbilitySystemComponent* OwnerASC, const FGameplayEffectSpec& EffectSpec, FActiveGameplayEffectHandle EffectHandle);
 
 	UFUNCTION()
 	void ActiveGameplayEffectRemoved(const FActiveGameplayEffect& ActiveGameplayEffect);
+
+	// I am using this function to detect duration-based with periodic effects and with ExecCalculations. 
+	// If the effect only contains modifiers, the "ActiveGameplayEffectAdded" function detects it.
+	virtual void PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data) override;
 
 	virtual bool ClampAttributeValues(const FGameplayEffectModCallbackData& Data);
 

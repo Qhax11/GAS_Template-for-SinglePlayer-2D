@@ -17,6 +17,7 @@ class GAS_TEMPLATESP2D_API AGCN_AttachedEffectTextBase : public AGCN_MessageBase
 public:
 	AGCN_AttachedEffectTextBase();
 
+	// For instant effects or periodic ticks
 	virtual void OnExecuted(AActor* Source, AActor* Target, const FGameplayCueParameters& Parameters) override;
 
 	/**

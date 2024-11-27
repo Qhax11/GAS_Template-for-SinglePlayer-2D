@@ -62,6 +62,31 @@ void UAS_Base::ActiveGameplayEffectRemoved(const FActiveGameplayEffect& ActiveGa
 	}
 }
 
+void UAS_Base::PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data)
+{
+	Super::PostGameplayEffectExecute(Data);
+
+	if (Data.EffectSpec.Def->DurationPolicy != EGameplayEffectDurationType::Instant && !Data.EffectSpec.Def->Executions.IsEmpty())
+	{
+		for (int32 i = 0; i < Data.EffectSpec.ModifiedAttributes.Num(); i++)
+		{
+			const FGameplayAttribute& GameplayAttribute = Data.EffectSpec.ModifiedAttributes[i].Attribute;
+
+			float EvaluatedMagnitude = 0;
+			if (Data.EffectSpec.Def->Modifiers.IsValidIndex(i))
+			{
+				EvaluatedMagnitude = Data.EffectSpec.Modifiers[i].GetEvaluatedMagnitude();
+			}
+
+			FGameplayModifierEvaluatedData EvaluatedData = FGameplayModifierEvaluatedData(GameplayAttribute, EGameplayModOp::Max, EvaluatedMagnitude);
+			FGameplayEffectModCallbackData EffectModCallbackData = FGameplayEffectModCallbackData(Data.EffectSpec, EvaluatedData, *GetOwningAbilitySystemComponent());
+
+			ClampAttributeValues(EffectModCallbackData);
+			BroadcastPropertyChange(EffectModCallbackData);
+		}
+	}
+}
+
 bool UAS_Base::ClampAttributeValues(const FGameplayEffectModCallbackData& Data)
 {
 	if (!Data.EvaluatedData.IsValid || !Data.EvaluatedData.Attribute.IsValid())

@@ -16,6 +16,7 @@ class GAS_TEMPLATESP2D_API AGCN_PlayerMessageHUD : public AGCN_MessageBase
 
 public:
 
+	// For instant effects or periodic ticks
 	virtual void OnExecuted(AActor* Source, AActor* Target, const FGameplayCueParameters& Parameters) override;
 
 	// For duration-based effects with a period value of 0
