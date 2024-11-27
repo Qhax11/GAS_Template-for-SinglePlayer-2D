@@ -4,12 +4,20 @@
 
 #include "CoreMinimal.h"
 #include "Subsystems/GameInstanceSubsystem.h"
-#include "Gameplay/Actors/PaperCharacters/Heroes/GAS_PaperHeroBase.h"
+#include "Gameplay/Actors/PaperCharacters/GAS_PaperCharacterBase.h"
 #include "S_SpawnDelegates.generated.h"
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnHeroSpawn, AGAS_PaperHeroBase*, Hero);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnHeroReSpawn, AGAS_PaperHeroBase*, Hero);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnHeroDeSpawn, AGAS_PaperHeroBase*, Hero);
+// Spawn refers to the first initialization, 
+// ReSpawn refers to subsequent initializations after death
+// DeSpawn means the character's death.
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnHeroSpawn, AGAS_PaperCharacterBase*, Hero);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnHeroReSpawn, AGAS_PaperCharacterBase*, Hero);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnHeroDeSpawn, AGAS_PaperCharacterBase*, Hero);
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnEnemySpawn, AGAS_PaperCharacterBase*, Enemy);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnEnemyReSpawn, AGAS_PaperCharacterBase*, Enemy);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnEnemyDeSpawn, AGAS_PaperCharacterBase*, Enemy);
 
 
 UCLASS()
@@ -28,4 +36,13 @@ public:
 
 	UPROPERTY(BlueprintAssignable)
 	FOnHeroDeSpawn OnHeroDeSpawn;
+
+	UPROPERTY(BlueprintAssignable)
+	FOnEnemySpawn OnEnemySpawn;
+
+	UPROPERTY(BlueprintAssignable)
+	FOnEnemyReSpawn OnEnemyReSpawn;
+
+	UPROPERTY(BlueprintAssignable)
+	FOnEnemyDeSpawn OnEnemyDeSpawn;
 };

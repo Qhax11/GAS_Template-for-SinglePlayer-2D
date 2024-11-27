@@ -6,7 +6,6 @@
 #include "Gameplay/Actors/PaperCharacters/Heroes/Components/AC_AbilityInputBinding.h"
 #include "Gameplay/Actors/PaperCharacters/Heroes/Components/AC_HeroAttributesListener.h"
 #include "Gameplay/Actors/PaperCharacters/Heroes/Components/AC_HeroRespawn.h"
-#include "GameFramework/CharacterMovementComponent.h"
 #include "EnhancedInputSubsystems.h"
 
 
@@ -47,21 +46,6 @@ void AGAS_PaperHeroBase::BeginPlay()
     }
 }
 
-void AGAS_PaperHeroBase::DisableMovement()
-{
-    if (UCharacterMovementComponent* CharacterMovementComponent = GetCharacterMovement())
-    {
-        CharacterMovementComponent->DisableMovement();
-    }
-}
-
-void AGAS_PaperHeroBase::EnableMovement()
-{
-    if (UCharacterMovementComponent* CharacterMovementComponent = GetCharacterMovement())
-    {
-        CharacterMovementComponent->SetMovementMode(EMovementMode::MOVE_Walking);  
-    }
-}
 
 
 

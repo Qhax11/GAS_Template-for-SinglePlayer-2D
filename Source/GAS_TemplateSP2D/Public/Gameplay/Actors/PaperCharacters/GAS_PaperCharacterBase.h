@@ -46,4 +46,10 @@ public:
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "CharacterBase|Components")
 	class UAC_GameplayData* GameplayDataComponent;
 
+public:
+
+	void DisableMovement();
+
+	void EnableMovement();
+
 };

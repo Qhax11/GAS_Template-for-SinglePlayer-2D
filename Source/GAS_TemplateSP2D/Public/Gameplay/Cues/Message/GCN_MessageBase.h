@@ -34,9 +34,9 @@ struct FWidgetMessageData
 
 	FWidgetMessageData() = default;
 
-	FWidgetMessageData(FSlateColor InMessageColor, FString InMessageString, EMessageTextAnim InMessageTextAnim)
-		: MessageColor(MessageColor),
-		MessageString(InMessageString),
+	FWidgetMessageData(FString InMessageString, FSlateColor InMessageColor, EMessageTextAnim InMessageTextAnim)
+		: MessageString(InMessageString),
+		MessageColor(MessageColor),
 		MessageTextAnim(InMessageTextAnim)
 	{}
 

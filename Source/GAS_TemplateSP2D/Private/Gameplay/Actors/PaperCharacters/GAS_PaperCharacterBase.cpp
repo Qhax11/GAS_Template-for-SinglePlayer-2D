@@ -7,7 +7,9 @@
 #include "Gameplay/Components/AC_Team.h"
 #include "Gameplay/Components/AC_TagDelegates.h"
 #include "Gameplay/Components/AC_GameplayData.h"
+#include "GameFramework/CharacterMovementComponent.h"
 #include "PaperFlipbookComponent.h"
+
 
 AGAS_PaperCharacterBase::AGAS_PaperCharacterBase(const class FObjectInitializer& ObjectInitializer)
 {
@@ -44,6 +46,22 @@ void AGAS_PaperCharacterBase::BeginPlay()
 UAbilitySystemComponent* AGAS_PaperCharacterBase::GetAbilitySystemComponent() const
 {
 	return PaperCharacterASC;
+}
+
+void AGAS_PaperCharacterBase::DisableMovement()
+{
+	if (UCharacterMovementComponent* CharacterMovementComponent = GetCharacterMovement())
+	{
+		CharacterMovementComponent->DisableMovement();
+	}
+}
+
+void AGAS_PaperCharacterBase::EnableMovement()
+{
+	if (UCharacterMovementComponent* CharacterMovementComponent = GetCharacterMovement())
+	{
+		CharacterMovementComponent->SetMovementMode(EMovementMode::MOVE_Walking);
+	}
 }
 
 

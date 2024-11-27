@@ -4,19 +4,20 @@
 
 #include "CoreMinimal.h"
 #include "Gameplay/Components/AC_RespawnBase.h"
-#include "AC_HeroRespawn.generated.h"
+#include "AC_EnemyRespawn.generated.h"
 
-
-UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
-class GAS_TEMPLATESP2D_API UAC_HeroRespawn : public UAC_RespawnBase
+/**
+ * 
+ */
+UCLASS()
+class GAS_TEMPLATESP2D_API UAC_EnemyRespawn : public UAC_RespawnBase
 {
 	GENERATED_BODY()
+public:
 
-protected:
 	virtual void BindCharacterDeSpawn() override;
 
 	virtual void OnCharacterRespawn(AGAS_PaperCharacterBase* CharacterBase) override;
 
-	void SetHeroLocation(AGAS_PaperCharacterBase* Hero);
 
 };

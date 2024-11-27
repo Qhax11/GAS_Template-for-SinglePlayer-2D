@@ -19,4 +19,10 @@ public:
 	
 	virtual void BeginPlay() override;
 
+protected:
+
+	//* Components *//
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Enemy|Components")
+	class UAC_EnemyRespawn* EnemyRespawnComponent;
+
 };
