@@ -11,3 +11,11 @@ void AGCN_PlayerMessageHUD::OnExecuted(AActor* Source, AActor* Target, const FGa
 	WidgetMessageData.MessageString = PlayerMessage;
 	BP_TriggerWidget(WidgetMessageData);
 }
+
+void AGCN_PlayerMessageHUD::OnActivated(AActor* Source, AActor* Target, const FGameplayCueParameters& Parameters)
+{
+	Super::OnActivated(Source, Target, Parameters);
+
+	WidgetMessageData.MessageString = PlayerMessage;
+	BP_TriggerWidget(WidgetMessageData);
+}

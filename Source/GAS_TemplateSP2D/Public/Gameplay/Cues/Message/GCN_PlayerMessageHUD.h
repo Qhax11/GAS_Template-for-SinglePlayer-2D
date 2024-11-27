@@ -18,6 +18,9 @@ public:
 
 	virtual void OnExecuted(AActor* Source, AActor* Target, const FGameplayCueParameters& Parameters) override;
 
+	// For duration-based effects with a period value of 0
+	virtual void OnActivated(AActor* Source, AActor* Target, const FGameplayCueParameters& Parameters) override;
+
 	UPROPERTY(EditDefaultsOnly, Category = "MessageConfig")
 	FString PlayerMessage;
 };
