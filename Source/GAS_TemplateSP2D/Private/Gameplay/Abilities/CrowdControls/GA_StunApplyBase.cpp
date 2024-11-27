@@ -18,7 +18,7 @@ UGA_StunApplyBase::UGA_StunApplyBase()
 
 void UGA_StunApplyBase::ActivateAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* OwnerInfo, const FGameplayAbilityActivationInfo ActivationInfo, const FGameplayEventData* TriggerEventData)
 {
-	Super::ActivateAbility(Handle, OwnerInfo, ActivationInfo, TriggerEventData);
+	//Super::ActivateAbility(Handle, OwnerInfo, ActivationInfo, TriggerEventData);
 
 	Character = Cast<ACharacter>(OwnerInfo->AvatarActor);
 	CharacterMoveComp = Character->GetCharacterMovement();
