@@ -16,15 +16,14 @@ void AGCN_SoundBase::OnExecuted(AActor* Source, AActor* Target, const FGameplayC
 		return;
 	}
 
-
 	if (UAC_GameplayData* DataComponent = Target->GetComponentByClass<UAC_GameplayData>())
 	{
 		UDA_ActorSounds* SoundsData = DataComponent->GetActorSoundsData();
 		if (SoundsData)
 		{
-			if (SoundsData->TagToSoundMap.Contains(GAS_Tags::TAG_GameplayCue_Sound_Jump))
+			if (SoundsData->TagToSoundMap.Contains(GameplayCueTag))
 			{
-				USoundCue* AbilitySoundCue = SoundsData->TagToSoundMap[GAS_Tags::TAG_GameplayCue_Sound_Jump];
+				USoundCue* AbilitySoundCue = SoundsData->TagToSoundMap[GameplayCueTag];
 				UGameplayStatics::PlaySoundAtLocation(GetWorld(), AbilitySoundCue, Target->GetActorLocation());
 			}
 		}

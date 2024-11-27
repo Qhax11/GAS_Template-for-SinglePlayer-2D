@@ -20,16 +20,9 @@ namespace GAS_Tags
 	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_Mana_Regen, "Gameplay.Mana.Regen");
 
 	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_Attack, "Gameplay.Attack");
-	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_Attack_Cost, "Gameplay.Attack.Cost");
-	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_Attack_Cooldown, "Gameplay.Attack.Cooldown");
 	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_Attack_Event, "Gameplay.Attack.Event");
 
 	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_DamageImmune, "Gameplay.DamageImmune");
-
-	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_HeroAbility0, "Gameplay.Hero.Ability0");
-	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_HeroAbility1, "Gameplay.Hero.Ability1");
-	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_HeroAbility2, "Gameplay.Hero.Ability2");
-	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_HeroAbility3, "Gameplay.Hero.Ability3");
 
 	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_Event_TakeDamage, "Gameplay.Event.TakeDamage");
 	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_Event_Death, "Gameplay.Event.Death");
@@ -51,6 +44,11 @@ namespace GAS_Tags
 
 	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_Entity_Hero, "Gameplay.Entity.Hero");
 	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_Entity_Enemy, "Gameplay.Entity.Enemy");
+
+	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_HeroAbility0, "Gameplay.Hero.Ability0");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_HeroAbility1, "Gameplay.Hero.Ability1");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_HeroAbility2, "Gameplay.Hero.Ability2");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_HeroAbility3, "Gameplay.Hero.Ability3");
 
 	/**********************************************
 	*----------------<Filter Tags>----------------*
@@ -81,7 +79,10 @@ namespace GAS_Tags
 	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_VFX_Heal, "GameplayCue.VFX.Heal");
 	
 	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_Sound, "GameplayCue.Sound");
-	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_Sound_Jump, "GameplayCue.Sound.Jump");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_Sound_TakeDamage, "GameplayCue.Sound.TakeDamage");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_Sound_AttackSwing, "GameplayCue.Sound.AttackSwing");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_Sound_Death, "GameplayCue.Sound.Death");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_Sound_LevelUp, "GameplayCue.Sound.LevelUp");
 
 	/************************************************
 	*-------------------<AI Tags>-------------------*
@@ -109,15 +110,4 @@ namespace GAS_Tags
 	UE_DEFINE_GAMEPLAY_TAG(TAG_UI_Cooldown_Ability1, "UI.Cooldown.Ability1");
 	UE_DEFINE_GAMEPLAY_TAG(TAG_UI_Cooldown_Ability2, "UI.Cooldown.Ability2");
 	UE_DEFINE_GAMEPLAY_TAG(TAG_UI_Cooldown_Ability3, "UI.Cooldown.Ability3");
-
-	/* TODO: Tags below are incorrect they If These tags being used for GameplayCues,
-	 * These tags should be under GameplayCue, You can make a them more specific by
-	 * Adding UI tag after GameplayCue, Like: (GameplayCue_UI -> GameplayCue.UI).
-	 * But if only getting used by UI then these tags should be under UI.
-	 */
-	UE_DEFINE_GAMEPLAY_TAG(TAG_UI_GameplaycueShowInfoOnHUD, "Gameplaycue.UI.ShowInfoOnHUD");
-	UE_DEFINE_GAMEPLAY_TAG(TAG_UI_GameplaycueShowInfoOnHUD_Gold, "Gameplaycue.UI.ShowInfoOnHUD.Gold");
-	UE_DEFINE_GAMEPLAY_TAG(TAG_UI_GameplaycueShowInfoOnHUD_XP, "Gameplaycue.UI.ShowInfoOnHUD.XP");
-	UE_DEFINE_GAMEPLAY_TAG(TAG_UI_GameplaycueShowInfoOnHUD_LevelUp, "Gameplaycue.UI.ShowInfoOnHUD.LevelUp");
-
 }

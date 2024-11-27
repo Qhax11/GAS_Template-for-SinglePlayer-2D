@@ -21,6 +21,11 @@ void AGCN_AttachedEffectTextBase::OnExecuted(AActor* Source, AActor* Target, con
 		return;
 	}
 
+	if (CheckAndExecuteGameplay(Target, Parameters))
+	{
+		return;
+	}
+
 	PrepareText(Parameters.RawMagnitude);
 
 	if (bOverrideText)

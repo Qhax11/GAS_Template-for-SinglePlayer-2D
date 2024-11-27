@@ -17,7 +17,6 @@ class GAS_TEMPLATESP2D_API UAC_GameplayData : public UActorComponent
 public:	
 	UAC_GameplayData();
 	
-	
 	UFUNCTION(BlueprintCallable)
 	UDA_ActorSounds* GetActorSoundsData();
 	

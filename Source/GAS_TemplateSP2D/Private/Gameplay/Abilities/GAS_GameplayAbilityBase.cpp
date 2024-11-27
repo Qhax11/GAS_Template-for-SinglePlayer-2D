@@ -35,7 +35,7 @@ float UGAS_GameplayAbilityBase::GetCost(int32 AbilityLevel) const
 	UGameplayEffect* CostGameplayEffect = GetCostGameplayEffect();
 	float CostValue = 0;
 
-	if (CostGameplayEffect && !CostGameplayEffect->Modifiers.IsValidIndex(0))
+	if (CostGameplayEffect && CostGameplayEffect->Modifiers.IsValidIndex(0))
 	{
 		// Getting cost value from CostGameplayEffect
 		CostGameplayEffect->Modifiers[0].ModifierMagnitude.GetStaticMagnitudeIfPossible(AbilityLevel, CostValue);
