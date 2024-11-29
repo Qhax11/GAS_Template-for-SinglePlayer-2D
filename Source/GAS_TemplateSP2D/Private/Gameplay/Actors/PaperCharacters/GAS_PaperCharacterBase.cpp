@@ -8,6 +8,7 @@
 #include "Gameplay/Components/AC_TagDelegates.h"
 #include "Gameplay/Components/AC_GameplayData.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "Components/CapsuleComponent.h"
 #include "PaperFlipbookComponent.h"
 
 
@@ -61,6 +62,23 @@ void AGAS_PaperCharacterBase::EnableMovement()
 	if (UCharacterMovementComponent* CharacterMovementComponent = GetCharacterMovement())
 	{
 		CharacterMovementComponent->SetMovementMode(EMovementMode::MOVE_Walking);
+	}
+}
+
+void AGAS_PaperCharacterBase::DisableCollision()
+{
+	// Dead object collision, you can check ProjectSettings->Engine->Collision->CollisionObject
+	if (UCapsuleComponent* CapsuleComp = GetCapsuleComponent()) 
+	{
+		GetCapsuleComponent()->SetCollisionObjectType(ECollisionChannel::ECC_GameTraceChannel1);
+	}
+}
+
+void AGAS_PaperCharacterBase::EnableCollision()
+{
+	if (UCapsuleComponent* CapsuleComp = GetCapsuleComponent())
+	{
+		GetCapsuleComponent()->SetCollisionObjectType(ECollisionChannel::ECC_Pawn);
 	}
 }
 

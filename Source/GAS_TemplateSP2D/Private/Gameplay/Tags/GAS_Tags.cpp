@@ -35,8 +35,8 @@ namespace GAS_Tags
 	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_State_InCombat, "Gameplay.State.InCombat");
 
 	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_EffectData_SetByCaller_DamageAmount, "Gameplay.EffectData.SetByCaller.DamageAmount");
-	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_EffectData_SetByCaller_HealingAmount, "Gameplay.EffectData.SetByCaller.HealingAmount");
-	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_EffectData_SetByCaller_GiveManaAmount, "Gameplay.EffectData.SetByCaller.GiveManaAmount");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_EffectData_SetByCaller_GainHealthAmount, "Gameplay.EffectData.SetByCaller.GainHealthAmount");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_EffectData_SetByCaller_GainManaAmount, "Gameplay.EffectData.SetByCaller.GainManaAmount");
 
 	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_EffectData_EnableLifeSteal, "Gameplay.EffectData.EnableLifeSteal");
 	UE_DEFINE_GAMEPLAY_TAG(TAG_Gameplay_EffectData_EnableCriticalDamage, "Gameplay.EffectData.EnableCriticalDamage");
@@ -91,8 +91,6 @@ namespace GAS_Tags
 	*************************************************/
 
 	UE_DEFINE_GAMEPLAY_TAG(TAG_AI, "AI");
-	UE_DEFINE_GAMEPLAY_TAG(TAG_AI_Logic_AttackToAttackingHero, "AI.Logic.AttackToAttackingHero");
-	UE_DEFINE_GAMEPLAY_TAG(TAG_AI_Logic_AttackToTargetHero, "AI.Logic.AttackToTargetHero");
 
 	/************************************************
 	*-------------------<UI Tags>-------------------*

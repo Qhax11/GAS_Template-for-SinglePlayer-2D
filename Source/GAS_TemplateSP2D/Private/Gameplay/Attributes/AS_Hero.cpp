@@ -16,6 +16,12 @@ bool UAS_Hero::ClampAttributeValues(const FGameplayEffectModCallbackData& Data)
 		Mana.SetCurrentValue(FMath::Clamp(Mana.GetBaseValue(), 0, MaxMana.GetCurrentValue()));
 	}
 
+	else if (Data.EvaluatedData.Attribute == GetLifeStealAttribute())
+	{
+		LifeSteal.SetBaseValue(FMath::Clamp(LifeSteal.GetCurrentValue(), 0, 100));
+		LifeSteal.SetCurrentValue(FMath::Clamp(LifeSteal.GetCurrentValue(), 0, 100));
+	}
+
 	return true;
 }
 

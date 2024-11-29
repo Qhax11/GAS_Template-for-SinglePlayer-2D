@@ -15,15 +15,15 @@ void UEC_GainHealth::ExecuteWithParams(FExecCalculationParameters Params, FGamep
 	float TargetMaxHealth = Params.GetTargetAttributeSet()->GetMaxHealth();
 
 	// We take damage magnitude from SetByCaller, it is in EffectSpec.
-	float HealAmount = GetSetByCallerMagnitude(Params.GetSpec(), GAS_Tags::TAG_Gameplay_EffectData_SetByCaller_HealingAmount, .0f, true);
+	float GainHealthAmount = GetSetByCallerMagnitude(Params.GetSpec(), GAS_Tags::TAG_Gameplay_EffectData_SetByCaller_GainHealthAmount, .0f, true);
 
-	float MaxHealAmountValue = TargetMaxHealth - TargetHealth;
-	float FinalHealAmount = FMath::Clamp(HealAmount, 0, MaxHealAmountValue);
+	float MaxGainHealthAmountValue = TargetMaxHealth - TargetHealth;
+	float FinalGainHealthAmount = FMath::Clamp(GainHealthAmount, 0, MaxGainHealthAmountValue);
 
-	if (FinalHealAmount <= 0)
+	if (FinalGainHealthAmount <= 0)
 	{
 		return;
 	}
 
-	OutExecutionOutput.AddOutputModifier(FGameplayModifierEvaluatedData(Params.GetTargetAttributeSet()->GetHealthAttribute(), EGameplayModOp::Additive, FinalHealAmount));
+	OutExecutionOutput.AddOutputModifier(FGameplayModifierEvaluatedData(Params.GetTargetAttributeSet()->GetHealthAttribute(), EGameplayModOp::Additive, FinalGainHealthAmount));
 }

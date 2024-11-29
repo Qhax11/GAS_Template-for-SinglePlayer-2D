@@ -105,6 +105,7 @@ public:
 	ATTRIBUTE_ACCESSORS(UAS_Base, MaxHealth)
 		FOnPropertyValueChanged OnMaxHealthChanged;
 
+	// Implemented as a percentage value 
 		UPROPERTY(BlueprintReadOnly, Category = "Base")
 	FGameplayAttributeData PhysicalArmor;
 	ATTRIBUTE_ACCESSORS(UAS_Base, PhysicalArmor)

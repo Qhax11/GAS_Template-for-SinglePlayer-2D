@@ -23,20 +23,10 @@ void UEC_DamageBase::ExecuteWithParams(FExecCalculationParameters Params, FGamep
 
 	CalculateDamageReduction(Params, MitigatedDamage, OutExecutionOutput);
 
-	float HealthDamageDone = MitigatedDamage;
 	CalculateHealth(Params, MitigatedDamage, OutExecutionOutput);
-	if (MitigatedDamage < HealthDamageDone)
-	{
-		HealthDamageDone -= MitigatedDamage;
-	}
-
+	
 	float LifeStealDone = .0f;
-	CalculateLifeSteal(Params, HealthDamageDone, LifeStealDone, OutExecutionOutput);
-
-	/*
-	// Capture DamageDone in spec for acces from outside of effect
-	Params.MutableSpec->SetSetByCallerMagnitude(HDA_Tags::TAG_Gameplay_ExecCalculation_TotalDamageDone, HealthDamageDone + ShieldDamageDone);
-	*/
+	CalculateLifeSteal(Params, MitigatedDamage, LifeStealDone, OutExecutionOutput);
 }
 
 float UEC_DamageBase::GetBaseDamage(const FExecCalculationParameters& Params) const
@@ -83,6 +73,7 @@ void UEC_DamageBase::CalculateDamageReduction(FExecCalculationParameters& Params
 void UEC_DamageBase::CalculateHealth(FExecCalculationParameters& Params, float& MitigatedDamage, FGameplayEffectCustomExecutionOutput& OutExecutionOutput) const
 {
 	const float CurrentTargetHealth = Params.GetTargetAttributeSet()->GetHealth();
+
 	// This clamp prevents us from doing more damage than there is health available.
 	const float HealthDamageDone = FMath::Clamp(MitigatedDamage, 0.0f, CurrentTargetHealth);
 
@@ -92,7 +83,6 @@ void UEC_DamageBase::CalculateHealth(FExecCalculationParameters& Params, float& 
 	{
 		OutExecutionOutput.AddOutputModifier(FGameplayModifierEvaluatedData(Params.GetTargetAttributeSet()->GetHealthAttribute(), EGameplayModOp::Additive, -HealthDamageDone));
 	}
-	//Params.MutableSpec->SetSetByCallerMagnitude(GAS_Tags::TAG_Gameplay_ExecCalculation_HealthDamageAmount, HealthDamageDone);
 
 	// Trigger TakeDamage Ability
 	if (HealthDamageDone > 0)
@@ -120,9 +110,6 @@ void UEC_DamageBase::CalculateHealth(FExecCalculationParameters& Params, float& 
 
 		Params.TargetASC->HandleGameplayEvent(DeathPayload.EventTag, &DeathPayload);
 	}
-
-	// Subtract health damage done from mitigated damage
-	MitigatedDamage -= HealthDamageDone;
 }
 
 void UEC_DamageBase::CalculateCritical(FExecCalculationParameters& Params, float& MitigatedDamage, FGameplayEffectCustomExecutionOutput& OutExecutionOutput) const
@@ -180,7 +167,7 @@ void UEC_DamageBase::CalculateLifeSteal(FExecCalculationParameters& Params, floa
 				LifeStealSpec, 
 				Params.SourceASC, 
 				UGE_GainHealth::StaticClass(), 
-				GAS_Tags::TAG_Gameplay_EffectData_SetByCaller_HealingAmount, 
+				GAS_Tags::TAG_Gameplay_EffectData_SetByCaller_GainHealthAmount, 
 				HealDone
 			);
 

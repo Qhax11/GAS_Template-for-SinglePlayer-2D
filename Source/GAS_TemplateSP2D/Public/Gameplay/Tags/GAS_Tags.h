@@ -40,8 +40,8 @@ namespace GAS_Tags
 	GAS_TEMPLATESP2D_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(TAG_Gameplay_State_InCombat);
 
 	GAS_TEMPLATESP2D_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(TAG_Gameplay_EffectData_SetByCaller_DamageAmount);
-	GAS_TEMPLATESP2D_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(TAG_Gameplay_EffectData_SetByCaller_HealingAmount);
-	GAS_TEMPLATESP2D_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(TAG_Gameplay_EffectData_SetByCaller_GiveManaAmount);
+	GAS_TEMPLATESP2D_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(TAG_Gameplay_EffectData_SetByCaller_GainHealthAmount);
+	GAS_TEMPLATESP2D_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(TAG_Gameplay_EffectData_SetByCaller_GainManaAmount);
 
 	GAS_TEMPLATESP2D_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(TAG_Gameplay_EffectData_EnableLifeSteal);
 	GAS_TEMPLATESP2D_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(TAG_Gameplay_EffectData_EnableCriticalDamage);
@@ -99,8 +99,6 @@ namespace GAS_Tags
 
 
 	GAS_TEMPLATESP2D_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(TAG_AI);
-	GAS_TEMPLATESP2D_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(TAG_AI_Logic_AttackToAttackingHero);
-	GAS_TEMPLATESP2D_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(TAG_AI_Logic_AttackToTargetHero);
 
 	/************************************************
 	*-------------------<UI Tags>-------------------*

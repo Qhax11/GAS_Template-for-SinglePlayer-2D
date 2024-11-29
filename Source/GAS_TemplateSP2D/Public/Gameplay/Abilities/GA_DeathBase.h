@@ -5,7 +5,6 @@
 #include "CoreMinimal.h"
 #include "Gameplay/Abilities/GA_SequenceAbility.h"
 #include "Gameplay/Actors/PaperCharacters/GAS_PaperCharacterBase.h"
-#include "Components/CapsuleComponent.h"
 #include "GA_DeathBase.generated.h"
 
 /**
@@ -23,8 +22,6 @@ public:
 protected:
 
 	virtual void ActivateAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo, const FGameplayEventData* TriggerEventData) override;
-
-	virtual void DisableCollisions();
 
 	virtual void BroadcastDeSpawn();
 	

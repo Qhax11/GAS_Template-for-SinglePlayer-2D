@@ -26,11 +26,13 @@ public:
 	ATTRIBUTE_ACCESSORS(UAS_Hero, MaxMana)
 		FOnPropertyValueChanged OnMaxManaChanged;
 
+	// Implemented as a percentage value 
 	UPROPERTY(BlueprintReadOnly, Category = "Hero")
 	FGameplayAttributeData LifeSteal;
 	ATTRIBUTE_ACCESSORS(UAS_Hero, LifeSteal)
 		FOnPropertyValueChanged OnLifeStealChanged;
 
+	// Implemented as a percentage value 
 	UPROPERTY(BlueprintReadOnly, Category = "Hero")
 	FGameplayAttributeData CriticalDamage;
 	ATTRIBUTE_ACCESSORS(UAS_Hero, CriticalDamage)

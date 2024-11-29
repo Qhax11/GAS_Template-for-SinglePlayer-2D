@@ -52,4 +52,8 @@ public:
 
 	void EnableMovement();
 
+	void DisableCollision();
+
+	void EnableCollision();
+
 };

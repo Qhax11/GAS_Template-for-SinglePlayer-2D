@@ -109,8 +109,8 @@ bool UAS_Base::ClampAttributeValues(const FGameplayEffectModCallbackData& Data)
 
 	else if (Data.EvaluatedData.Attribute == GetPhysicalArmorAttribute())
 	{
-		PhysicalArmor.SetBaseValue(FMath::Clamp(PhysicalArmor.GetCurrentValue(), 0, 10000));
-		PhysicalArmor.SetCurrentValue(FMath::Clamp(PhysicalArmor.GetCurrentValue(), 0, 10000));
+		PhysicalArmor.SetBaseValue(FMath::Clamp(PhysicalArmor.GetCurrentValue(), 0, 100));
+		PhysicalArmor.SetCurrentValue(FMath::Clamp(PhysicalArmor.GetCurrentValue(), 0, 100));
 	}
 
 	return true;

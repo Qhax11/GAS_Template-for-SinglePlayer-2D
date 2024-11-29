@@ -28,7 +28,8 @@ void UAC_RespawnBase::StartCharacterReSpawnCountdown(AGAS_PaperCharacterBase* Ch
 	GetWorld()->GetTimerManager().SetTimer(CharacterDeSpawnCountDownTimerHandle, [this, CharacterBase]()
 		{
 			OnCharacterRespawn(CharacterBase);
-		}, ReSpawnDelay, false);
+		}, 
+		ReSpawnDelay, false);
 }
 
 void UAC_RespawnBase::OnCharacterRespawn(AGAS_PaperCharacterBase* CharacterBase)
@@ -36,6 +37,7 @@ void UAC_RespawnBase::OnCharacterRespawn(AGAS_PaperCharacterBase* CharacterBase)
 	ApplyCharacterReSpawnEffect(CharacterBase);
 
 	CharacterBase->EnableMovement();
+	CharacterBase->EnableCollision();
 }
 
 void UAC_RespawnBase::ApplyCharacterReSpawnEffect(AGAS_PaperCharacterBase* CharacterBase)

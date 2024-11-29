@@ -25,22 +25,12 @@ void UGA_DeathBase::ActivateAbility(const FGameplayAbilitySpecHandle Handle,
 	// Play AnimSequence.
 	Super::ActivateAbility(Handle, ActorInfo, ActivationInfo, TriggerEventData);
 
-	DisableCollisions();
-
 	BroadcastDeSpawn();
 
 	if (AGAS_PaperCharacterBase* CharacterBase = Cast<AGAS_PaperCharacterBase>(GetAvatarActorFromActorInfo()))
 	{
 		CharacterBase->DisableMovement();
-	}
-}
-
-void UGA_DeathBase::DisableCollisions()
-{
-	if (AGAS_PaperCharacterBase* CharBase = Cast<AGAS_PaperCharacterBase>(GetAvatarActorFromActorInfo()))
-	{
-		// Dead object collision, you can check ProjectSettings->Engine->Collision->CollisionObject
-		CharBase->GetCapsuleComponent()->SetCollisionObjectType(ECollisionChannel::ECC_GameTraceChannel1);
+		CharacterBase->DisableCollision();
 	}
 }
 

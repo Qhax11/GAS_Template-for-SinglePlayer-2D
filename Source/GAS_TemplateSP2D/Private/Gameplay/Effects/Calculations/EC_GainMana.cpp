@@ -17,15 +17,19 @@ void UEC_GainMana::ExecuteWithParams(FExecCalculationParameters Params, FGamepla
 	float TargetMaxMana = HeroAttributeSet->GetMaxMana();
 
 	// We take damage magnitude from SetByCaller, it is in EffectSpec.
-	float GiveManaAmount = GetSetByCallerMagnitude(Params.GetSpec(), GAS_Tags::TAG_Gameplay_EffectData_SetByCaller_GiveManaAmount, .0f, true);
+	float GainManaAmount = GetSetByCallerMagnitude(Params.GetSpec(), GAS_Tags::TAG_Gameplay_EffectData_SetByCaller_GainManaAmount, .0f, true);
 
-	float MaxGiveManaAmountValue = TargetMaxMana - TargetMana;
-	float FinalGiveManaAmount = FMath::Clamp(GiveManaAmount, 0, MaxGiveManaAmountValue);
+	float MaxGainManaAmountValue = TargetMaxMana - TargetMana;
+	float FinalGainManaAmount = FMath::Clamp(GainManaAmount, 0, MaxGainManaAmountValue);
 
-	if (FinalGiveManaAmount <= 0)
+	if (FinalGainManaAmount <= 0)
 	{
 		return;
 	}
 
-	OutExecutionOutput.AddOutputModifier(FGameplayModifierEvaluatedData(HeroAttributeSet->GetManaAttribute(), EGameplayModOp::Additive, FinalGiveManaAmount));
+	UE_LOG(LogTemp, Warning, TEXT("GainManaAmount: %d"), GainManaAmount);
+	UE_LOG(LogTemp, Warning, TEXT("MaxGainManaAmountValue: %d"), MaxGainManaAmountValue);
+	UE_LOG(LogTemp, Warning, TEXT("FinalGainManaAmount: %d"), FinalGainManaAmount);
+
+	OutExecutionOutput.AddOutputModifier(FGameplayModifierEvaluatedData(HeroAttributeSet->GetManaAttribute(), EGameplayModOp::Additive, FinalGainManaAmount));
 }
