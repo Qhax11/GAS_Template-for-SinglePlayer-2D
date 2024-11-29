@@ -15,7 +15,6 @@ class GAS_TEMPLATESP2D_API UAC_AbilitySet : public UActorComponent
 	GENERATED_BODY()
 
 public:	
-	// Sets default values for this component's properties
 	UAC_AbilitySet();
 
 	void Initialize(UGAS_AbilitySystemComponent* ASC);

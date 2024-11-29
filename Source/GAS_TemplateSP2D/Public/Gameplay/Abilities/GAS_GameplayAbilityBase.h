@@ -6,8 +6,8 @@
 #include "Gameplay/Abilities/Targeting/GAS_AbilityTargetingData.h"
 #include "Gameplay/Tags/GAS_Tags.h"
 #include "AbilitySystemComponent.h"
-#include "Gameplay/Attributes/AS_Base.h"
 #include "Gameplay/Components/AC_Team.h"
+#include "Gameplay/Attributes/AS_Base.h"
 #include "GAS_GameplayAbilityBase.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnAbilityLevelChanged, UGameplayAbility*, Ability, int32, NewLevel);

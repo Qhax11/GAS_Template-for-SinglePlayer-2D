@@ -17,5 +17,4 @@ public:
 
 	virtual void OnExecuted(AActor* Source, AActor* Target, const FGameplayCueParameters& Parameters);
 
-	
 };

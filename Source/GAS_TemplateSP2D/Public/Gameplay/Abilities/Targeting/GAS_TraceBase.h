@@ -20,6 +20,8 @@ protected:
 
 public:
 
+	void MakeTrace(const UObject* Owner, const UWorld* World, const FVector& Location, const FRotator& Direction, TArray<AActor*>& OutActors);
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "TraceParams", meta = (ExposeOnSpawn = true))
 	bool bIgnoreSelf = true;
 
@@ -49,8 +51,6 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "DrawParams", meta = (EditCondition = "bDrawEnable"))
 	FColor DrawColor = FColor::White;
-
-	void MakeTrace(const UObject* Owner, const UWorld* World, const FVector& Location, const FRotator& Direction, TArray<AActor*>& OutActors);
 
 protected:
 

@@ -4,7 +4,6 @@
 
 #include "Gameplay/Abilities/GAS_GameplayAbilityBase.h"
 #include "AnimSequences/PaperZDAnimSequence.h"
-#include "AbilitySystemGlobals.h"
 #include "GA_SequenceAbility.generated.h"
 
 /**

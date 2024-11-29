@@ -27,9 +27,5 @@ void UEC_GainMana::ExecuteWithParams(FExecCalculationParameters Params, FGamepla
 		return;
 	}
 
-	UE_LOG(LogTemp, Warning, TEXT("GainManaAmount: %d"), GainManaAmount);
-	UE_LOG(LogTemp, Warning, TEXT("MaxGainManaAmountValue: %d"), MaxGainManaAmountValue);
-	UE_LOG(LogTemp, Warning, TEXT("FinalGainManaAmount: %d"), FinalGainManaAmount);
-
 	OutExecutionOutput.AddOutputModifier(FGameplayModifierEvaluatedData(HeroAttributeSet->GetManaAttribute(), EGameplayModOp::Additive, FinalGainManaAmount));
 }

@@ -61,11 +61,6 @@ public:
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPropertyValueChanged, const FAttributeChangeCallbackData&, Data);
 
-// Doesent used because brodcast doesent work with this way
-/*
-#define AttributeDelegateSetup(AttributeName)\
-	FOnPropertyValueChanged On##AttributeName##Changed;\
-	*/
 
 UCLASS()
 class GAS_TEMPLATESP2D_API UAS_Base : public UAttributeSet
@@ -120,7 +115,6 @@ public:
 	ATTRIBUTE_ACCESSORS(UAS_Base, MovementSpeed)
 		FOnPropertyValueChanged OnMovementSpeedChanged;
 
-	
 protected:
 
 	virtual bool BroadcastPropertyChange(const FGameplayEffectModCallbackData& Data);

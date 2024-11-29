@@ -33,6 +33,7 @@ bool UGAS_EffectBlueprintFunctionLibary::CreateInstantEffectSpecWithSetByCallerV
 			return true;
 		}
 	}
+
 	return false;
 }
 

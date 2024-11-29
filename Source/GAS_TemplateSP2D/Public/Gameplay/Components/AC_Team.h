@@ -13,7 +13,6 @@ class GAS_TEMPLATESP2D_API UAC_Team : public UActorComponent, public IGAS_Generi
 	GENERATED_BODY()
 
 public:	
-	// Sets default values for this component's properties
 	UAC_Team();
 
 	UFUNCTION(BlueprintCallable)
@@ -25,8 +24,8 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = "Team Properties")
 	TEnumAsByte <EGAS_PredefinedTeamId> TeamID;
+
 protected:
-	// Called when the game starts
 	virtual void BeginPlay() override;
 
 };

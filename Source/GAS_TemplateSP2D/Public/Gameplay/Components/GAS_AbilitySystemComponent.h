@@ -39,7 +39,6 @@ public:
 	/** Data table referent to initialize the attributes with, if any (can be left unset) */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Attributes, meta = (RequiredAssetDataTags = "RowStructure=/Script/GameplayAbilities.AttributeMetaData"))
 	TSoftObjectPtr<UDataTable> InitializationData;
-
 };
 
 UCLASS()
@@ -59,7 +58,6 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "AbilitySet")
 	FGameplayTagContainer PermenantTags;
-
 };
 
 UCLASS()
@@ -90,5 +88,4 @@ public:
 
 	UPROPERTY(BlueprintAssignable)
 	FOnAbilityGiven OnAbilityGranted;
-
 };

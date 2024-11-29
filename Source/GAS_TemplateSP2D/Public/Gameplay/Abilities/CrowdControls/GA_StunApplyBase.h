@@ -5,7 +5,6 @@
 #include "Gameplay/Abilities/GA_SequenceAbility.h"
 #include "GA_StunApplyBase.generated.h"
 
-class UCharacterMovementComponent;
 
 UCLASS()
 class GAS_TEMPLATESP2D_API UGA_StunApplyBase : public UGA_SequenceAbility
@@ -24,5 +23,5 @@ protected:
 
 	ACharacter* Character;
 
-	UCharacterMovementComponent* CharacterMoveComp;
+	class UCharacterMovementComponent* CharacterMoveComp;
 };

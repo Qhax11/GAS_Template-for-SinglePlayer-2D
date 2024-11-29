@@ -2,6 +2,7 @@
 
 
 #include "Gameplay/Abilities/GA_MeleeAttackBase.h"
+#include <AbilitySystemGlobals.h>
 
 void UGA_MeleeAttackBase::OnEventRecieved()
 {

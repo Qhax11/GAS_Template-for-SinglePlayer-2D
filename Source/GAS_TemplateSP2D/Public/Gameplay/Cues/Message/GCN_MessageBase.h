@@ -54,5 +54,4 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, Category = "MessageConfig")
 	FWidgetMessageData WidgetMessageData;
-
 };

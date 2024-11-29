@@ -3,7 +3,6 @@
 #pragma once
 
 #include "Components/ActorComponent.h"
-#include "Gameplay/Tags/GAS_Tags.h"
 #include "AC_AttributesListenerBase.generated.h"
 
 

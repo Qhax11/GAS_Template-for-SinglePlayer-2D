@@ -2,11 +2,12 @@
 
 
 #include "Gameplay/Components/AC_AttributesListenerBase.h"
-#include "AbilitySystemGlobals.h"
-#include "Gameplay/Attributes/AS_Base.h"
-#include "Gameplay/Components/AC_AbilitySet.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/Character.h"
+#include "Gameplay/Components/AC_AbilitySet.h"
+#include "Gameplay/Attributes/AS_Base.h"
+#include "Gameplay/Tags/GAS_Tags.h"
+#include "AbilitySystemGlobals.h"
 
 
 UAC_AttributesListenerBase::UAC_AttributesListenerBase()

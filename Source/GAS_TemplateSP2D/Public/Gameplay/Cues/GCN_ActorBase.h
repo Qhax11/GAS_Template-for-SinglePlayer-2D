@@ -13,7 +13,7 @@ class GAS_TEMPLATESP2D_API AGCN_ActorBase : public AGameplayCueNotify_Actor
 {
 	GENERATED_BODY()
 	
-	// Default functions
+	// Default function implementations
 public:
 
 	bool OnExecute_Implementation(AActor* MyTarget, const FGameplayCueParameters& Parameters) final;
@@ -24,7 +24,7 @@ public:
 
 	bool OnRemove_Implementation(AActor* MyTarget, const FGameplayCueParameters& Parameters) final;
 
-	// Our functions with flex
+	// Custom functions with flexibility for further modification
 protected:
 
 	virtual void OnExecuted(AActor* Source, AActor* Target, const FGameplayCueParameters& Parameters);
@@ -34,5 +34,4 @@ protected:
 	virtual void OnWhileActivated(AActor* Source, AActor* Target, const FGameplayCueParameters& Parameters);
 
 	virtual void OnRemoved(AActor* Source, AActor* Target, const FGameplayCueParameters& Parameters);
-
 };

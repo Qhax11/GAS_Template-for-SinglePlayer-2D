@@ -4,9 +4,7 @@
 
 #include "PaperZDCharacter.h"
 #include "AbilitySystemInterface.h"
-#include "Gameplay/Attributes/AS_Base.h"
 #include "Gameplay/Components/GAS_AbilitySystemComponent.h"
-#include "Gameplay/Tags/GAS_Tags.h"
 #include "GAS_PaperCharacterBase.generated.h"
 
 
