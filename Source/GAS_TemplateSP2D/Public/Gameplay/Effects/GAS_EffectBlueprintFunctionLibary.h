@@ -21,6 +21,7 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "GAS_EffectBlueprintFunctionLibary")
 	static UGameplayEffect* CreateEffectWithTSubclass(TSubclassOf<UGameplayEffect> EffectClass);
 
+	// This function for Calculation classes
 	UFUNCTION(BlueprintCallable, Category = "GAS_EffectBlueprintFunctionLibary")
 	static bool CreateInstantEffectSpecWithSetByCallerValue(FGameplayEffectSpec& OutSpec, UAbilitySystemComponent* SourceASC, TSubclassOf<UGameplayEffect> GameplayEffectClass, const FGameplayTag SetByCallerTag, float SetByCallerValue);
 	 

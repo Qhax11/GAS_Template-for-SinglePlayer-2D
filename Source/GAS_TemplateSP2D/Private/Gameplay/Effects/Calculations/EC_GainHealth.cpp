@@ -1,9 +1,9 @@
 // Qhax's GAS Template for SinglePlayer
 
 
-#include "Gameplay/Effects/Calculations/EC_GiveHealth.h"
+#include "Gameplay/Effects/Calculations/EC_GainHealth.h"
 
-void UEC_GiveHealth::ExecuteWithParams(FExecCalculationParameters Params, FGameplayEffectCustomExecutionOutput& OutExecutionOutput) const
+void UEC_GainHealth::ExecuteWithParams(FExecCalculationParameters Params, FGameplayEffectCustomExecutionOutput& OutExecutionOutput) const
 {
 	if (!Params.GetTargetAttributeSet())
 	{

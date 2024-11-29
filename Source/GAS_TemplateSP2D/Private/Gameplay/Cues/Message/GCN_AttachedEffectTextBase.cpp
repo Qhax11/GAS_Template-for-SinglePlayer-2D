@@ -44,7 +44,7 @@ bool AGCN_AttachedEffectTextBase::CheckAndExecuteGameplay(AActor* Target, FGamep
 		{
 			// Removing Critical GameplayTag to shouldn't be loop because of ExecuteGameplayCue
 			Parameters.AggregatedSourceTags.RemoveTag(GAS_Tags::TAG_UI_HitTypeText_Critical);
-			TargetASC->ExecuteGameplayCue(GAS_Tags::TAG_GameplayCue_AttachedEffectText_Critical, Parameters);
+			TargetASC->ExecuteGameplayCue(GAS_Tags::TAG_GameplayCue_AttachedEffectText_CriticalDamage, Parameters);
 			return true;
 		}
 	}

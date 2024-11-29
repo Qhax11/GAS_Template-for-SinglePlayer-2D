@@ -9,7 +9,7 @@ void UGA_MeleeAttackBase::OnEventRecieved()
 	CreateTraceFromTargetingDataWithTeamFilter(OutResultActors, ETeamAttitude::Hostile);
 
 	FGameplayEffectSpec DamageSpec;
-	bool IsDamageSpecValid = UGAS_EffectBlueprintFunctionLibary::CreateInstantEffectSpecWithSetByCallerValue(
+	bool bIsDamageSpecValid = UGAS_EffectBlueprintFunctionLibary::CreateInstantEffectSpecWithSetByCallerValue(
 		DamageSpec,
 		GetAbilitySystemComponentFromActorInfo(),
 		GEPhysicalDamage,
@@ -17,7 +17,7 @@ void UGA_MeleeAttackBase::OnEventRecieved()
 		Damage.GetValueAtLevel(GetAbilityLevel())
 		);
 
-	if (!IsDamageSpecValid)
+	if (!bIsDamageSpecValid)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("DamageSpec is null in %s, cannot damage apply"), *this->GetName());
 		return;

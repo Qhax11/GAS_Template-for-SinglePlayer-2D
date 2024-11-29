@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "Gameplay/Effects/Calculations/EC_Base.h"
-#include "EC_GiveHealth.generated.h"
+#include "EC_GainHealth.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class GAS_TEMPLATESP2D_API UEC_GiveHealth : public UEC_Base
+class GAS_TEMPLATESP2D_API UEC_GainHealth : public UEC_Base
 {
 	GENERATED_BODY()
 	

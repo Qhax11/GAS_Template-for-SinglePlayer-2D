@@ -1,10 +1,10 @@
 // Qhax's GAS Template for SinglePlayer
 
 
-#include "Gameplay/Effects/Calculations/EC_GiveMana.h"
+#include "Gameplay/Effects/Calculations/EC_GainMana.h"
 #include "Gameplay/Attributes/AS_Hero.h"
 
-void UEC_GiveMana::ExecuteWithParams(FExecCalculationParameters Params, FGameplayEffectCustomExecutionOutput& OutExecutionOutput) const
+void UEC_GainMana::ExecuteWithParams(FExecCalculationParameters Params, FGameplayEffectCustomExecutionOutput& OutExecutionOutput) const
 {
 	const UAS_Hero* HeroAttributeSet = Cast<UAS_Hero>(Params.GetSourceAttributeSet());
 	if (!HeroAttributeSet)

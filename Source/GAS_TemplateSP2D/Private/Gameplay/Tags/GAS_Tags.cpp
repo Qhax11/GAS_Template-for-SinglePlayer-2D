@@ -66,11 +66,11 @@ namespace GAS_Tags
 	* Add all of the GameplayCue related tags to here. *
 	****************************************************/
 
-	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_AttachedEffectText_Damage, "GameplayCue.AttachedEffectText.Damage");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_AttachedEffectText_PhysicalDamage, "GameplayCue.AttachedEffectText.PhysicalDamage");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_AttachedEffectText_CriticalDamage, "GameplayCue.AttachedEffectText.CriticalDamage");
 	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_AttachedEffectText_Bleed, "GameplayCue.AttachedEffectText.Bleed");
-	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_AttachedEffectText_Heal, "GameplayCue.AttachedEffectText.Heal");
-	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_AttachedEffectText_Critical, "GameplayCue.AttachedEffectText.Critical");
-	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_AttachedEffectText_Mana, "GameplayCue.AttachedEffectText.Mana");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_AttachedEffectText_GainHealth, "GameplayCue.AttachedEffectText.GainHealth");
+	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_AttachedEffectText_GainMana, "GameplayCue.AttachedEffectText.GainMana");
 
 	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_PlayerMessageHUD_LevelUp, "GameplayCue.PlayerMessageHUD.LevelUp");
 	UE_DEFINE_GAMEPLAY_TAG(TAG_GameplayCue_PlayerMessageHUD_Died, "GameplayCue.PlayerMessageHUD.Died");

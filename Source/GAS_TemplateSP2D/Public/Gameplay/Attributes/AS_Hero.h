@@ -27,6 +27,11 @@ public:
 		FOnPropertyValueChanged OnMaxManaChanged;
 
 	UPROPERTY(BlueprintReadOnly, Category = "Hero")
+	FGameplayAttributeData LifeSteal;
+	ATTRIBUTE_ACCESSORS(UAS_Hero, LifeSteal)
+		FOnPropertyValueChanged OnLifeStealChanged;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Hero")
 	FGameplayAttributeData CriticalDamage;
 	ATTRIBUTE_ACCESSORS(UAS_Hero, CriticalDamage)
 		FOnPropertyValueChanged OnCriticalDamageChanged;

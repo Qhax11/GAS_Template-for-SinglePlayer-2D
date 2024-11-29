@@ -55,6 +55,12 @@ bool UAS_Hero::BroadcastPropertyChange(const FGameplayEffectModCallbackData& Dat
 		PropertyCallbackData.CurrentValue = MaxMana.GetCurrentValue();
 		OnMaxManaChanged.Broadcast(PropertyCallbackData);
 	}
+	else if (Data.EvaluatedData.Attribute.GetUProperty() == FindFieldChecked<FProperty>(UAS_Hero::StaticClass(), GET_MEMBER_NAME_CHECKED(UAS_Hero, LifeSteal)))
+	{
+		bIsBroadcasted = true;
+		PropertyCallbackData.CurrentValue = LifeSteal.GetCurrentValue();
+		OnLifeStealChanged.Broadcast(PropertyCallbackData);
+	}
 	else if (Data.EvaluatedData.Attribute.GetUProperty() == FindFieldChecked<FProperty>(UAS_Hero::StaticClass(), GET_MEMBER_NAME_CHECKED(UAS_Hero, CriticalDamage)))
 	{
 		bIsBroadcasted = true;

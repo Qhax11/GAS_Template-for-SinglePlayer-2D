@@ -106,9 +106,9 @@ public:
 		FOnPropertyValueChanged OnMaxHealthChanged;
 
 		UPROPERTY(BlueprintReadOnly, Category = "Base")
-	FGameplayAttributeData Armor;
-	ATTRIBUTE_ACCESSORS(UAS_Base, Armor)
-		FOnPropertyValueChanged OnArmorChanged;
+	FGameplayAttributeData PhysicalArmor;
+	ATTRIBUTE_ACCESSORS(UAS_Base, PhysicalArmor)
+		FOnPropertyValueChanged OnPhysicalArmorChanged;
 
 		UPROPERTY(BlueprintReadOnly, Category = "Base")
 	FGameplayAttributeData PhysicalDamage;

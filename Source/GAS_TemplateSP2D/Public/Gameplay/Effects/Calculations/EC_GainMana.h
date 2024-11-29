@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "Gameplay/Effects/Calculations/EC_Base.h"
-#include "EC_GiveMana.generated.h"
+#include "EC_GainMana.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class GAS_TEMPLATESP2D_API UEC_GiveMana : public UEC_Base
+class GAS_TEMPLATESP2D_API UEC_GainMana : public UEC_Base
 {
 	GENERATED_BODY()
 
