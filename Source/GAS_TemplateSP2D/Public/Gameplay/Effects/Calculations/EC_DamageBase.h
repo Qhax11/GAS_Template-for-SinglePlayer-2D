@@ -25,6 +25,12 @@ public:
 
 	virtual float GetTotalDamage(const FExecCalculationParameters& Params) const;
 
+	virtual float GetDamageReduction(const FExecCalculationParameters& Params) const;
+
+	virtual float GetTotalDamageReduction(const FExecCalculationParameters& Params, float MitigatedDamage) const;
+
+	virtual void CalculateDamageReduction(FExecCalculationParameters& Params, float& MitigatedDamage, FGameplayEffectCustomExecutionOutput& OutExecutionOutput) const;
+
 	virtual void CalculateHealth(FExecCalculationParameters& Params, float& MitigatedDamage, FGameplayEffectCustomExecutionOutput& OutExecutionOutput) const;
 
 	virtual void CalculateCritical(FExecCalculationParameters& Params, float& MitigatedDamage, FGameplayEffectCustomExecutionOutput& OutExecutionOutput) const;

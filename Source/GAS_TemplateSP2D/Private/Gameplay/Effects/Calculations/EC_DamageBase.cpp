@@ -19,8 +19,9 @@ void UEC_DamageBase::ExecuteWithParams(FExecCalculationParameters Params, FGamep
 
 	float MitigatedDamage = GetTotalDamage(Params);
 
-	// Calculate Critical Damage
 	CalculateCritical(Params, MitigatedDamage, OutExecutionOutput);
+
+	CalculateDamageReduction(Params, MitigatedDamage, OutExecutionOutput);
 
 	float HealthDamageDone = MitigatedDamage;
 	CalculateHealth(Params, MitigatedDamage, OutExecutionOutput);
@@ -29,7 +30,6 @@ void UEC_DamageBase::ExecuteWithParams(FExecCalculationParameters Params, FGamep
 		HealthDamageDone -= MitigatedDamage;
 	}
 
-	// Calculate Life Steal
 	float LifeStealDone = .0f;
 	CalculateLifeSteal(Params, HealthDamageDone, LifeStealDone, OutExecutionOutput);
 
@@ -62,6 +62,23 @@ float UEC_DamageBase::GetTotalDamage(const FExecCalculationParameters& Params) c
 	return  BaseDamage;
 }
 
+float UEC_DamageBase::GetDamageReduction(const FExecCalculationParameters& Params) const
+{
+	return Params.GetTargetAttributeSet()->GetPhysicalArmor();
+}
+
+float UEC_DamageBase::GetTotalDamageReduction(const FExecCalculationParameters& Params, float MitigatedDamage) const
+{
+	const float DamageReduction = GetDamageReduction(Params);
+	return DamageReduction;
+}
+
+void UEC_DamageBase::CalculateDamageReduction(FExecCalculationParameters& Params, float& MitigatedDamage, FGameplayEffectCustomExecutionOutput& OutExecutionOutput) const
+{
+	const float TotalDamageReduction = GetTotalDamageReduction(Params, MitigatedDamage);
+	const float ReducedDamage = MitigatedDamage * (TotalDamageReduction / 100);
+	MitigatedDamage -= ReducedDamage;
+}
 
 void UEC_DamageBase::CalculateHealth(FExecCalculationParameters& Params, float& MitigatedDamage, FGameplayEffectCustomExecutionOutput& OutExecutionOutput) const
 {
