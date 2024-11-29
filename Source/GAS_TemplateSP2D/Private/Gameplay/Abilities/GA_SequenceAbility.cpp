@@ -29,7 +29,7 @@ void UGA_SequenceAbility::ActivateAbility(const FGameplayAbilitySpecHandle Handl
 		return;
 	}
 
-	AGAS_PaperCharacterBase* PaperCharacter = CastChecked<AGAS_PaperCharacterBase>(GetAvatarActorFromActorInfo());
+	AGAS_PaperCharacterBase* PaperCharacter = Cast<AGAS_PaperCharacterBase>(GetAvatarActorFromActorInfo());
 	if (!PaperCharacter) 
 	{
 		EndAbility(Handle, ActorInfo, ActivationInfo, true, true);
