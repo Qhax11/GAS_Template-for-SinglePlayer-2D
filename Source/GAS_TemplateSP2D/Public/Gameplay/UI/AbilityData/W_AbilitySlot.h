@@ -43,10 +43,10 @@ protected:
 	void BP_OnCoolDownFinished();
 
 	UPROPERTY(BlueprintReadOnly)
-	UMaterialInstanceDynamic* ImageMaterial;
+	TObjectPtr<UMaterialInstanceDynamic> ImageMaterial;
 
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidget))
-	class UImage* IMG_AbilityImage;
+	TObjectPtr<class UImage> IMG_AbilityImage;
 
 	UPROPERTY(BlueprintReadWrite)
 	double CooldownEndTime;
@@ -55,5 +55,4 @@ protected:
 
 	float CooldownTimeRemaining;
 	float CooldownDuration;
-
 };

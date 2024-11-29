@@ -31,5 +31,5 @@ protected:
 	void BP_OnHealthChanged(const FAttributeChangeCallbackData& Data);
 
 	UPROPERTY(BlueprintReadOnly, meta = (BindWidget))
-	class UProgressBar* BackgroundProgressBar;
+	TObjectPtr<class UProgressBar> BackgroundProgressBar;
 };

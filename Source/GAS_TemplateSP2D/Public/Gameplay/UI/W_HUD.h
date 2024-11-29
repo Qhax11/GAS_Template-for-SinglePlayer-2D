@@ -21,8 +21,8 @@ public:
 	void OnAbilitySetGiven(const AActor* OwnerActor);
 
 	UPROPERTY(BlueprintReadOnly, meta = (BindWidget))
-	class UW_HealthBar* HealthBar;
+	TObjectPtr<class UW_HealthBar> HealthBar;
 	
 	UPROPERTY(BlueprintReadOnly, meta = (BindWidget))
-	class UW_ManaBar* ManaBar;
+	TObjectPtr<class UW_ManaBar> ManaBar;
 };

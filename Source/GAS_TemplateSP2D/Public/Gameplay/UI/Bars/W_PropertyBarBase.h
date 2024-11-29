@@ -31,11 +31,11 @@ protected:
 	void SetValuesToTexts(float CurrentValue, float MaxValue);
 
 	UPROPERTY(BlueprintReadOnly, meta = (BindWidget))
-	class UProgressBar* ProgressBar;
+	TObjectPtr<class UProgressBar> ProgressBar;
 
 	UPROPERTY(BlueprintReadOnly, meta = (BindWidget, OptionalWidget = true))
-	UTextBlock* T_CurrentValue;
+	TObjectPtr<UTextBlock> T_CurrentValue;
 
 	UPROPERTY(BlueprintReadOnly, meta = (BindWidget, OptionalWidget = true))
-	UTextBlock* T_MaxValue;
+	TObjectPtr<UTextBlock> T_MaxValue;
 };

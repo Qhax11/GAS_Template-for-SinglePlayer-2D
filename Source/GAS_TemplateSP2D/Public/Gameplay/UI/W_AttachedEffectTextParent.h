@@ -22,6 +22,6 @@ public:
 	void AddChildText(UUserWidget* Child);
 
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidget))
-	UCanvasPanel* Canvas;
+	TObjectPtr<UCanvasPanel> Canvas;
 
 };

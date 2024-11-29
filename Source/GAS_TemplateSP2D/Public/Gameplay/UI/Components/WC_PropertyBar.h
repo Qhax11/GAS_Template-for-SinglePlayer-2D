@@ -23,5 +23,5 @@ protected:
 	UFUNCTION()
 	void OnAbilitySetGiven(const AActor* OwnerActor);
 
-	UW_HealthBar* HealthBar;
+	TObjectPtr<UW_HealthBar> HealthBar;
 };
