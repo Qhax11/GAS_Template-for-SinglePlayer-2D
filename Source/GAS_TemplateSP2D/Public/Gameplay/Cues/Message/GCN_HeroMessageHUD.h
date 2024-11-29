@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "Gameplay/Cues/Message/GCN_MessageBase.h"
-#include "GCN_PlayerMessageHUD.generated.h"
+#include "GCN_HeroMessageHUD.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class GAS_TEMPLATESP2D_API AGCN_PlayerMessageHUD : public AGCN_MessageBase
+class GAS_TEMPLATESP2D_API AGCN_HeroMessageHUD : public AGCN_MessageBase
 {
 	GENERATED_BODY()
 
@@ -23,5 +23,5 @@ public:
 	virtual void OnActivated(AActor* Source, AActor* Target, const FGameplayCueParameters& Parameters) override;
 
 	UPROPERTY(EditDefaultsOnly, Category = "MessageConfig")
-	FString PlayerMessage;
+	FString HeroMessage;
 };

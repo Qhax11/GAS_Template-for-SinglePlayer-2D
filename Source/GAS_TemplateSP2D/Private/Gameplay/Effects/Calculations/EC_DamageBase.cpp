@@ -154,6 +154,7 @@ void UEC_DamageBase::CalculateLifeSteal(FExecCalculationParameters& Params, floa
 			{
 				return;
 			}
+
 			HealDone = DamageDone * (LifeSteal / 100);
 
 			// Create Effect and assign spec
@@ -169,6 +170,10 @@ void UEC_DamageBase::CalculateLifeSteal(FExecCalculationParameters& Params, floa
 			if (bIsLifeStealSpecValid) 
 			{
 				Params.SourceASC->ApplyGameplayEffectSpecToSelf(LifeStealSpec);
+			}
+			else
+			{
+				UE_LOG(LogTemp, Warning, TEXT("LifeStealSpec is null in %s, cannot life steal apply"), *GetName());
 			}
 		}
 	}

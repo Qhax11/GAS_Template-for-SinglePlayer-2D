@@ -19,7 +19,7 @@ void UGA_MeleeAttackBase::OnEventRecieved()
 
 	if (!bIsDamageSpecValid)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("DamageSpec is null in %s, cannot damage apply"), *this->GetName());
+		UE_LOG(LogTemp, Warning, TEXT("DamageSpec is null in %s, cannot damage apply"), *GetName());
 		return;
 	}
 

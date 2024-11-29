@@ -12,9 +12,7 @@ void UGA_HeroDeath::ActivateAbility(const FGameplayAbilitySpecHandle Handle,
 {
 	Super::ActivateAbility(Handle, ActorInfo, ActivationInfo, TriggerEventData);
 
-	GetAbilitySystemComponentFromActorInfo()->ExecuteGameplayCue(GAS_Tags::TAG_GameplayCue_PlayerMessageHUD_Died, FGameplayCueParameters());
-
-	
+	GetAbilitySystemComponentFromActorInfo()->ExecuteGameplayCue(GAS_Tags::TAG_GameplayCue_HeroMessageHUD_Died, FGameplayCueParameters());
 }
 
 void UGA_HeroDeath::BroadcastDeSpawn()
