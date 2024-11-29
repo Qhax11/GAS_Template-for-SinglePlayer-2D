@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include "Components/CanvasPanel.h"
 #include "W_AttachedEffectTextParent.generated.h"

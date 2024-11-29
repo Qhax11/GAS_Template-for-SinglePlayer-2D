@@ -22,9 +22,9 @@ void UWC_PropertyBar::BeginPlay()
 
 void UWC_PropertyBar::OnAbilitySetGiven(const AActor* OwnerActor)
 {
-	PropertyBar = Cast<UW_HealthBar>(GetUserWidgetObject());
-	if (PropertyBar && OwnerActor)
+	HealthBar = Cast<UW_HealthBar>(GetUserWidgetObject());
+	if (HealthBar && OwnerActor)
 	{
-		PropertyBar->InitializePropertyBar(GetOwner());
+		HealthBar->InitializePropertyBar(GetOwner());
 	}
 }

@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "Components/WidgetComponent.h"
 #include "WC_AttachedEffectTextHandle.generated.h"
 

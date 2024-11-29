@@ -2,13 +2,12 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "Components/WidgetComponent.h"
 #include "Gameplay/UI/Bars/W_HealthBar.h"
 #include "WC_PropertyBar.generated.h"
 
 /**
- * 
+ *  
  */
 UCLASS()
 class GAS_TEMPLATESP2D_API UWC_PropertyBar : public UWidgetComponent
@@ -24,5 +23,5 @@ protected:
 	UFUNCTION()
 	void OnAbilitySetGiven(const AActor* OwnerActor);
 
-	UW_HealthBar* PropertyBar;
+	UW_HealthBar* HealthBar;
 };

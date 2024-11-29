@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "Gameplay/Actors/PaperCharacters/GAS_PaperCharacterBase.h"
 #include "S_SpawnDelegates.generated.h"

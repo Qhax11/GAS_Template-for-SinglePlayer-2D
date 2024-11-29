@@ -2,12 +2,8 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "Gameplay/Effects/Calculations/EC_Base.h"
 #include "EC_DamageBase.generated.h"
-
-
-
 
 
 UCLASS()

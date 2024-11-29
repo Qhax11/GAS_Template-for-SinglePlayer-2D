@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "Gameplay/Abilities/GA_SequenceAbility.h"
 #include "GA_RangeAttackBase.generated.h"
 

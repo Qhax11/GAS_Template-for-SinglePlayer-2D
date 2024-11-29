@@ -16,9 +16,10 @@ class GAS_TEMPLATESP2D_API UW_AbilitySlot : public UUserWidget
 	GENERATED_BODY()
 	
 public:
-	// Setting veriables, calling from "UW_AbilitySlotPanel" !!
+	// Setting veriables, calling from "UW_AbilitySlotPanel" 
 	void CustomInitialize(UAbilitySystemComponent* ASC, UGAS_GameplayAbilityBase* AbilityBase);
 
+	// To continue initialization from Blueprint side.
 	UFUNCTION(BlueprintImplementableEvent)
 	void BP_CustomInitialize(UAbilitySystemComponent* ASC, UGAS_GameplayAbilityBase* AbilityBase);
 

@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "Gameplay/Effects/GE_Base.h"
 #include "GE_GainHealth.generated.h"
 

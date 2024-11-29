@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "Gameplay/Effects/Calculations/EC_DamageBase.h"
 #include "EC_HeroDamage.generated.h"
 

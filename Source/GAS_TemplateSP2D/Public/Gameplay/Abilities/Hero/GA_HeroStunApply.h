@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "Gameplay/Abilities/CrowdControls/GA_StunApplyBase.h"
 #include "GA_HeroStunApply.generated.h"
 

@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "Notifies/PaperZDAnimNotify.h"
 #include "GameplayTagContainer.h"
 #include "AN_EventReceived.generated.h"

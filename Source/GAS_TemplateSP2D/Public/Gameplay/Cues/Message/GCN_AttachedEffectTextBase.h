@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "Gameplay/Cues/Message/GCN_MessageBase.h"
 #include "Gameplay/UI/Components/WC_AttachedEffectTextHandle.h"
 #include "GCN_AttachedEffectTextBase.generated.h"

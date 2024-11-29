@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "Gameplay/Cues/Message/GCN_MessageBase.h"
 #include "GCN_HeroMessageHUD.generated.h"
 

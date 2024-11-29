@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "Gameplay/Abilities/GAS_GameplayAbilityBase.h"
 #include "AnimSequences/PaperZDAnimSequence.h"
 #include "AbilitySystemGlobals.h"

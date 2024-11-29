@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "Gameplay/Attributes/AS_Base.h"
 #include "AS_Hero.generated.h"
 

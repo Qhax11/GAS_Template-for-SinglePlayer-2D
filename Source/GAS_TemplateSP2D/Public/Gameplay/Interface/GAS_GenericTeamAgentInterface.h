@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "UObject/Interface.h"
 #include "GenericTeamAgentInterface.h"
 #include "GAS_GenericTeamAgentInterface.generated.h"
@@ -30,7 +29,7 @@ class UGAS_GenericTeamAgentInterface : public UGenericTeamAgentInterface
 	GENERATED_BODY()
 };
 
-
+// GenericTeamAgentInterface works with the Team Component.
 class GAS_TEMPLATESP2D_API IGAS_GenericTeamAgentInterface : public IGenericTeamAgentInterface
 {
 	GENERATED_IINTERFACE_BODY()

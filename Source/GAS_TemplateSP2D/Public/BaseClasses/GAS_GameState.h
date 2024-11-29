@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "GameFramework/GameState.h"
 #include "GAS_GameState.generated.h"
 

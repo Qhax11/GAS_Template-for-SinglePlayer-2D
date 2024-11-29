@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "Gameplay/Actors/PaperCharacters/GAS_PaperCharacterBase.h"
 #include "GAS_PaperEnemyBase.generated.h"
 

@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "Gameplay/Abilities/GA_DeathBase.h"
 #include "GA_HeroDeath.generated.h"
 

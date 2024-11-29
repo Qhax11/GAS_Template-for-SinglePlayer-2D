@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "GameplayEffectExecutionCalculation.h"
 #include "AbilitySystemComponent.h"
 #include "Gameplay/Attributes/AS_Base.h"

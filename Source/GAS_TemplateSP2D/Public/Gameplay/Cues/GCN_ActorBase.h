@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "GameplayCueNotify_Actor.h"
 #include "GCN_ActorBase.generated.h"
 

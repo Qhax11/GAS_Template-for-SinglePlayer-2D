@@ -28,7 +28,7 @@ namespace GAS_Tags
 
 	GAS_TEMPLATESP2D_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(TAG_Gameplay_DamageImmune);
 
-	// For Activate GameplayAbility with using GameplayEvent trigger
+	// To activate GameplayAbility using a GameplayEvent trigger.
 	GAS_TEMPLATESP2D_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(TAG_Gameplay_Event_TakeDamage);
 	GAS_TEMPLATESP2D_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(TAG_Gameplay_Event_Death);
 

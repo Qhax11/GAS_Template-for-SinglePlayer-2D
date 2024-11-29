@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "Gameplay/Abilities/GA_TakeDamageBase.h"
 #include "GA_HeroTakeDamage.generated.h"
 

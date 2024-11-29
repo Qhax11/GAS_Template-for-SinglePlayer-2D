@@ -3,7 +3,8 @@
 
 #include "Gameplay/UI/W_HUD.h"
 #include "Gameplay/Components/AC_AbilitySet.h"
-
+#include "Gameplay/UI/Bars/W_HealthBar.h"
+#include "Gameplay/UI/Bars/W_ManaBar.h"
 
 void UW_HUD::NativeConstruct()
 {

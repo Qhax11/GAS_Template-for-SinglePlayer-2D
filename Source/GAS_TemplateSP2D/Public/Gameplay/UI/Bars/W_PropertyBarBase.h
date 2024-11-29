@@ -6,13 +6,13 @@
 #include "Blueprint/UserWidget.h"
 #include "AbilitySystemComponent.h"
 #include "Components/TextBlock.h"
-#include "W_PropertyBar.generated.h"
+#include "W_PropertyBarBase.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class GAS_TEMPLATESP2D_API UW_PropertyBar : public UUserWidget
+class GAS_TEMPLATESP2D_API UW_PropertyBarBase : public UUserWidget
 {
 	GENERATED_BODY()
 

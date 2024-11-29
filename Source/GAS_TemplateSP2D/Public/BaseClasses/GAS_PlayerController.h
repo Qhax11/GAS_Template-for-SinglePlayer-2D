@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
 #include "GAS_PlayerController.generated.h"
 

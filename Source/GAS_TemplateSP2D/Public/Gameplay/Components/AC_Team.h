@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "Gameplay/Interface/GAS_GenericTeamAgentInterface.h"
 #include "AC_Team.generated.h"

@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "Gameplay/StaticDelegates/S_SpawnDelegates.h"
 #include "AC_RespawnBase.generated.h"

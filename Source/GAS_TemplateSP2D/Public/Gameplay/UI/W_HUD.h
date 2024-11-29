@@ -2,10 +2,7 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
-#include "Gameplay/UI/Bars/W_HealthBar.h"
-#include "Gameplay/UI/Bars/W_ManaBar.h"
 #include "W_HUD.generated.h"
 
 /**
@@ -24,8 +21,8 @@ public:
 	void OnAbilitySetGiven(const AActor* OwnerActor);
 
 	UPROPERTY(BlueprintReadOnly, meta = (BindWidget))
-	UW_HealthBar* HealthBar;
+	class UW_HealthBar* HealthBar;
 	
 	UPROPERTY(BlueprintReadOnly, meta = (BindWidget))
-	UW_ManaBar* ManaBar;
+	class UW_ManaBar* ManaBar;
 };

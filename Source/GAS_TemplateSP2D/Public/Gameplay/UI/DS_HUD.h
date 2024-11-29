@@ -2,13 +2,12 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "Engine/DeveloperSettings.h"
 #include "Gameplay/UI/AbilityData/W_AbilitySlot.h"
 #include "DS_HUD.generated.h"
 
 /**
- * 
+ *  This class is used for retrieving Blueprint classes and configuring HUD settings.
  */
 UCLASS(Config = Game, defaultconfig, meta = (DisplayName = "HUD")) 
 class GAS_TEMPLATESP2D_API UDS_HUD : public UDeveloperSettings

@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "Gameplay/Abilities/Targeting/GAS_TraceBase.h"
 #include "GAS_TraceLine.generated.h"
 

@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "Gameplay/Components/AC_RespawnBase.h"
 #include "AC_EnemyRespawn.generated.h"
 

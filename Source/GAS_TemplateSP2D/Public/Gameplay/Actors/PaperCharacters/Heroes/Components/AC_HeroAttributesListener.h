@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "Gameplay/Components/AC_AttributesListenerBase.h"
 #include "AC_HeroAttributesListener.generated.h"
 

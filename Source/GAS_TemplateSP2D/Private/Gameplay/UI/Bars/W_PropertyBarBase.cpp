@@ -1,13 +1,13 @@
 // Qhax's GAS Template for SinglePlayer
 
 
-#include "Gameplay/UI/Bars/W_PropertyBar.h"
+#include "Gameplay/UI/Bars/W_PropertyBarBase.h"
 #include "Components/ProgressBar.h"
 #include "Gameplay/Attributes/AS_Base.h"
 #include "AbilitySystemGlobals.h"
 #include "Kismet/KismetTextLibrary.h"
 
-void UW_PropertyBar::InitializePropertyBar(AActor* Owner)
+void UW_PropertyBarBase::InitializePropertyBar(AActor* Owner)
 {
 	UAbilitySystemComponent* OwnerASC = UAbilitySystemGlobals::GetAbilitySystemComponentFromActor(Owner);
 	if (!OwnerASC)
@@ -18,17 +18,17 @@ void UW_PropertyBar::InitializePropertyBar(AActor* Owner)
 	BindAttributes(OwnerASC);
 }
 
-void UW_PropertyBar::SetDefaultValues(UAbilitySystemComponent* OwnerASC)
+void UW_PropertyBarBase::SetDefaultValues(UAbilitySystemComponent* OwnerASC)
 {
 	// Implementation will be in subclasses
 }
 
-void UW_PropertyBar::BindAttributes(UAbilitySystemComponent* OwnerASC)
+void UW_PropertyBarBase::BindAttributes(UAbilitySystemComponent* OwnerASC)
 {
 	// Implementation will be in subclasses
 }
 
-void UW_PropertyBar::SetPercantage(float Value1, float Value2)
+void UW_PropertyBarBase::SetPercantage(float Value1, float Value2)
 {
 	float NewValue = Value1 / Value2;
 	if (NewValue >= 0)
@@ -37,7 +37,7 @@ void UW_PropertyBar::SetPercantage(float Value1, float Value2)
 	}
 }
 
-void UW_PropertyBar::SetValuesToTexts(float CurrentValue, float MaxValue)
+void UW_PropertyBarBase::SetValuesToTexts(float CurrentValue, float MaxValue)
 {
 	if (T_CurrentValue && T_MaxValue) 
 	{

@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "Abilities/GameplayAbility.h"
 #include "Gameplay/Abilities/Targeting/GAS_AbilityTargetingData.h"
 #include "Gameplay/Tags/GAS_Tags.h"

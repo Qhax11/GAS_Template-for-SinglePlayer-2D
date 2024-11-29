@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "GAS_AbilitySystemComponent.h"
 #include "AC_AbilitySet.generated.h"

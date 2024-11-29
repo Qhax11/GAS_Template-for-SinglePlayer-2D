@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "Gameplay/Abilities/GA_SequenceAbility.h"
 #include "Gameplay/Effects/GAS_EffectBlueprintFunctionLibary.h"
 #include "GA_MeleeAttackBase.generated.h"

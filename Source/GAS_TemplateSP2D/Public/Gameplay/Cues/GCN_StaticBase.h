@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "GameplayCueNotify_Static.h"
 #include "GCN_StaticBase.generated.h"
 

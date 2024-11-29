@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "GameFramework/GameMode.h"
 #include "GAS_GameMode.generated.h"
 

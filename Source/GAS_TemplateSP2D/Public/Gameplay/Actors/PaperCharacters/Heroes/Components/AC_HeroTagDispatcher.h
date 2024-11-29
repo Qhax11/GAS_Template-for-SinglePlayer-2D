@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "AbilitySystemComponent.h"
 #include "AC_HeroTagDispatcher.generated.h"

@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "PaperZDCharacter.h"
 #include "AbilitySystemInterface.h"
 #include "Gameplay/Attributes/AS_Base.h"

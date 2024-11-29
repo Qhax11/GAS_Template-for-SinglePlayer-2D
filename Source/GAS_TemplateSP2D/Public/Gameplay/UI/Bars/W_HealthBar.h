@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Gameplay/UI/Bars/W_PropertyBar.h"
+#include "Gameplay/UI/Bars/W_PropertyBarBase.h"
 #include "Gameplay/Attributes/AS_Base.h"
 #include "W_HealthBar.generated.h"
 
@@ -11,7 +11,7 @@
  * 
  */
 UCLASS()
-class GAS_TEMPLATESP2D_API UW_HealthBar : public UW_PropertyBar
+class GAS_TEMPLATESP2D_API UW_HealthBar : public UW_PropertyBarBase
 {
 	GENERATED_BODY()
 
