@@ -5,10 +5,6 @@
 #include "Abilities/GameplayAbility.h"
 
 
-UGAS_AbilitySystemComponent::UGAS_AbilitySystemComponent()
-{
-}
-
 bool UGAS_AbilitySystemComponent::GiveAbilitySet(const UGAS_GameplayAbilitySet* AbilitySet)
 {
 	if (AbilitySet)
@@ -75,13 +71,13 @@ void UGAS_AbilitySystemComponent::GiveAttributes(const UGAS_GameplayAbilitySet* 
 		return;
 	}
 
-	const TSubclassOf<UAttributeSet> WillBeGivenAttributeSet = AbilitySet->AttributeData.AttributeSet.LoadSynchronous();
-	if (!WillBeGivenAttributeSet)
+	const TSubclassOf<UAttributeSet> ToBeAssignedAttributeSet = AbilitySet->AttributeData.AttributeSet.LoadSynchronous();
+	if (!ToBeAssignedAttributeSet)
 	{
 		return;
 	}
 
-	UAttributeSet* OutAttributeSet = NewObject<UAttributeSet>(GetOwnerActor(), WillBeGivenAttributeSet);
+	UAttributeSet* OutAttributeSet = NewObject<UAttributeSet>(GetOwnerActor(), ToBeAssignedAttributeSet);
 
 	if (!AbilitySet->AttributeData.InitializationData.IsNull())
 	{

@@ -74,7 +74,7 @@ void UW_AbilitySlotPanel::AddAbilitySlotToAbilityPanel(UAbilitySystemComponent* 
 
 	HB_Abilities->AddChild(AbilitySlot);
 	
-	// Adding spacer for better UI
+	// Adding a spacer to improve the UI layout
 	USpacer* Spacer = WidgetTree->ConstructWidget<USpacer>(USpacer::StaticClass());
 	if (Spacer)
 	{

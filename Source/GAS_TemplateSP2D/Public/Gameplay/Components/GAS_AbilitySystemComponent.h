@@ -66,8 +66,6 @@ class GAS_TEMPLATESP2D_API UGAS_AbilitySystemComponent : public UAbilitySystemCo
 	GENERATED_BODY()
 public:
 
-	UGAS_AbilitySystemComponent();
-
 	bool GiveAbilitySet(const UGAS_GameplayAbilitySet* AbilitySet);
 	
 	void GiveAbilities(const UGAS_GameplayAbilitySet* AbilitySet);
