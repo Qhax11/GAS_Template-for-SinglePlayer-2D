@@ -23,7 +23,18 @@ void UEC_DamageBase::ExecuteWithParams(FExecCalculationParameters Params, FGamep
 
 	CalculateDamageReduction(Params, MitigatedDamage, OutExecutionOutput);
 
-	CalculateHealth(Params, MitigatedDamage, OutExecutionOutput);
+	const float DamageDealt = CalculateHealth(Params, MitigatedDamage, OutExecutionOutput);
+
+	// Trigger events based on the damage dealt
+	if (DamageDealt > 0)
+	{
+		TriggerGameplayEvent(Params, GAS_Tags::TAG_Gameplay_Event_TakeDamage, DamageDealt);
+	}
+
+	if (MitigatedDamage >= Params.GetTargetAttributeSet()->GetHealth())
+	{
+		TriggerGameplayEvent(Params, GAS_Tags::TAG_Gameplay_Event_Death);
+	}
 	
 	float LifeStealDone = .0f;
 	CalculateLifeSteal(Params, MitigatedDamage, LifeStealDone, OutExecutionOutput);
@@ -70,7 +81,7 @@ void UEC_DamageBase::CalculateDamageReduction(FExecCalculationParameters& Params
 	MitigatedDamage -= ReducedDamage;
 }
 
-void UEC_DamageBase::CalculateHealth(FExecCalculationParameters& Params, float& MitigatedDamage, FGameplayEffectCustomExecutionOutput& OutExecutionOutput) const
+float UEC_DamageBase::CalculateHealth(FExecCalculationParameters& Params, float& MitigatedDamage, FGameplayEffectCustomExecutionOutput& OutExecutionOutput) const
 {
 	const float CurrentTargetHealth = Params.GetTargetAttributeSet()->GetHealth();
 
@@ -84,32 +95,20 @@ void UEC_DamageBase::CalculateHealth(FExecCalculationParameters& Params, float& 
 		OutExecutionOutput.AddOutputModifier(FGameplayModifierEvaluatedData(Params.GetTargetAttributeSet()->GetHealthAttribute(), EGameplayModOp::Additive, -HealthDamageDone));
 	}
 
-	// Trigger TakeDamage Ability
-	if (HealthDamageDone > 0)
-	{
-		FGameplayEventData TakeDamagePaload;
-		TakeDamagePaload.EventTag = GAS_Tags::TAG_Gameplay_Event_TakeDamage;
-		TakeDamagePaload.Instigator = Params.SourceActor;
-		TakeDamagePaload.Target = Params.TargetActor;
-		TakeDamagePaload.EventMagnitude = HealthDamageDone;
-		TakeDamagePaload.ContextHandle = Params.GetSpec().GetContext();
-		TakeDamagePaload.InstigatorTags = Params.GetSpec().CapturedSourceTags.GetActorTags();
+	return HealthDamageDone;
+}
 
-		Params.TargetASC->HandleGameplayEvent(TakeDamagePaload.EventTag, &TakeDamagePaload);
-	}
+void UEC_DamageBase::TriggerGameplayEvent(FExecCalculationParameters& Params, const FGameplayTag& EventTag, float EventMagnitude) const
+{
+	FGameplayEventData Payload;
+	Payload.EventTag = EventTag;
+	Payload.Instigator = Params.SourceActor;
+	Payload.Target = Params.TargetActor;
+	Payload.ContextHandle = Params.GetSpec().GetContext();
+	Payload.InstigatorTags = Params.GetSpec().CapturedSourceTags.GetActorTags();
+	Payload.EventMagnitude = EventMagnitude;
 
-	// Trigger Death Ability
-	if (MitigatedDamage >= CurrentTargetHealth)
-	{
-		FGameplayEventData DeathPayload;
-		DeathPayload.EventTag = GAS_Tags::TAG_Gameplay_Event_Death;
-		DeathPayload.Instigator = Params.SourceActor;
-		DeathPayload.Target = Params.TargetActor;
-		DeathPayload.ContextHandle = Params.GetSpec().GetContext();
-		DeathPayload.InstigatorTags = Params.GetSpec().CapturedSourceTags.GetActorTags();
-
-		Params.TargetASC->HandleGameplayEvent(DeathPayload.EventTag, &DeathPayload);
-	}
+	Params.TargetASC->HandleGameplayEvent(EventTag, &Payload);
 }
 
 void UEC_DamageBase::CalculateCritical(FExecCalculationParameters& Params, float& MitigatedDamage, FGameplayEffectCustomExecutionOutput& OutExecutionOutput) const
