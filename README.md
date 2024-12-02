@@ -14,9 +14,9 @@ https://github.com/user-attachments/assets/6ad81453-153e-4db1-8799-18257d7ed7d8
 
 ## Contents
 - [Ability System Management](#Ability-System-Management)
-     - [Dynamic Ability Assignment](#1-Dynamic-Ability-Assignment) 
-     - [Ability Level Scaling](#2-Ability-Level-Scaling)
-     - [UI Integration for Abilities](#3-UI-Integration-for-Abilities)
+     - [Dynamic Ability Assignment](#Dynamic-Ability-Assignment) 
+     - [Ability Level Scaling](#Ability-Level-Scaling)
+     - [UI Integration for Abilities](#UI-Integration-for-Abilities)
 - [Taking and Dealing Damage](#Taking-and-Dealing-Damage)
      - [Dealing Damage Logic](#1-Dealing-Damage-Logic)
      - [Take Damage Handling](#2-Take-Damage-Handling)
