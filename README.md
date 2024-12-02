@@ -607,7 +607,9 @@ void UEC_DamageBase::CalculateLifeSteal(FExecCalculationParameters& Params, floa
 ```
 
 ## Message System
-The AGCN_MessageBase class serves as the base class for triggering gameplay messages in the form of UI widgets. It extends the AGCN_ActorBase class and is designed to handle message-related events in the Gameplay Ability System (GAS). 
+The AGCN_MessageBase class serves as the base class for triggering gameplay messages in the form of UI widgets. 
+- It extends the AGCN_ActorBase class and is designed to handle message-related events in the Gameplay Ability System (GAS).
+- Two classes derived from it are AGCN_HeroMessageHUD and AGCN_AttachedEffectTextBase.
 - This class provides the structure for displaying messages with customizable text, colors, and animations.
 
 ```c++
@@ -653,22 +655,28 @@ struct FWidgetMessageData
 ### **1. Hero Message HUD**
 AGCN_HeroMessageHUD is used to display hero-related messages on the HUD during gameplay events, such as status updates, buffs, or notifications.
 
-The base class for blueprints:
+- The base class for blueprints:
+  
 ![image](https://github.com/user-attachments/assets/cd60e0b4-25f8-40a2-94e5-6b304aa717f0)
 
-Here is an example: This is BP_GCN_HeroMessageHUD_Died. When the hero dies, we want to display a message on the HUD with these parameters.
+- Here is an example: This is BP_GCN_HeroMessageHUD_Died. When the hero dies, we want to display a message on the HUD with these parameters.
 
 ![image](https://github.com/user-attachments/assets/0124441c-ce78-4b35-b669-896d28d43bfd)
+
+- This is from BP_GE_Death, the effect applied when the character dies.
+
+![image](https://github.com/user-attachments/assets/c42e4165-21f4-4a05-8cb6-5a5949e4dc04)
+
 
 
 ### **2. Attached Effect Text**
 AGCN_AttachedEffectTextBase is designed for visually displaying effect-related messages like damage numbers, healing amounts, or critical hit indicators directly on or near affected actors. It provides flexibility in formatting and managing these messages during gameplay.
 
-The base class for blueprints:
+- The base class for blueprints:
 
 ![image](https://github.com/user-attachments/assets/a627444c-6b21-4ea7-b436-503a8396a940)
 
-Here is an example: This is BP_GCN_AttachedEffectText_Damage. When we attack, we want to display a message attached to the target actor using these parameters.
+- Here is an example: This is BP_GCN_AttachedEffectText_Damage. When we attack, we want to display a message attached to the target actor using these parameters.
 
 ![image](https://github.com/user-attachments/assets/da7b25cc-e320-4d7b-a7e4-00a6ff4e05df)
 
@@ -676,7 +684,9 @@ Here is an example: This is BP_GCN_AttachedEffectText_Damage. When we attack, we
 ## Sound System
 
 ### **1. Sound Cue Execution**
-The AGCN_SoundBase class is designed to handle sound effects triggered by gameplay events. The core functionality resides in the OnExecuted method, which plays the appropriate sound effect associated with the given actor during a GameplayCue execution. This ensures audio feedback is provided for actions like attacks, abilities, or other in-game events, enhancing player immersion and responsiveness.
+The AGCN_SoundBase class is designed to handle sound effects triggered by gameplay events. 
+- The core functionality resides in the OnExecuted method, which plays the appropriate sound effect associated with the given actor during a GameplayCue execution.
+- This ensures audio feedback is provided for actions like attacks, abilities, or other in-game events, enhancing player immersion and responsiveness.
 
 ```c++
 void AGCN_SoundBase::OnExecuted(AActor* Source, AActor* Target, const FGameplayCueParameters& Parameters)
@@ -700,12 +710,13 @@ void AGCN_SoundBase::OnExecuted(AActor* Source, AActor* Target, const FGameplayC
 	}
 }
 ```
-- For example, when applying a damage gameplay effect, the AGCN_SoundBase automatically plays the target's take-damage sound.
+- For example, when applying BP_GE_DamageBase, the AGCN_SoundBase automatically plays the target's take-damage sound.
   
 ![image](https://github.com/user-attachments/assets/2f03cbec-bf22-4d97-8d8a-2361e78f1778)
 
 ### **2. Actor Sounds Data**
-This data asset allows for flexible and organized sound management. For example, when a specific event occurs (e.g., a character is attacked or uses an ability), the corresponding sound can be easily played by looking up the appropriate USoundCue based on the gameplay tag associated with that event. This provides an efficient way to manage and trigger sounds dynamically during gameplay.
+This data asset allows for flexible and organized sound management. 
+- For example, when a specific event occurs (e.g., a character is attacked or uses an ability), the corresponding sound can be easily played by looking up the appropriate USoundCue based on the gameplay tag associated with that event. This provides an efficient way to manage and trigger sounds dynamically during gameplay.
 
 ![image](https://github.com/user-attachments/assets/ee6acea6-ceac-4752-b6f8-bbc0b2b3a3bd)
 
