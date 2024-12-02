@@ -14,9 +14,9 @@ https://github.com/user-attachments/assets/6ad81453-153e-4db1-8799-18257d7ed7d8
 
 ## Contents
 - [Ability System Management](#Ability-System-Management)
-     - [Dynamic Ability Assignment](#Dynamic-Ability-Assignment) 
-     - [Ability Level Scaling](#Ability-Level-Scaling)
-     - [UI Integration for Abilities](#UI-Integration-for-Abilities)
+     - [Dynamic Ability Assignment](#1-Dynamic-Ability-Assignment) 
+     - [Ability Level Scaling](#2-Ability-Level-Scaling)
+     - [UI Integration for Abilities](#3-UI-Integration-for-Abilities)
 - [Taking and Dealing Damage](#Taking-and-Dealing-Damage)
      - [Dealing Damage Logic](#1-Dealing-Damage-Logic)
      - [Take Damage Handling](#2-Take-Damage-Handling)
@@ -38,7 +38,7 @@ https://github.com/user-attachments/assets/6ad81453-153e-4db1-8799-18257d7ed7d8
 
 ## Ability System Management
 
-- ### **Dynamic Ability Assignment**
+- ### **1. Dynamic Ability Assignment**
 Explains how abilities are dynamically added or removed at the beginning of the game or during gameplay, along with automatic UI updates.
 - An ability data asset is used to grant abilities, attributes, and necessary effects to the ASC at the start of the game
   
@@ -65,7 +65,7 @@ void UAC_AbilitySet::Initialize(UGAS_AbilitySystemComponent* ASC)
 }
 ```
 
-- ### **Ability Level Scaling**
+- ### **2. Ability Level Scaling**
 Explains how abilities can level up, modifying attributes like cooldown, cost, and damage.
 
 - Typically, when an ability levels up, three key attributes are affected: Cost, Cooldown, and Applied Damage. These values are pre-defined in a Curve Data Table, where they are mapped to specific levels.
@@ -112,7 +112,7 @@ void UGAS_GameplayAbilityBase::IncreaseLevel(UAbilitySystemComponent* AbilitySys
 }
 ```
 
-- ### **UI Integration for Abilities** 
+- ### **3. UI Integration for Abilities** 
 Displays ability-related information such as level, cost, and cooldown through dedicated UI elements.
 
 - We have two widget classes for handling ability slots on the UI: UW_AbilitySlotPanel and UW_AbilitySlot.
@@ -166,7 +166,7 @@ void UW_AbilitySlotPanel::OnAbilityGranted(UAbilitySystemComponent* ASC, FGamepl
 ## Taking and Dealing Damage
 Characters can take damage from various sources, including environmental hazards and enemy attacks. Players can also deal damage using abilities or other gameplay mechanisms. The system includes UI elements that display the amount of damage taken or dealt, providing feedback to the player during combat.
 
-- ### **Dealing Damage Logic**
+- ### **1. Dealing Damage Logic**
 Enables characters to take damage from the environment or enemies and allows players to deal damage through abilities, weapons, or other means.
 
 - Within the BP_GE_DamageBase, the UEC_DamageBase class handles the process of dealing damage.
@@ -230,7 +230,7 @@ float UEC_DamageBase::CalculateHealth(FExecCalculationParameters& Params, float&
 }
 ```
 
-- ### **Take Damage Handling**
+- ### **2. Take Damage Handling**
 - Once the damage is applied, if the resulting damage is greater than zero, the target’s Take Damage ability is triggered. This ability contains the logic that handles the processing of the inflicted damage, allowing the target to react appropriately to the attack.
 
 ```c++
@@ -255,7 +255,7 @@ void UEC_DamageBase::TriggerGameplayEvent(FExecCalculationParameters& Params, co
 }
 ```
 
-- ### **Damage UI Feedback**
+- ### **3. Damage UI Feedback**
 On the UI side, the damage dealt is displayed using the AGCN_AttachedEffectTextBase GameplayCue, providing visual effects and updates that reflect changes in the character's health and give real-time feedback to the player.
 
 - After the damage effect, visual and audio events are handled via [`Attached Effect Text`](#2-Attached-Effect-Text) and [`Sound Cue Execution`](#1-Sound-GameplayCue) cue. A hit text attached to the target and a sound cue are triggered to provide immediate feedback.
@@ -314,7 +314,7 @@ public:
 };
 ```
 
-### **Death Mechanic and Logic**
+### **1. Death Mechanic and Logic**
   - A death mechanism triggered within the main function, ExecuteWithParams, of UEC_DamageBase, where the target’s Death Ability is activated when the character's health reaches zero.
 
 ```c++
@@ -353,7 +353,7 @@ void UGA_DeathBase::ActivateAbility(const FGameplayAbilitySpecHandle Handle,
 }
 ```
 
-### **Respawn Handling**
+### **2. Respawn Handling**
 The UAC_RespawnBase component is the main class that handles respawning. Two subclasses are derived from this class: UAC_EnemyRespawn and UAC_HeroRespawn.
 
 - The UAC_RespawnBase listens to the Despawn delegate of the relevant character and starts a timer. Once the timer finishes, it enables the character's movement and collisions
@@ -434,7 +434,7 @@ void UAC_HeroRespawn::SetHeroLocation(AGAS_PaperCharacterBase* Hero)
     }
 }
 ```
-### **UI for Death**
+### **3. UI for Death**
 In the UI for Death, the UGA_DeathBase applies BP_GE_Death when the character dies.
 
 - This line of code is from UGA_DeathBase, in the ActivateAbility function
@@ -456,7 +456,7 @@ if (DeathEffectClass)
 
 - ## Combat Buffs and Debuffs
 
-  ### **Crowd Control Effects**
+  ### **1. Crowd Control Effects**
 Explains the implementation of control effects like Slow and Stun using Gameplay Effects.
 
   - The activation of CC effects is handled through a controlling ability, triggered via a gameplay tag with the "owned tag present" setting.
@@ -489,7 +489,7 @@ void UGA_StunApplyBase::EndAbility(const FGameplayAbilitySpecHandle Handle, cons
 ```
 
 
-- ### **Attributes and Combat Mechanics**
+- ### **2. Attributes and Combat Mechanics**
 The impact of attributes like Physical Armor, Life Steal, and Critical Damage on gameplay is handled through the UEC_DamageBase class. These effects are processed sequentially within the main function, ExecuteWithParams. 
 
 ```c++
@@ -650,7 +650,7 @@ struct FWidgetMessageData
 
 };
 ```
-- ### **Hero Message HUD**
+- ### **1. Hero Message HUD**
 AGCN_HeroMessageHUD is used to display hero-related messages on the HUD during gameplay events, such as status updates, buffs, or notifications.
 
 The base class for blueprints:
@@ -661,7 +661,7 @@ Here is an example: This is BP_GCN_HeroMessageHUD_Died. When the hero dies, we w
 ![image](https://github.com/user-attachments/assets/0124441c-ce78-4b35-b669-896d28d43bfd)
 
 
-- ### **Attached Effect Text**
+- ### **2. Attached Effect Text**
 AGCN_AttachedEffectTextBase is designed for visually displaying effect-related messages like damage numbers, healing amounts, or critical hit indicators directly on or near affected actors. It provides flexibility in formatting and managing these messages during gameplay.
 
 The base class for blueprints:
@@ -675,7 +675,7 @@ Here is an example: This is BP_GCN_AttachedEffectText_Damage. When we attack, we
 
 ## Sound System
 
-- ### **Sound Cue Execution**
+- ### **1. Sound Cue Execution**
 The AGCN_SoundBase class is designed to handle sound effects triggered by gameplay events. The core functionality resides in the OnExecuted method, which plays the appropriate sound effect associated with the given actor during a GameplayCue execution. This ensures audio feedback is provided for actions like attacks, abilities, or other in-game events, enhancing player immersion and responsiveness.
 
 ```c++
@@ -704,7 +704,7 @@ void AGCN_SoundBase::OnExecuted(AActor* Source, AActor* Target, const FGameplayC
   
 ![image](https://github.com/user-attachments/assets/2f03cbec-bf22-4d97-8d8a-2361e78f1778)
 
-- ### **Actor Sounds Data**
+- ### **2. Actor Sounds Data**
 This data asset allows for flexible and organized sound management. For example, when a specific event occurs (e.g., a character is attacked or uses an ability), the corresponding sound can be easily played by looking up the appropriate USoundCue based on the gameplay tag associated with that event. This provides an efficient way to manage and trigger sounds dynamically during gameplay.
 
 ![image](https://github.com/user-attachments/assets/ee6acea6-ceac-4752-b6f8-bbc0b2b3a3bd)
