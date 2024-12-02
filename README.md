@@ -13,7 +13,6 @@ This is the gameplay test video. Sorry for the low quality, you can check it out
 https://github.com/user-attachments/assets/6ad81453-153e-4db1-8799-18257d7ed7d8
 
 ## Contents
-
 - [Ability System Management](#Ability-System-Management)
      - [Dynamic Ability Assignment](#1-Dynamic-Ability-Assignment) 
      - [Ability Level Scaling](#2-Ability-Level-Scaling)
@@ -39,7 +38,7 @@ https://github.com/user-attachments/assets/6ad81453-153e-4db1-8799-18257d7ed7d8
 
 ## Ability System Management
 
-- ### Dynamic Ability Assignment
+- ### **Dynamic Ability Assignment**
 Explains how abilities are dynamically added or removed at the beginning of the game or during gameplay, along with automatic UI updates.
 - An ability data asset is used to grant abilities, attributes, and necessary effects to the ASC at the start of the game
   
