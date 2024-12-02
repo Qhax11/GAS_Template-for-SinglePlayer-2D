@@ -2,6 +2,7 @@
 
 
 #include "Gameplay/Abilities/GA_DeathBase.h"
+#include "Gameplay/Effects/GAS_EffectBlueprintFunctionLibary.h"
 
 UGA_DeathBase::UGA_DeathBase()
 {
@@ -31,8 +32,16 @@ void UGA_DeathBase::ActivateAbility(const FGameplayAbilitySpecHandle Handle,
 	{
 		CharacterBase->DisableMovement();
 		CharacterBase->DisableCollision();
+
+		if (DeathEffectClass)
+		{
+			UGameplayEffect* ReSpawnEffect = UGAS_EffectBlueprintFunctionLibary::CreateEffectWithTSubclass(DeathEffectClass);
+			CharacterBase->GetAbilitySystemComponent()->ApplyGameplayEffectToSelf(ReSpawnEffect, 1, FGameplayEffectContextHandle());
+		}
 	}
 }
+
+	
 
 void UGA_DeathBase::BroadcastDeSpawn()
 {

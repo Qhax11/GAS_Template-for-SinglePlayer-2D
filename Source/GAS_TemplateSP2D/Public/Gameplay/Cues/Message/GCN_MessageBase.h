@@ -30,7 +30,6 @@ struct FWidgetMessageData
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "WidgetMessageData")
 	TEnumAsByte <EMessageTextAnim> MessageTextAnim = EMessageTextAnim::SlideUpFadeOut;
 
-
 	FWidgetMessageData() = default;
 
 	FWidgetMessageData(FString InMessageString, FSlateColor InMessageColor, EMessageTextAnim InMessageTextAnim)
