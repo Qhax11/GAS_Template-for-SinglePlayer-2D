@@ -675,7 +675,7 @@ Here is an example: This is BP_GCN_AttachedEffectText_Damage. When we attack, we
 
 ## Sound System
 
-- ### **1. Sound Cue Execution**
+### **1. Sound Cue Execution**
 The AGCN_SoundBase class is designed to handle sound effects triggered by gameplay events. The core functionality resides in the OnExecuted method, which plays the appropriate sound effect associated with the given actor during a GameplayCue execution. This ensures audio feedback is provided for actions like attacks, abilities, or other in-game events, enhancing player immersion and responsiveness.
 
 ```c++
