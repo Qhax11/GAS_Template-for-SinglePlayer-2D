@@ -1,6 +1,8 @@
 
 ## Introduction
-This project provides the foundational systems for a single-player, action-based game, using the Gameplay Ability System (GAS) for its core functionality. The template project was developed in version 5.4.
+The template project was developed in version 5.4.
+
+This project provides the foundational systems for a single-player, action-based game, using the Gameplay Ability System (GAS) for its core functionality. 
 
 Most of the logic is written in C++, with the exception of a few UI-related blueprint elements. To fully understand and utilize the project, a basic understanding of GAS and C++ is required.
 
