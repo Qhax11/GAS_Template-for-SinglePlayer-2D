@@ -150,7 +150,7 @@ void UW_AbilitySlotPanel::AddAbilitySlotToAbilityPanel(UAbilitySystemComponent* 
 }
 ```
 
-Example code for the Ability Slot on the Blueprint side:
+- Example code for the Ability Slot on the Blueprint side:
 
 ![image](https://github.com/user-attachments/assets/fbba4321-601b-408d-89d4-76b9f0e9fa80)
 
@@ -166,7 +166,7 @@ void UW_AbilitySlotPanel::OnAbilityGranted(UAbilitySystemComponent* ASC, FGamepl
 ## Taking and Dealing Damage
 Characters can take damage from various sources, including environmental hazards and enemy attacks. Players can also deal damage using abilities or other gameplay mechanisms. The system includes UI elements that display the amount of damage taken or dealt, providing feedback to the player during combat.
 
-- ### **1. Dealing Damage Logic**
+### **1. Dealing Damage Logic**
 Enables characters to take damage from the environment or enemies and allows players to deal damage through abilities, weapons, or other means.
 
 - Within the BP_GE_DamageBase, the UEC_DamageBase class handles the process of dealing damage.
